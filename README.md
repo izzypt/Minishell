@@ -1,18 +1,9 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
-this is ...
-
 # Tasks
 
-Simao:
-
-- I will write a description for each function on the ReadME
-
-Emily :
-
-- Start doing Makefile
-
+...
 
 # Allowed functions
 
