@@ -1,0 +1,1 @@
+Reacreations of libft-library, with ad-on of printf-function
