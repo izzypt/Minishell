@@ -3,28 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/05/25 18:42:16 by esali            ###   ########.fr       */
+/*   Updated: 2023/05/25 19:37:31 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main()
+int	main(void)
 {
-	char *input;
+	char	*input;
 
 	input = "";
-	while (ft_strncmp(input, "exit", 4))
+	while (1)
 	{
-		input = readline("Enter text: ");
-		//add_history(input);
-		printf("%s", input);
-		printf("\n");
+		input = readline("");
+		if (!ft_strncmp(input, "exit", 4))
+			break ;
+		free(input);
 	}
-
-	return 0;
+	return (0);
 }
-
