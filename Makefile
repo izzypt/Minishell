@@ -6,14 +6,14 @@
 #    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/05/26 13:36:01 by simao            ###   ########.fr        #
+#    Updated: 2023/05/26 13:50:05 by simao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME =		minishell
 
-SRCS =		srcs/minishell.c parse/read.c commands/pwd.c
+SRCS =		srcs/minishell.c parse/read.c commands/pwd.c commands/ls.c
 
 CFLAGS =	-lreadline -Wall -Wextra -Werror
 RM =		rm

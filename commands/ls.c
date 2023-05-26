@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read.c                                             :+:      :+:    :+:   */
+/*   ls.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/05/26 13:53:10 by simao            ###   ########.fr       */
+/*   Created: 2023/05/26 13:45:42 by simao             #+#    #+#             */
+/*   Updated: 2023/05/26 13:52:50 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../srcs/minishell.h"
 
-void	get_user_input(void)
+void	cmd_ls(void)
 {
-	char	*input;
+	DIR				*dir;
+	struct dirent	*entry;
 
-	input = readline("");
-	if (!ft_strncmp(input, "ls", 2))
-		cmd_ls();
-	if (!ft_strncmp(input, "pwd", 3))
-		cmd_pwd();
-	if (!ft_strncmp(input, "exit", 4))
-		exit(0);
-	free(input);
+	dir = opendir(".");
+	if (dir == NULL)
+	{
+		perror("opendir() error");
+	}
+	while (entry != NULL)
+	{
+		entry = readdir(dir);
+		if (entry)
+			printf("%s ", entry->d_name);
+	}
+	printf("\n");
+	closedir(dir);
 }
