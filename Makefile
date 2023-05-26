@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
+#    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/05/25 18:29:36 by esali            ###   ########.fr        #
+#    Updated: 2023/05/26 12:28:43 by simao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME =		minishell
 
-SRCS =		srcs/minishell.c
+SRCS =		srcs/minishell.c parse/read.c
 
 CFLAGS =	-lreadline -Wall -Wextra -Werror
 RM =		rm
