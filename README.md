@@ -25,6 +25,10 @@ This project is about creating a simple shell. We will learn a lot about process
 - Norme
 - Bugs hunting
 
+I found this mind map from another rep, it might be helpfull :
+
+![image](https://github.com/izzypt/Minishell/assets/73948790/d9f54c44-2d33-4081-95c8-f9e8d604f381)
+
 # Allowed functions
 
 Here's a brief description of each allowed function for the current project :
