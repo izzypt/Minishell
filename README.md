@@ -1,15 +1,39 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
-# Tasks
+### Key concepts
 
-...
+- Redirections
+- Paths, environments and variables
+- Heredocs
+- Pipes
+- Variable expansion
+- Signals
+- Builtin functions
+
+### Tasks
+
+- Prompt implementation
+- HashTable functions implementation
+- Tokenizer implementation
+- Variables expansion implementation
+- Builtins implementation
+- Parse and execute sistem design
+- Signals implementation
+- Parsing implementation
+- Execute implementation
+- Norme
+- Bugs hunting
+
+I found this mind map from another rep, it might be helpfull :
+
+![image](https://github.com/izzypt/Minishell/assets/73948790/d9f54c44-2d33-4081-95c8-f9e8d604f381)
 
 # Allowed functions
 
 Here's a brief description of each allowed function for the current project :
 
-Libraries required :
+### Libraries required :
 
 - <stdio.h> 
 - <stdlib.h> 
