@@ -10,4 +10,7 @@
 
 # include "../libft/libft.h"
 
+/* Functions */
+void	get_user_input(void);
+
 #endif
