@@ -3,13 +3,19 @@ This project is about creating a simple shell. We will learn a lot about process
 
 # Tasks
 
-...
+- Redirections
+- Paths, environments and variables
+- Heredocs
+- Pipes
+- Variable expansion
+- Signals
+- Builtin functions
 
 # Allowed functions
 
 Here's a brief description of each allowed function for the current project :
 
-Libraries required :
+### Libraries required :
 
 - <stdio.h> 
 - <stdlib.h> 
