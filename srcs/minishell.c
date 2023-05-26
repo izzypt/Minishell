@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/05/25 19:37:31 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:28:26 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,7 @@
 
 int	main(void)
 {
-	char	*input;
-
-	input = "";
 	while (1)
-	{
-		input = readline("");
-		if (!ft_strncmp(input, "exit", 4))
-			break ;
-		free(input);
-	}
+		get_user_input();
 	return (0);
 }
