@@ -1,7 +1,7 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
-# Tasks
+### Key concepts
 
 - Redirections
 - Paths, environments and variables
@@ -10,6 +10,20 @@ This project is about creating a simple shell. We will learn a lot about process
 - Variable expansion
 - Signals
 - Builtin functions
+
+### Tasks
+
+- Prompt implementation
+- HashTable functions implementation
+- Tokenizer implementation
+- Variables expansion implementation
+- Builtins implementation
+- Parse and execute sistem design
+- Signals implementation
+- Parsing implementation
+- Execute implementation
+- Norme
+- Bugs hunting
 
 # Allowed functions
 
