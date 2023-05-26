@@ -12,5 +12,6 @@
 
 /* Functions */
 void	get_user_input(void);
+void	cmd_pwd(void);
 
 #endif
