@@ -31,7 +31,6 @@ $(LIBFT_A) :
 
 clean:
 			cd $(LIBFT) && make clean && cd ..
-			$(RM) $(OBJS)
 
 fclean:		clean
 			$(RM) $(NAME)

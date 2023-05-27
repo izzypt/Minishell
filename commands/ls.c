@@ -22,6 +22,7 @@ void	cmd_ls(void)
 	{
 		perror("opendir() error");
 	}
+	entry = readdir(dir);
 	while (entry != NULL)
 	{
 		entry = readdir(dir);

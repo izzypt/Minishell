@@ -16,7 +16,7 @@ void	get_user_input(void)
 {
 	char	*input;
 
-	input = readline("");
+	input = readline("$> ");
 	if (!ft_strncmp(input, "ls", 2))
 		cmd_ls();
 	if (!ft_strncmp(input, "pwd", 3))
