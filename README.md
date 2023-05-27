@@ -8,8 +8,19 @@ This project is about creating a simple shell. We will learn a lot about process
 - Heredocs
 - Pipes
 - Variable expansion
-- Signals
-- Builtin functions
+  - Variable expansions in the context of a Bash or shell refer to the process of substituting the values of variables within a command or string. When a variable is expanded, its value is replaced by the actual content it holds.
+
+  - In Bash or shell scripting, variables are defined by assigning a value to them using the syntax variable_name=value. Variable expansion occurs when the variable is referenced, typically by prefixing the variable name with a $ sign. There are different ways to expand variables:
+
+     - Simple Variable Expansion: This is the most common form of variable expansion. It is done by placing the variable name preceded by a $ sign. For example, if you have a variable name with the value "John," you can expand it using $name, which will be replaced with "John" in the command or string.
+
+      - Brace Expansion: Brace expansion allows you to generate multiple strings based on a pattern. It is done by enclosing the variable name within curly braces {}. For example, if you have a variable number with the value "1 2 3," you can expand it using ${number}, which will be replaced with "1 2 3" in the command or string.
+
+      - Command Substitution: Command substitution allows you to execute a command and substitute its output into a variable. It is done by enclosing the command within $(command) or backticks `command`. For example, if you have a variable files with the value $(ls), it will be expanded by executing the ls command and substituting its output.
+
+      - Arithmetic Expansion: Arithmetic expansion allows you to perform mathematical operations within a variable. It is done by enclosing the mathematical expression within $((expression)). For example, if you have a variable num with the value 5, you can expand it using $((num + 2)), which will be replaced with 7 in the command or string.
+  - Signals
+  - Builtin functions
 
 ### Tasks
 
