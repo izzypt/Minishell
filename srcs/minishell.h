@@ -13,15 +13,10 @@
 /* Custom Libraries */
 # include "../libft/libft.h"
 
-typedef struct s_parser
-{
-	char			*token;
-	struct s_parser	*next;
-}	t_parser;
-
 /* Functions */
 void	get_user_input(void);
 void	cmd_pwd(void);
 void	cmd_ls(void);
+void	parse(char *input);
 
 #endif

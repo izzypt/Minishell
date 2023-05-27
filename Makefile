@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
+#    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/05/26 13:50:05 by simao            ###   ########.fr        #
+#    Updated: 2023/05/27 16:39:09 by esali            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME =		minishell
 
-SRCS =		srcs/minishell.c parse/read.c commands/pwd.c commands/ls.c
+SRCS =		srcs/minishell.c parse/read.c commands/pwd.c commands/ls.c parse/linked_list.c
 
 CFLAGS =	-lreadline -Wall -Wextra -Werror
 RM =		rm
@@ -32,7 +32,8 @@ $(LIBFT_A) :
 clean:
 			cd $(LIBFT) && make clean && cd ..
 
-fclean:		clean
+fclean:
+			cd $(LIBFT) && make fclean && cd ..
 			$(RM) $(NAME)
 
 re: 		fclean all

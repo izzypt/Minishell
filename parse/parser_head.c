@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read.c                                             :+:      :+:    :+:   */
+/*   parser_head.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/05/27 16:40:38 by esali            ###   ########.fr       */
+/*   Created: 2023/05/27 16:09:03 by esali             #+#    #+#             */
+/*   Updated: 2023/05/27 17:09:40 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../srcs/minishell.h"
 
-
-void	get_user_input(void)
+t_list	*parser_list(void)
 {
-	char	*input;
+	static t_list	head;
 
-	input = readline("$> ");
-	parse(input);
-
-	if (!ft_strncmp(input, "ls", 2))
-		cmd_ls();
-	if (!ft_strncmp(input, "pwd", 3))
-		cmd_pwd();
-	if (!ft_strncmp(input, "exit", 4))
-		exit(0);
-	free(input);
+	return (&head);
 }
