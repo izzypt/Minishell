@@ -31,8 +31,10 @@ This project is about creating a simple shell. We will learn a lot about process
        command < input.txt
        ```
        This command takes the input for `command` from the file `input.txt`.
-
-    - 5 Here Document (`<<`): The `<<` operator is used to provide input to a command or script from the script itself. It allows you to include multiple lines of input within the script. For example:
+      
+### Heredocs
+   - Here Document (`<<`): The `<<` operator is used to provide input to a command or script from the script itself. 
+   - It allows you to include multiple lines of input within the script. For example:
        ```
        command << EOF
        line 1
@@ -40,16 +42,19 @@ This project is about creating a simple shell. We will learn a lot about process
        EOF
        ```
        This command passes the lines between `<< EOF` and `EOF` as input to `command`.
-
-    - 6 Pipes (`|`): Pipes are not technically redirections, but they are closely related. Pipes allow you to take the output of one command and use it as the input for another command. For example:
+### Pipes
+  - Pipes (`|`): Pipes are not technically redirections, but they are closely related. Pipes allow you to take the output of one command and use it as the input for another command. For example:
        ```
        command1 | command2
        ```
        This command passes the output of `command1` as input to `command2`.
-     
+       
 ### Paths, environments and variables
-### Heredocs
-### Pipes
+- The PATH variable is an essential environment variable in Unix-like operating systems, including Linux. 
+- It plays a crucial role in locating executable files, commonly referred to as binaries or commands, when you issue a command in the terminal.
+- The PATH variable is a list of directory paths separated by colons (':'). 
+- When you type a command in the terminal, the system searches for the corresponding executable file in each directory listed in the PATH, in the order they appear. 
+- If the executable file is found in one of the directories, it is executed; otherwise, you'll receive a "command not found" error.
 ### Variable expansion
   - Variable expansions in the context of a Bash or shell refer to the process of substituting the values of variables within a command or string. When a variable is expanded, its value is replaced by the actual content it holds.
 
