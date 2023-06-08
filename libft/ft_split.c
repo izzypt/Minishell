@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:04:07 by esali             #+#    #+#             */
-/*   Updated: 2022/06/07 14:15:20 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/08 09:09:06 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static size_t	count_malloc(char const *s, char c)
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
-		{	
+		{
 			flag = 1;
 			i++;
 		}

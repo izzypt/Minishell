@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/05/27 16:40:38 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/07 21:57:51 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ void	get_user_input(void)
 	if (!ft_strncmp(input, "exit", 4))
 		exit(0);
 	free(input);
+	//print_data();
+	//free_data();
 }

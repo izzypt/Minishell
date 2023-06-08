@@ -13,10 +13,23 @@
 /* Custom Libraries */
 # include "../libft/libft.h"
 
+typedef struct	s_data
+{
+	char	**token;
+}				t_data;
+
 /* Functions */
 void	get_user_input(void);
 void	cmd_pwd(void);
 void	cmd_ls(void);
+
+/* Parsing */
 void	parse(char *input);
+
+/* Data */
+t_data	*data_struct(void);
+//void	free_data();
+void	print_data();
+
 
 #endif

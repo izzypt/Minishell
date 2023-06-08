@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:54:11 by esali             #+#    #+#             */
-/*   Updated: 2023/05/27 16:22:14 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/07 19:13:14 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_list
 {
-	char			*content;
+	char			*token;
 	struct s_list	*next;
 }					t_list;
 
