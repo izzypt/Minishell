@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/08 17:00:24 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/10 15:08:03 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	parse(char *input)
 
 	length = get_nr_token(input);
 	data = data_struct();
-	ft_printf("length: %i\n", get_nr_token(input));
 	token = (char **)malloc(sizeof(char *) * (length + 1));
 	if (!token)
 		return ;
@@ -89,15 +88,11 @@ void	parse(char *input)
 		while (input[i] == ' ')
 			i++;
 		token_length = get_token_length(&input[i]);
-		token[iterator] = ft_strlcpy(input, i, token_length);
+		token[iterator] = ft_substr(input, i, token_length);
 
-		// token[iterator] = (char *)malloc(sizeof(char) * 2);
-		// token[iterator][0] = 'h';
-		// token[iterator][1] = '\0';
-
-		printf("%i", i);
-		printf(". %i. ", token_length);
-		printf("%s\n",token[iterator]);
+		// printf("%i", i);
+		// printf(". %i. ", token_length);
+		// printf("%s\n",token[iterator]);
 
 		i = i + token_length;
 		iterator++;
@@ -105,9 +100,12 @@ void	parse(char *input)
 	token[iterator] = NULL;
 	data->token = token;
 	i = 0;
-	// while(token[i] != NULL)
-	// {
-	// 	ft_printf("%i, %s\n", i, token[i]);
-	// 	i++;
-	// }
+	while(token[i] != NULL)
+	{
+		//write(1, &token[i], ft_strlen(token[i])); // accessing wrong memory?
+		//ft_printf("%i: %s\n", i, token[i]); // SEGV
+		printf("%i: %s\n", i, data->token[i]); // working
+		i++;
+	}
+
 }
