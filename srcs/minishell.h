@@ -13,12 +13,11 @@
 /* Custom Libraries */
 # include "../libft/libft.h"
 
-/* globsal variable saving tokens */
-// char	**token;
 
 typedef struct	s_data
 {
 	char	**token;
+	char	**env_var;
 }				t_data;
 
 /* Functions */
@@ -29,12 +28,8 @@ void	cmd_ls(void);
 /* Parsing */
 void	parse(char *input);
 
-
 /* Data */
-// void	free_token();
-t_data *data_struct(void);
+t_data	*data(void);
 void	free_data();
-//void	print_data();
-
 
 #endif

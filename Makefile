@@ -6,15 +6,14 @@
 #    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/06/10 11:27:24 by esali            ###   ########.fr        #
+#    Updated: 2023/06/10 17:57:31 by esali            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME =		minishell
 
-SRCS =		srcs/minishell.c parse/read.c commands/pwd.c commands/ls.c parse/scanner.c\
-			parse/data.c
+SRCS =		srcs/minishell.c parse/read.c commands/pwd.c commands/ls.c parse/scanner.c parse/data.c
 
 CFLAGS =	-lreadline -Wall -Wextra -Werror
 RM =		rm
