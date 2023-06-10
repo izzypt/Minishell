@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/10 18:06:03 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/10 18:19:03 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	parse(char *input)
 	int		i;
 
 	length = get_nr_token(input);
-
 	data()->token = (char **)malloc(sizeof(char *) * (length + 1));
 	if (!data()->token)
 		return ;
