@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/10 18:06:04 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/10 19:41:53 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ t_data	*data(void)
 }
 
 /* frees **token saved inside data struct */
-void	free_data()
+void	free_data(void)
 {
 	int		i;
 
 	i = 0;
-	while(data()->token[i])
+	while (data()->token[i])
 	{
 		free(data()->token[i]);
 		i++;

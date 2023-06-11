@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/10 18:19:03 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/10 19:47:24 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_token_length(char *input)
 
 	i = 0;
 	if (is_special_char(input) != 0)
-	 	return is_special_char(input);
+		return (is_special_char(input));
 	while (input[i] != ' ' && !is_special_char(&(input[i])) && input[i])
 	{
 		if (input[i] == '"')
@@ -45,7 +45,7 @@ int	get_token_length(char *input)
 			while (input[i] != '"' && input[i])
 				i++;
 		}
-		else if(input[i] == 39) // check for env. variable
+		else if (input[i] == 39)
 		{
 			i++;
 			while (input[i] != 39 && input[i])
@@ -64,11 +64,11 @@ int	get_token_length(char *input)
 int	get_nr_token(char *input)
 {
 	size_t	i;
-	int	nb;
+	int		nb;
 
 	i = 0;
 	nb = 0;
-	while(i < ft_strlen(input))
+	while (i < ft_strlen(input))
 	{
 		while (input[i] == ' ')
 			i++;
@@ -99,7 +99,7 @@ void	parse(char *input)
 		return ;
 	i = 0;
 	iterator = 0;
-	while(iterator < length)
+	while (iterator < length)
 	{
 		while (input[i] == ' ')
 			i++;

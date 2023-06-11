@@ -14,7 +14,7 @@
 # include "../libft/libft.h"
 
 
-typedef struct	s_data
+typedef struct s_data
 {
 	char	**token;
 	char	**env_var;
@@ -30,6 +30,6 @@ void	parse(char *input);
 
 /* Data */
 t_data	*data(void);
-void	free_data();
+void	free_data(void);
 
 #endif
