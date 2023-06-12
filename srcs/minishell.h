@@ -3,12 +3,14 @@
 # define MINISHELL_H
 
 /* Built in Libraries */
+
 # include <unistd.h>
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdlib.h>
 # include <dirent.h>
+# include <signal.h>
 
 /* Custom Libraries */
 # include "../libft/libft.h"
@@ -40,5 +42,9 @@ t_data	*data(void);
 /* Memory Management */
 
 void	free_data(void);
+
+/* Signal Handlers */
+void	handle_sigint(int sig);
+void	handle_sigquit(int sig);
 
 #endif
