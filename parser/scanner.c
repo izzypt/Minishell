@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/10 19:47:24 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/12 16:26:28 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,12 @@ void	parse(char *input)
 		iterator++;
 	}
 	data()->token[iterator] = NULL;
+	i = 0;
+	printf("Token:");
+	while (data()->token[i])
+	{
+		printf(" %s", data()->token[i]);
+		i++;
+	}
+	printf("\n");
 }

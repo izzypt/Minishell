@@ -16,20 +16,30 @@
 
 typedef struct s_data
 {
+	char	*base_cmd;
+	char	*full_cmd;
+	char	*cmd_path;
+	int		spec_char;
 	char	**token;
 	char	**env_var;
 }				t_data;
 
-/* Functions */
-void	get_user_input(void);
+
+/* Inbuilt Commands */
+
 void	cmd_pwd(void);
 void	cmd_ls(void);
 
 /* Parsing */
+void	get_user_input(void);
 void	parse(char *input);
 
-/* Data */
+/* Struct Getters */
+
 t_data	*data(void);
+
+/* Memory Management */
+
 void	free_data(void);
 
 #endif
