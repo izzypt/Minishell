@@ -16,10 +16,9 @@
 
 typedef struct s_data
 {
+	char	*path;
 	char	*base_cmd;
 	char	*full_cmd;
-	char	*cmd_path;
-	int		spec_char;
 	char	**token;
 	char	**env_var;
 }				t_data;
