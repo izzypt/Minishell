@@ -15,6 +15,8 @@
 /* Custom Libraries */
 # include "../libft/libft.h"
 
+# define CTRL_D NULL
+
 
 typedef struct s_data
 {

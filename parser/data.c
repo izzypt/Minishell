@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/10 19:41:53 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/13 01:12:41 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	free_data(void)
 	int		i;
 
 	i = 0;
+	if (!data()->token)
+		return ;
 	while (data()->token[i])
 	{
 		free(data()->token[i]);
