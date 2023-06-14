@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:40:25 by simao             #+#    #+#             */
-/*   Updated: 2023/06/14 01:03:19 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/14 16:11:56 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ void	cmd_echo(char *line)
 	}
 	if (ft_strncmp(args[1], "-n", 2))
 		printf("\n");
+	i = 0;
+	while (args[i])
+		free(args[i++]);
+	free(args);
 }
 
