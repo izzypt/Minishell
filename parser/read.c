@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/14 15:49:17 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/14 20:33:35 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	get_user_input(void)
 
 	if (!ft_strncmp(input, "echo", 4))
 		cmd_echo(input);
+	if (!ft_strncmp(input, "unset", 5))
+		cmd_unset(input);
 	if (!ft_strncmp(input, "env", 3))
 		cmd_env();
 	if (!ft_strncmp(input, "export", 6))
