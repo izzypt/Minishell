@@ -31,6 +31,7 @@ typedef struct s_data
 void	cmd_pwd(void);
 void	cmd_echo(char *line);
 void	cmd_env(void);
+void	cmd_export(char *variable);
 
 /* Parsing */
 
