@@ -32,6 +32,7 @@ typedef struct s_data
 
 void	cmd_pwd(void);
 void	cmd_ls(void);
+void	cmd_echo(char *line);
 
 /* Parsing */
 void	get_user_input(void);

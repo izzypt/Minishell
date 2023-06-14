@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/13 01:43:14 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/14 00:54:32 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void	get_user_input(void)
 	if (input && ft_strlen(input) > 0)
 		add_history(input);
 	parse(input);
-	/*
-	if (!ft_strncmp(input, "ls", 2))
+
+	if (!ft_strncmp(input, "echo", 4))
+		cmd_echo(input);
+	/*if (!ft_strncmp(input, "ls", 2))
 	 	cmd_ls();
 	if (!ft_strncmp(input, "pwd", 3))
 		cmd_pwd();
