@@ -26,21 +26,32 @@ typedef struct s_data
 	char	**env_var;
 }				t_data;
 
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	char			*pair;
+	struct s_env	*nxt;
+}	t_env;
+
 /* Builtin Commands */
 
 void	cmd_pwd(void);
 void	cmd_echo(char *line);
 void	cmd_env(void);
 void	cmd_export(char *variable);
+void	cmd_unset(char *variable);
 
 /* Parsing */
 
 void	get_user_input(void);
 void	parse(char *input);
+void	create_env(char **env);
 
 /* Struct Getters */
 
 t_data	*data(void);
+t_env	*get_env(void);
 
 /* Memory Management */
 
