@@ -6,7 +6,20 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/12 16:57:35 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/14 12:30:10 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../srcs/minishell.h"
+
+void	cmd_env(void)
+{
+	int		i;
+
+	i = 0;
+	while (data()->env_var[i])
+	{
+		printf("%s\n", data()->env_var[i]);
+		i++;
+	}
+}

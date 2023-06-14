@@ -17,7 +17,6 @@
 
 # define CTRL_D NULL
 
-
 typedef struct s_data
 {
 	char	*path;
@@ -27,14 +26,14 @@ typedef struct s_data
 	char	**env_var;
 }				t_data;
 
-
-/* Inbuilt Commands */
+/* Builtin Commands */
 
 void	cmd_pwd(void);
-void	cmd_ls(void);
 void	cmd_echo(char *line);
+void	cmd_env(void);
 
 /* Parsing */
+
 void	get_user_input(void);
 void	parse(char *input);
 
@@ -47,6 +46,7 @@ t_data	*data(void);
 void	free_data(void);
 
 /* Signal Handlers */
+
 void	handle_sigint(int sig);
 void	handle_sigquit(int sig);
 
