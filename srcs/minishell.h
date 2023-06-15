@@ -36,17 +36,20 @@ typedef struct s_env
 
 /* Builtin Commands */
 
+void	cmd_cd(char *path);
 void	cmd_pwd(void);
 void	cmd_echo(char *line);
 void	cmd_env(void);
 void	cmd_export(char *variable);
 void	cmd_unset(char *variable);
+void	cmd_exit(void);
 
 /* Parsing */
 
+void	create_env(char **env);
 void	get_user_input(void);
 void	parse(char *input);
-void	create_env(char **env);
+
 
 /* Struct Getters */
 

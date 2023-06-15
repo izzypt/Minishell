@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/14 23:42:13 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/15 12:23:32 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	get_user_input(void)
 	if (!ft_strncmp(input, "pwd", 3))
 		cmd_pwd();
 	if (!ft_strncmp(input, "exit", 4))
-		exit(0);
+		cmd_exit();
 
 	free(input);
 	free_data();

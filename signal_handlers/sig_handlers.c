@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/06/12 22:55:31 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/15 16:06:04 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	handle_sigint(int sig)
 {
 	sig = sig;
 	printf("\n");
+	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
 }

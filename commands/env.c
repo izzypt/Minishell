@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/14 20:13:48 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/15 12:32:22 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	create_env(char **env)
 {
 	int		i;
 	t_env	*lst;
+	char	*key;
+	char	*value;
 	char	**keys;
 
 	i = 0;
@@ -38,8 +40,12 @@ void	create_env(char **env)
 	while (env[i])
 	{
 		keys = ft_split(env[i], '=');
-		lst->key = keys[0];
-		lst->value = keys[1];
+		key = ft_strdup(keys[0]);
+		value = ft_strdup(keys[1]);
+		while (*keys++)
+			free(*keys);
+		lst->key = key;
+		lst->value = value;
 		lst->pair = env[i];
 		if (env[i + 1] != NULL)
 		{
@@ -48,8 +54,6 @@ void	create_env(char **env)
 		}
 		else
 			lst->nxt = NULL;
-		while (*keys++)
-			free(*keys);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/06/14 23:23:48 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/15 12:06:11 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 // F_OK: Verifica se o arquivo existe. 
 
 /*
-chdir() takes a string arg of the path of the dir you want to change to. 
-If the directory change is successful, chdir returns 0. 
-Otherwise, if it returns -1, the dir change failed.
+- chdir() takes a string arg of the path of the dir you want to change to. 
+- If the directory change is successful, chdir returns 0. 
+- Otherwise, if it returns -1, the dir change failed.
+
+- Still missing , the change of the environment variable "PWD" and "OLDPWD"
 */
 void	cmd_cd(char *path)
 {
