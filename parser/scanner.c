@@ -6,11 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/14 00:21:42 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 17:41:12 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 int	is_special_char(char *input)
 {
