@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/15 12:32:22 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 15:31:53 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@ void	create_env(char **env)
 	while (env[i])
 	{
 		keys = ft_split(env[i], '=');
-		key = ft_strdup(keys[0]);
-		value = ft_strdup(keys[1]);
-		while (*keys++)
-			free(*keys);
+		key = keys[0];
+		value = keys[1];
 		lst->key = key;
 		lst->value = value;
-		lst->pair = env[i];
 		if (env[i + 1] != NULL)
 		{
 			lst->nxt = malloc(sizeof(t_env));
@@ -73,7 +70,7 @@ void	cmd_env(void)
 	}
 	while (lst)
 	{
-		printf("%s\n", lst->pair);
+		printf("%s=%s\n", lst->key, lst->value);
 		lst = lst->nxt;
 	}
 }
