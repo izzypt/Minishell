@@ -30,7 +30,6 @@ typedef struct s_env
 {
 	char			*key;
 	char			*value;
-	char			*pair;
 	struct s_env	*nxt;
 }	t_env;
 
@@ -49,7 +48,7 @@ void	cmd_exit(void);
 void	create_env(char **env);
 void	get_user_input(void);
 void	parse(char *input);
-
+void	replace_env_var(char *key, char *value);
 
 /* Struct Getters */
 
