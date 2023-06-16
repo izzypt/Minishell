@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/06/14 20:36:34 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 15:45:24 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 void	cmd_export(char *variable)
 {
 	char	**input;
-	char	*pair;
 	char	**key_value;
 	t_env	*lst;
 
@@ -26,14 +25,12 @@ void	cmd_export(char *variable)
 	if (!ft_strchr(variable, '='))
 		return ;
 	input = ft_split(variable, ' ');
-	pair = input[1];
-	key_value = ft_split(pair, '=');
+	key_value = ft_split(input[1], '=');
 	while (lst->nxt != NULL)
 		lst = lst->nxt;
 	lst->nxt = malloc(sizeof(t_env));
 	lst = lst->nxt;
 	lst->key = key_value[0];
 	lst->value = key_value[1];
-	lst->pair = pair;
 	lst->nxt = NULL;
 }
