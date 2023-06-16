@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 17:17:21 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 17:21:45 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@
 /*
 - chdir() takes a string arg of the path of the dir you want to change to. 
 - If the directory change is successful, chdir returns 0. 
-- Otherwise, if it returns -1, the dir change failed.
-
-- Still missing , the change of the environment variable "PWD" and "OLDPWD"
+- Update "PWD" and "OLDPWD" env variables once it sucessfully changed dir.
 */
 void	cmd_cd(char *path)
 {
