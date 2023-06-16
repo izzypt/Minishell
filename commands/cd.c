@@ -6,11 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 16:51:47 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 17:17:21 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 // R_OK: Verifica se o arquivo pode ser lido.
 // W_OK: Verifica se o arquivo pode ser escrito.

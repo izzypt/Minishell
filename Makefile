@@ -6,14 +6,14 @@
 #    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/06/16 16:01:17 by simao            ###   ########.fr        #
+#    Updated: 2023/06/16 17:19:26 by simao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME =		minishell
 
-SRCS =		srcs/minishell.c parser/*.c commands/*.c signal_handlers/*.c utils/*.c
+SRCS =		minishell.c parser/*.c commands/*.c signal_handlers/*.c utils/*.c
 
 CFLAGS =	-lreadline -Wall -Wextra -Werror
 RM =		rm

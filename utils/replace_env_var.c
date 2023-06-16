@@ -6,11 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:06:27 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 16:43:58 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 17:16:08 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 void	replace_env_var(char *key, char *value)
 {

@@ -6,11 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:32:22 by simao             #+#    #+#             */
-/*   Updated: 2023/05/26 13:37:41 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 17:17:26 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 void	cmd_pwd(void)
 {

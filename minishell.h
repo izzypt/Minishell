@@ -13,7 +13,7 @@
 # include <signal.h>
 
 /* Custom Libraries */
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 # define CTRL_D NULL
 

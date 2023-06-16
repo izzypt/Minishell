@@ -6,11 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 15:31:53 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/16 17:17:30 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 /*
 - Struct getter.
@@ -60,17 +60,17 @@ void	create_env(char **env)
 */
 void	cmd_env(void)
 {
-	t_env	*lst;
+	t_env	*env;
 
-	lst = get_env();
-	if (lst == NULL)
+	env = get_env();
+	if (env == NULL)
 	{
 		printf("No environment variables found.\n");
 		return ;
 	}
-	while (lst)
+	while (env)
 	{
-		printf("%s=%s\n", lst->key, lst->value);
-		lst = lst->nxt;
+		printf("%s=%s\n", env->key, env->value);
+		env = env->nxt;
 	}
 }
