@@ -68,7 +68,6 @@ t_env	*get_env(void);
 
 void	free_data(void);
 void	free_keys(char **keys);
-void	free_tokens(char **list);
 void	free_parse(void);
 
 /* Signal Handlers */

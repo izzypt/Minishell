@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 20:31:55 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:41:51 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,18 @@ char	*remove_char(char *token, int pos)
  */
 int	get_env_len_diff(char *str, int i)
 {
-	int	env_len;
-	int	val_len;
+	int		env_len;
+	int		val_len;
+	char	*tmp;
 
 	if (ft_strncmp(&str[i], "$?", 2) == 0)
 		return (0);
 	env_len = 1;
 	while (str[i + env_len] && ft_isalpha(str[i + env_len]))
 		env_len++;
-	val_len = ft_strlen(getenv(ft_substr(str, i + 1, env_len - 1)));
-	//ft_printf("str: %s env_len: %i, i: %i, val_len: %i", str, env_len, i, val_len);
+	tmp = ft_substr(str, i + 1, env_len - 1);
+	val_len = ft_strlen(ft_getenv(tmp));
+	free(tmp);
 	return (val_len - env_len);
 }
 
@@ -53,19 +55,30 @@ char	*change_env(char *input, int i)
 	char	*str;
 	char	*env_val;
 	int 	env_len;
+	char	*tmp;
 
 	if (ft_strncmp(&input[i], "$?", 2) == 0)
 		return (input);
 	env_len = 1;
 	while (input[i + env_len] && ft_isalpha(input[i + env_len]))
 		env_len++;
-	env_val = getenv(ft_substr(input, i + 1, env_len - 1));
+	tmp = ft_substr(input, i + 1, env_len - 1);
+	env_val = ft_getenv(tmp);
+	free(tmp);
 	if (i == 0)
-		str = env_val;
+		str = ft_strdup(env_val);
 	else
-		str = ft_strjoin(ft_substr(input, 0, i), env_val);
+	{
+		tmp = ft_substr(input, 0, i);
+		str = ft_strjoin(tmp, env_val);
+		free(tmp);
+	}
 	if (input[i + env_len] != '\0')
-		str = ft_strjoin(str, ft_substr(input, i + env_len, ft_strlen(input)));
+	{
+		tmp = ft_substr(input, i + env_len, ft_strlen(input));
+		str = ft_strjoin(str, tmp);
+		free(tmp);
+	}
 	free(input);
 	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 17:30:12 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:32:17 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,16 @@ t_list	*list_heads(void)
 	return (&list);
 }
 
-/* frees **char list */
-void	free_tokens(char **list)
-{
-	int		i;
-
-	i = 0;
-	while(list[i] != NULL)
-	{
-		free(list[i]);
-		i++;
-	}
-	free(list);
-}
-
 void	print_lists(void)
 {
 	t_list	*list;
 	int		i;
 
-	list = list_heads();
-	list = list->next;
-	while (list != NULL)
+	list = list_heads()->next;
+	while(list != NULL)
 	{
 		i = 0;
-		while (list->token[i] != NULL)
+		while (list->token[i])
 		{
 			printf("%i. %s ", i, list->token[i]);
 			i++;

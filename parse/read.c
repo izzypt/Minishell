@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 19:51:31 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:39:49 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	get_user_input(void)
 	{
 		cmd_exit();
 		return ;
-	}	
+	}
 	if (input && ft_strlen(input) > 0)
 		add_history(input);
 	if (ft_strlen(input) == 0)
