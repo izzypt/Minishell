@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/21 13:29:07 by esali             #+#    #+#             */
+/*   Updated: 2023/06/21 13:42:25 by esali            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -95,7 +107,8 @@ void	handle_sigquit(int sig);
 
 /* List */
 
-t_list	*ft_lstnew(char **token, char *path, t_list *lst_old);
+t_list	*list_heads(void);
+t_list	*ft_lstnew(char **token, char *path);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	print_lists(void);
