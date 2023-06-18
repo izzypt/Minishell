@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:34:33 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:31:55 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char	*remove_char(char *token, int pos)
 {
 	char	*substr;
+
 	if (pos == 0)
 	{
 		substr = ft_substr(token, 1, ft_strlen(token));

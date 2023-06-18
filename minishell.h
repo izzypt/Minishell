@@ -46,7 +46,7 @@ void	cmd_exit(void);
 
 void	create_env(char **env);
 void	get_user_input(void);
-void	parse(char *input);
+int		parse(char *input);
 void	replace_env_var(char *key, char *value);
 char	**split_token(char *input);
 int		is_special_char(char *input);
@@ -81,9 +81,9 @@ void	handle_sigquit(int sig);
 
 t_list	*list_heads(void);
 t_list	*ft_lstnew(char **token, char *path);
-void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	print_lists(void);
+char	*ft_getenv(char *key);
 
 #endif

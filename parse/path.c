@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 14:04:12 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:52:40 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:19:31 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ char	*valid_cmd_path(char *cmd)
 	int		i;
 
 	i = 0;
-	paths = ft_split(getenv("PATH"), ':');
+	if (ft_getenv("PATH") == NULL)
+		return (NULL);
+	paths = ft_split(ft_getenv("PATH"), ':');
 	while (paths[i] != NULL)
 	{
 		temp = ft_strjoin(paths[i], "/");

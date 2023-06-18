@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 18:52:10 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:51:31 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ void	get_user_input(void)
 	}	
 	if (input && ft_strlen(input) > 0)
 		add_history(input);
-	parse(input);
-	execute_input(list_heads()->next);
-	free_parse();
+	if (ft_strlen(input) == 0)
+		return ;
+	if (parse(input))
+	{
+		execute_input(list_heads()->next);
+		free_parse();
+	}
 	free(input);
 }

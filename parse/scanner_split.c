@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 19:04:37 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:31:37 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_token_length(char *input)
 
 	i = 0;
 	if (is_special_char(input) != 0)
-	 	return (is_special_char(input));
+		return (is_special_char(input));
 	while (input[i] != ' ' && !is_special_char(&(input[i])) && input[i])
 	{
 		if (input[i] == '"')
@@ -155,6 +155,8 @@ char	**split_token(char *input)
 	int		i;
 
 	length = get_nr_token(input);
+	if (length == 0)
+		return (NULL);
 	token = (char **)malloc(sizeof(char *) * (length + 1));
 	if (!token)
 		return (NULL);

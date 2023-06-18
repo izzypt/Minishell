@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 19:13:45 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:50:19 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,22 @@ int	get_len(int i, char	**token)
 calls function to seperate each token into own element and saves them into list object
 ex. echo hello | grep hello -> 1. echo hello  2. |   3. grep hello
 */
-void	parse(char *input)
+int	parse(char *input)
 {
 	char	**token;
 	int		i;
 	int		len;
 
 	token = split_token(input);
+	if (!token)
+		return (0);
 	i = 0;
 	while (token[i])
 	{
 		len = get_len(i, token);
-		//printf("%i\n", len);
 		new_list_token(i, len, token);
 		i = i + len;
 	}
 	free_keys(token);
-	//print_lists();
-	//free_token(token);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:14:32 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:34:14 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 20:17:16 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,22 @@ t_list	*ft_lstnew(char **token, char *path)
 	return (new_ele);
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+char	*ft_getenv(char *key)
 {
-	new->next = *lst;
-	*lst = new;
+	t_env	*lst;
+
+	lst = get_env();
+	lst = lst->nxt;
+	while (lst != NULL)
+	{
+		if (!ft_strncmp(lst->key, key, ft_strlen(key)))
+		{
+			return (lst->value);
+			break ;
+		}
+		lst = lst->nxt;
+	}
+	return (NULL);
 }
 
 t_list	*ft_lstlast(t_list *lst)
@@ -42,15 +54,6 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	if (!*lst)
-	{
-		ft_lstadd_front(lst, new);
-		return ;
-	}
-	ft_lstlast(*lst)->next = new;
-}
 
 int	ft_lstsize(t_list *lst)
 {
