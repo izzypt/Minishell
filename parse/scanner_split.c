@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:29:33 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:34:26 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ int	get_token_length(char *input)
 			i++;
 			while (input[i] != '"' && input[i])
 				i++;
+			continue;
 		}
 		else if(input[i] == 39)
 		{
 			i++;
 			while (input[i] != 39 && input[i])
 				i++;
+			continue;
 		}
 		i++;
 	}

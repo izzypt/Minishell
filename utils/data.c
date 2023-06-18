@@ -6,7 +6,11 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:34:03 by smagalha         ###   ########.fr       */
+<<<<<<< HEAD:parse/data.c
+/*   Updated: 2023/06/18 15:23:50 by smagalha         ###   ########.fr       */
+=======
+/*   Updated: 2023/06/18 14:28:33 by esali            ###   ########.fr       */
+>>>>>>> emily-branch:utils/data.c
 /*                                                                            */
 /* ************************************************************************** */
 
