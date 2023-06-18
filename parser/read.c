@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 17:16:27 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 00:28:43 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	get_user_input(void)
 
 	input = readline("$> ");
 	if (input == CTRL_D)
-		exit(0);
+	{
+		cmd_exit();
+		return ;
+	}	
 	if (input && ft_strlen(input) > 0)
 		add_history(input);
 	parse(input);
