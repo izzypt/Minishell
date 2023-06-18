@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 17:05:16 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:13:12 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ void	create_env(char **env)
 	while (env[i])
 	{
 		keys = ft_split(env[i], '=');
-		key = ft_strdup(keys[0]);
-		value = ft_strdup(keys[1]);
-		lst->key = key;
-		lst->value = value;
+		lst->key = ft_strdup(keys[0]);
+		lst->value = ft_strdup(keys[1]);
 		free_keys(keys);
 		if (env[i + 1] != NULL)
 		{
