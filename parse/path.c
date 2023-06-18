@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 14:04:12 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:34:17 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:52:40 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ char	*valid_cmd_path(char *cmd)
 		if (!access(command_path, X_OK))
 		{
 			free(temp);
-			free(paths);
+			free_keys(paths);
 			return (command_path);
 		}
 		free(command_path);
 		free(temp);
 		i++;
 	}
-	free(paths);
+	free_keys(paths);
 	return (NULL);
 }

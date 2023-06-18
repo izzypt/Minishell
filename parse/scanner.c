@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:34:30 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:48:27 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void new_list_token(int i, int len, char **token)
 	// if (i == 0)
 	// 	list_ele = ft_lstnew(new_token);
 	// else
-	ft_lstlast(list_head())->next = ft_lstnew(new_token, path);
+	ft_lstlast(list_heads())->next = ft_lstnew(new_token, path);
 
-	print = ft_lstlast(list_head());
+	print = ft_lstlast(list_heads());
 	j = 0;
 	while (print->token[j])
 	{
@@ -81,6 +81,7 @@ void	parse(char *input)
 		new_list_token(i, len, token);
 		i = i + len;
 	}
+	free_keys(token);
 	//print_list();
 	//free_token(token);
 }

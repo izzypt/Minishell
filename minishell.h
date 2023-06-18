@@ -63,7 +63,7 @@ t_env	*get_env(void);
 
 void	free_data(void);
 void	free_keys(char **keys);
-void	free_token(char **list);
+void	free_tokens(char **list);
 
 /* Signal Handlers */
 
@@ -73,11 +73,11 @@ void	handle_sigquit(int sig);
 
 /* List */
 
-t_list	*list_head(void);
+t_list	*list_heads(void);
 t_list	*ft_lstnew(char **token, char *path);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	print_list(void);
+void	print_lists(void);
 
 #endif
