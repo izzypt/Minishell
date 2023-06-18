@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 17:17:30 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 01:08:35 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,26 @@ t_env	*get_env(void)
 }
 
 /*
+- Should free the memory allocated from splitting the key/value pair...
+  ... of each env variable in the function create_env().
+- It can also be used for other situations where split() was used.
+*/
+void	free_keys(char **keys)
+{
+	int	j;
+
+	j = 0;
+	while (keys[j])
+	{
+		free(keys[j]);
+		j++;
+	}
+	free(keys);
+}
+
+/*
 - Creates a new node for each variable in env.
-- Each node holds the key, the value, and the pair.
+- Each node holds the key and the value of a env variable.
 */
 void	create_env(char **env)
 {
@@ -40,10 +58,11 @@ void	create_env(char **env)
 	while (env[i])
 	{
 		keys = ft_split(env[i], '=');
-		key = keys[0];
-		value = keys[1];
+		key = ft_strdup(keys[0]);
+		value = ft_strdup(keys[1]);
 		lst->key = key;
 		lst->value = value;
+		free_keys(keys);
 		if (env[i + 1] != NULL)
 		{
 			lst->nxt = malloc(sizeof(t_env));
