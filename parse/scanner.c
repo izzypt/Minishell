@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:48:27 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:35:36 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void new_list_token(int i, int len, char **token)
 {
 	char	**new_token;
 	int		j;
-	t_list	*print;
 	char	*path;
-	// t_list	*list_ele;
 
 	new_token = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!new_token)
@@ -32,21 +30,7 @@ void new_list_token(int i, int len, char **token)
 	}
 	new_token[j] = NULL;
 	path = valid_cmd_path(new_token[0]);
-
-	// list_ele = list_head();
-	// if (i == 0)
-	// 	list_ele = ft_lstnew(new_token);
-	// else
 	ft_lstlast(list_heads())->next = ft_lstnew(new_token, path);
-
-	print = ft_lstlast(list_heads());
-	j = 0;
-	while (print->token[j])
-	{
-		printf("%i. %s ", j, print->token[j]);
-		j++;
-	}
-	printf("path: %s\n", print->path);
 }
 
 /* retruns length of token variable for next list element */
@@ -77,11 +61,9 @@ void	parse(char *input)
 	while(token[i])
 	{
 		len = get_len(i, token);
-		//printf("%i\n", len);
 		new_list_token(i, len, token);
 		i = i + len;
 	}
 	free_keys(token);
-	//print_list();
-	//free_token(token);
+	print_lists();
 }
