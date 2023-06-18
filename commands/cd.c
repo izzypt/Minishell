@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 17:21:45 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 01:15:58 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,18 @@ void	cmd_cd(char *path)
 {
 	char	cwd[1024];
 	char	**path1;
+	char	*parsed_path;
 	char	*oldpwd;
 
 	path1 = ft_split(path, ' ');
+	parsed_path = ft_strdup(path1[1]);
 	oldpwd = ft_strdup(getcwd(cwd, sizeof(cwd)));
-	if (chdir(path1[1]) != 0)
+	free_keys(path1);
+	if (chdir(parsed_path) != 0)
 	{
-		printf("chdir(path) : %d\n", chdir(path));
-		if (access(path1[1], F_OK) == -1)
+		if (access(parsed_path, F_OK) == -1)
 			write(2, "minishell: cd: no such file or directory\n", 42);
-		else if (access(path1[1], R_OK | W_OK | X_OK) == -1)
+		else if (access(parsed_path, R_OK | W_OK | X_OK) == -1)
 			write(2, "minishell: cd: permission denied\n", 34);
 		else
 			write(2, "minishell: cd: not a directory\n", 32);
@@ -43,6 +45,7 @@ void	cmd_cd(char *path)
 	else
 	{
 		replace_env_var("OLDPWD", oldpwd);
-		replace_env_var("PWD", getcwd(cwd, sizeof(cwd)));
+		replace_env_var("PWD", ft_strdup(getcwd(cwd, sizeof(cwd))));
 	}
+	free(parsed_path);
 }
