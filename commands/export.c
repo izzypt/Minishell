@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 17:17:28 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 17:09:29 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	cmd_export(char *variable)
 		lst = lst->nxt;
 	lst->nxt = malloc(sizeof(t_env));
 	lst = lst->nxt;
-	lst->key = key_value[0];
-	lst->value = key_value[1];
+	lst->key = ft_strdup(key_value[0]);
+	lst->value = ft_strdup(key_value[1]);
 	lst->nxt = NULL;
+	free_keys(input);
+	free_keys(key_value);
 }
