@@ -6,31 +6,48 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/10 18:06:04 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/17 13:32:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "minishell.h"
 
-
-/* returns data struct */
-t_data	*data(void)
+/* returns head of linked list */
+t_list	*list_head(void)
 {
-	static t_data	data;
+	static t_list	list;
 
-	return (&data);
+	return (&list);
 }
 
-/* frees **token saved inside data struct */
-void	free_data()
+/* frees **char list */
+void	free_token(char **list)
 {
 	int		i;
 
 	i = 0;
-	while(data()->token[i])
+	while(list[i] != NULL)
 	{
-		free(data()->token[i]);
+		free(list[i]);
 		i++;
 	}
-	free(data()->token);
+	free(list);
+}
+
+void	print_list()
+{
+	t_list *list;
+	int		i;
+
+	list = list_head();
+	while(list != NULL)
+	{
+		i = 0;
+		while (list->token[i] != NULL)
+		{
+			printf("%i. %s ", i, list->token[i]);
+			i++;
+		}
+		list = list->next;
+	}
 }

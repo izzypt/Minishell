@@ -6,17 +6,14 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/06/10 18:06:06 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/13 16:20:05 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	main(void)
 {
-	if (argc != 1 || argv[1] != NULL)
-		return (0);
-	data()->env_var = env;
 	while (1)
 		get_user_input();
 	return (0);

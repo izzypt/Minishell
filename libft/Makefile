@@ -6,7 +6,7 @@
 #    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/20 13:12:29 by esali             #+#    #+#              #
-#    Updated: 2023/05/25 18:07:51 by esali            ###   ########.fr        #
+#    Updated: 2023/06/13 16:20:08 by esali            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,6 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 
 OBJS			= $(SRCS:.c=.o)
 
-BONUS			=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-					ft_lstadd_back.c
-
-BONUS_OBJS		= $(BONUS:.c=.o)
-
 CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
@@ -40,12 +35,9 @@ $(NAME):		$(OBJS)
 				$(RUN) $(NAME) $(OBJS)
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+				$(RM) $(OBJS)
 
 fclean:			clean
 				$(RM) $(NAME)
 
 re:				fclean $(NAME)
-
-bonus:			$(OBJS) $(BONUS_OBJS)
-				$(RUN) $(NAME) $(OBJS) $(BONUS_OBJS)
