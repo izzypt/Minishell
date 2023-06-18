@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:50 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 16:11:47 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:05:49 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ void	cmd_unset(char *variable)
 		{
 			tmp = lst->nxt;
 			lst->nxt = lst->nxt->nxt;
+			free(tmp->value);
+			free(tmp->key);
 			free(tmp);
 			break ;
 		}
 		lst = lst->nxt;
 	}
+	free_keys(input);
 }

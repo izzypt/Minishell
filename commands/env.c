@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 01:08:35 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 17:27:04 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,17 @@ void	create_env(char **env)
 {
 	int		i;
 	t_env	*lst;
-	char	*key;
-	char	*value;
 	char	**keys;
 
 	i = 0;
 	lst = get_env();
+	lst->nxt = malloc(sizeof(t_env));
+	lst = lst->nxt;
 	while (env[i])
 	{
 		keys = ft_split(env[i], '=');
-		key = ft_strdup(keys[0]);
-		value = ft_strdup(keys[1]);
-		lst->key = key;
-		lst->value = value;
+		lst->key = ft_strdup(keys[0]);
+		lst->value = ft_strdup(keys[1]);
 		free_keys(keys);
 		if (env[i + 1] != NULL)
 		{
@@ -89,7 +87,8 @@ void	cmd_env(void)
 	}
 	while (env)
 	{
-		printf("%s=%s\n", env->key, env->value);
+		if (env->key)
+			printf("%s=%s\n", env->key, env->value);
 		env = env->nxt;
 	}
 }

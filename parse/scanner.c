@@ -6,7 +6,11 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/06/18 17:35:36 by esali            ###   ########.fr       */
+=======
+/*   Updated: 2023/06/18 17:34:23 by smagalha         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +62,7 @@ void	parse(char *input)
 
 	token = split_token(input);
 	i = 0;
-	while(token[i])
+	while (token[i])
 	{
 		len = get_len(i, token);
 		new_list_token(i, len, token);
@@ -66,4 +70,8 @@ void	parse(char *input)
 	}
 	free_keys(token);
 	print_lists();
+<<<<<<< HEAD
+=======
+	//free_token(token);
+>>>>>>> main
 }
