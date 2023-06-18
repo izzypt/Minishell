@@ -11,7 +11,7 @@
 # include <dirent.h>
 
 /* Custom Libraries */
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct s_list
 {

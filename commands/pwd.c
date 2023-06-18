@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:32:22 by simao             #+#    #+#             */
-/*   Updated: 2023/05/26 13:37:41 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 14:33:53 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 void	cmd_pwd(void)
 {

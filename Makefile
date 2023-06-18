@@ -6,15 +6,15 @@
 #    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/06/17 14:23:23 by esali            ###   ########.fr        #
+#    Updated: 2023/06/18 14:29:59 by esali            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME =		minishell
 
-SRCS =		srcs/minishell.c parse/read.c commands/pwd.c commands/ls.c parse/scanner_split.c \
-			srcs/data.c parse/scanner.c parse/list_functions.c parse/var_expansion.c parse/path.c
+SRCS =		minishell.c parse/read.c commands/pwd.c commands/ls.c parse/scanner_split.c \
+			utils/data.c parse/scanner.c parse/list_functions.c parse/var_expansion.c parse/path.c
 
 CFLAGS =	-lreadline -Wall -Wextra -Werror
 RM =		rm

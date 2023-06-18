@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ls.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:45:42 by simao             #+#    #+#             */
-/*   Updated: 2023/05/26 13:52:50 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 14:34:08 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 void	cmd_ls(void)
 {

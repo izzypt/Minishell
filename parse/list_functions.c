@@ -6,11 +6,11 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:14:32 by esali             #+#    #+#             */
-/*   Updated: 2023/06/17 14:21:42 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/18 14:29:17 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 t_list	*ft_lstnew(char **token, char *path)
 {

@@ -6,11 +6,11 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/17 13:32:44 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/18 14:28:33 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /* returns head of linked list */
 t_list	*list_head(void)

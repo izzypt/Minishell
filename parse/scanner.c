@@ -6,11 +6,11 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/17 14:27:48 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/18 14:28:50 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../srcs/minishell.h"
+#include "../minishell.h"
 
 /* creates new list ele */
 void new_list_token(int i, int len, char **token)
