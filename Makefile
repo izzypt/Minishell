@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
+#    By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/06/16 17:19:26 by simao            ###   ########.fr        #
+#    Updated: 2023/06/18 15:18:04 by smagalha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(NAME) :	$(SRCS) $(LIBFT_A)
 			gcc $(CFLAGS) $(SRCS) -fsanitize=address -g $(LIBFT_A) -o $(NAME)
 
 $(LIBFT_A) :
-			cd $(LIBFT) && make bonus
+			cd $(LIBFT) && make
 
 clean:
 			cd $(LIBFT) && make clean && cd ..

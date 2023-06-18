@@ -3,112 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/16 17:41:12 by simao            ###   ########.fr       */
+/*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
+/*   Updated: 2023/06/18 15:10:44 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	is_special_char(char *input)
+/* creates new list ele */
+void new_list_token(int i, int len, char **token)
 {
-	if (!ft_strncmp(input, "<<", 2) || !ft_strncmp(input, ">>", 2))
-		return (2);
-	if (input[0] == '|' || input[0] == '<' || input[0] == '>')
+	char	**new_token;
+	int		j;
+	t_list	*print;
+	char	*path;
+	// t_list	*list_ele;
+
+	new_token = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!new_token)
+		return ;
+	j = 0;
+	while (j < len)
+	{
+		new_token[j] = ft_strdup(token[i + j]);
+		j++;
+	}
+	new_token[j] = NULL;
+	path = valid_cmd_path(new_token[0]);
+
+	// list_ele = list_head();
+	// if (i == 0)
+	// 	list_ele = ft_lstnew(new_token);
+	// else
+	ft_lstlast(list_head())->next = ft_lstnew(new_token, path);
+
+	print = ft_lstlast(list_head());
+	j = 0;
+	while (print->token[j])
+	{
+		printf("%i. %s ", j, print->token[j]);
+		j++;
+	}
+	printf("path: %s\n", print->path);
+}
+
+/* retruns length of token variable for next list element */
+int	get_len(int i, char	**token)
+{
+	int	save_i;
+
+	save_i = i;
+	if (is_special_char(token[i]))
 		return (1);
-	return (0);
-}
-
-/**
- * @brief Get the length of next token
- * seperated by the following:
- * - space
- * - single (') or double (") quotes
- * - special character (<, >, <<, >>, |)
- *
- * @return length of token
- */
-int	get_token_length(char *input)
-{
-	int	i;
-
-	i = 0;
-	if (is_special_char(input) != 0)
-		return (is_special_char(input));
-	while (input[i] != ' ' && !is_special_char(&(input[i])) && input[i])
-	{
-		if (input[i] == '"')
-		{
-			i++;
-			while (input[i] != '"' && input[i])
-				i++;
-		}
-		else if (input[i] == 39)
-		{
-			i++;
-			while (input[i] != 39 && input[i])
-				i++;
-		}
+	while(token[i] && !is_special_char(token[i]))
 		i++;
-	}
-	return (i);
+	return (i - save_i);
 }
 
-/**
- * @brief Get the nr token in input from user
- *
- * @return number of token
- */
-int	get_nr_token(char *input)
-{
-	size_t	i;
-	int		nb;
-
-	i = 0;
-	nb = 0;
-	while (i < ft_strlen(input))
-	{
-		while (input[i] == ' ')
-			i++;
-		if (input[i])
-		{
-			i = i + get_token_length(&(input[i]));
-			nb++;
-		}
-	}
-	return (nb);
-}
-
-/**
- * @brief parses the userinput from readline and saves it inside **token in data struct
- *
- * @param userinput from readline()
- */
+/*
+calls function to seperate each token into own element and saves them into list object
+ex. echo hello | grep hello -> 1. echo hello  2. |   3. grep hello
+*/
 void	parse(char *input)
 {
-	int		length;
-	int		token_length;
-	int		iterator;
+	char	**token;
 	int		i;
+	int		len;
 
-	if (!input)
-		return ;
-	length = get_nr_token(input);
-	data()->token = (char **)malloc(sizeof(char *) * (length + 1));
-	if (!data()->token)
-		return ;
+	token = split_token(input);
 	i = 0;
-	iterator = 0;
-	while (iterator < length)
+	while(token[i])
 	{
-		while (input[i] == ' ')
-			i++;
-		token_length = get_token_length(&input[i]);
-		data()->token[iterator] = ft_substr(input, i, token_length);
-		i = i + token_length;
-		iterator++;
+		len = get_len(i, token);
+		//printf("%i\n", len);
+		new_list_token(i, len, token);
+		i = i + len;
 	}
-	data()->token[iterator] = NULL;
+	//print_list();
+	//free_token(token);
 }
