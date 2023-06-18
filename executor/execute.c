@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/18 19:21:36 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/19 00:05:13 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 void	execute_path(t_list *node)
 {
-	int	pid1;
+	int		pid1;
+	char	**envp;
 
+	envp = (char **)malloc(2 * sizeof(char *));
+	envp[0] = (char *)malloc(strlen("TERM=xterm") + 1);
+	ft_strlcpy(envp[0], "TERM=xterm", 11);
+	envp[1] = NULL;
 	pid1 = fork();
 	if (pid1 == 0)
 	{
-		execve(node->path, node->token, NULL);
+		execve(node->path, node->token, envp);
 	}
 	waitpid(pid1, NULL, 0);
+	free_keys(envp);
 }
 
 void	execute_input(t_list *node)
