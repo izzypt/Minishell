@@ -6,11 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/06/18 17:35:36 by esali            ###   ########.fr       */
-=======
-/*   Updated: 2023/06/18 17:34:23 by smagalha         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2023/06/18 20:33:02 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +38,7 @@ int	get_len(int i, char	**token)
 {
 	int	save_i;
 
+
 	save_i = i;
 	if (is_special_char(token[i]))
 		return (1);
@@ -70,8 +67,4 @@ void	parse(char *input)
 	}
 	free_keys(token);
 	print_lists();
-<<<<<<< HEAD
-=======
-	//free_token(token);
->>>>>>> main
 }
