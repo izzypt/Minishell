@@ -58,6 +58,7 @@ t_env	*get_env(void);
 /* Memory Management */
 
 void	free_data(void);
+void	free_keys(char **keys);
 
 /* Signal Handlers */
 
