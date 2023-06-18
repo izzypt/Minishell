@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:50 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 17:17:24 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 16:11:47 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	cmd_unset(char *variable)
 
 	lst = get_env();
 	input = ft_split(variable, ' ');
-	while (lst != NULL)
+	while (lst != NULL && input[1])
 	{
+		if (lst->nxt == NULL)
+			break ;
 		if (!ft_strncmp(lst->nxt->key, input[1], ft_strlen(input[1])))
 		{
 			tmp = lst->nxt;
