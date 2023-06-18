@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 20:32:17 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/18 23:07:31 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_lists(void)
 	int		i;
 
 	list = list_heads()->next;
-	while(list != NULL)
+	while (list != NULL)
 	{
 		i = 0;
 		while (list->token[i])
