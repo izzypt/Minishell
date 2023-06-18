@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:34:03 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:33:37 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_token(char **list)
 	int		i;
 
 	i = 0;
-	while(list[i] != NULL)
+	while (list[i] != NULL)
 	{
 		free(list[i]);
 		i++;
@@ -34,13 +34,13 @@ void	free_token(char **list)
 	free(list);
 }
 
-void	print_list()
+void	print_list(void)
 {
-	t_list *list;
+	t_list	*list;
 	int		i;
 
 	list = list_head();
-	while(list != NULL)
+	while (list != NULL)
 	{
 		i = 0;
 		while (list->token[i] != NULL)
