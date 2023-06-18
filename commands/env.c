@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 01:08:35 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 17:05:16 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	create_env(char **env)
 
 	i = 0;
 	lst = get_env();
+	lst->nxt = malloc(sizeof(t_env));
+	lst = lst->nxt;
 	while (env[i])
 	{
 		keys = ft_split(env[i], '=');
@@ -89,7 +91,8 @@ void	cmd_env(void)
 	}
 	while (env)
 	{
-		printf("%s=%s\n", env->key, env->value);
+		if (env->key)
+			printf("%s=%s\n", env->key, env->value);
 		env = env->nxt;
 	}
 }
