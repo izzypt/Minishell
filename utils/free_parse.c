@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read.c                                             :+:      :+:    :+:   */
+/*   free_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 18:52:10 by smagalha         ###   ########.fr       */
+/*   Created: 2023/06/18 18:45:41 by smagalha          #+#    #+#             */
+/*   Updated: 2023/06/18 18:57:05 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	get_user_input(void)
+void	free_parse(void)
 {
-	char	*input;
+	t_list	*node;
+	t_list	*tmp;
 
-	input = readline("$> ");
-	if (input == CTRL_D)
+	node = list_heads()->next;
+	while (node != NULL)
 	{
-		cmd_exit();
-		return ;
-	}	
-	if (input && ft_strlen(input) > 0)
-		add_history(input);
-	parse(input);
-	execute_input(list_heads()->next);
-	free_parse();
-	free(input);
+		tmp = node->next;
+		free_keys(node->token);
+		free(node->path);
+		free(node);
+		node = tmp;
+	}
+	list_heads()->next = NULL;
 }

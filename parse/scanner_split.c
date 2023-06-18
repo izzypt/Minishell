@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 15:34:26 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:04:37 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_token_length(char *input)
 
 	i = 0;
 	if (is_special_char(input) != 0)
-	 	return is_special_char(input);
+	 	return (is_special_char(input));
 	while (input[i] != ' ' && !is_special_char(&(input[i])) && input[i])
 	{
 		if (input[i] == '"')
@@ -44,14 +44,14 @@ int	get_token_length(char *input)
 			i++;
 			while (input[i] != '"' && input[i])
 				i++;
-			continue;
+			continue ;
 		}
-		else if(input[i] == 39)
+		else if (input[i] == 39)
 		{
 			i++;
 			while (input[i] != 39 && input[i])
 				i++;
-			continue;
+			continue ;
 		}
 		i++;
 	}
@@ -64,11 +64,11 @@ returns the number of token = elements in token-array
 int	get_nr_token(char *input)
 {
 	size_t	i;
-	int	nb;
+	int		nb;
 
 	i = 0;
 	nb = 0;
-	while(i < ft_strlen(input))
+	while (i < ft_strlen(input))
 	{
 		while (input[i] == ' ')
 			i++;
@@ -95,13 +95,13 @@ char	*fill_token(char *input)
 	i = 0;
 	str = ft_strdup(input);
 	len = ft_strlen(input);
-	while (i < len) // look for env?
+	while (i < len)
 	{
 		if (str[i] == 39)
 		{
 			str = remove_char(str, i);
 			len--;
-			while(str[i] && str[i] != 39)
+			while (str[i] && str[i] != 39)
 				i++;
 			if (str[i])
 			{
@@ -120,7 +120,7 @@ char	*fill_token(char *input)
 		{
 			str = remove_char(str, i);
 			len--;
-			while(str[i] && str[i] != '"')
+			while (str[i] && str[i] != '"')
 			{
 				if (str[i] == '$')
 				{
@@ -140,7 +140,6 @@ char	*fill_token(char *input)
 		i++;
 	}
 	free(input);
-	//ft_printf("%s\n", str);
 	return (str);
 }
 
@@ -158,10 +157,10 @@ char	**split_token(char *input)
 	length = get_nr_token(input);
 	token = (char **)malloc(sizeof(char *) * (length + 1));
 	if (!token)
-		return NULL;
+		return (NULL);
 	i = 0;
 	iterator = 0;
-	while(iterator < length)
+	while (iterator < length)
 	{
 		while (input[i] == ' ')
 			i++;

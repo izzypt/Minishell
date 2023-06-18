@@ -11,6 +11,7 @@
 # include <stdlib.h>
 # include <dirent.h>
 # include <signal.h>
+# include <sys/wait.h>
 
 /* Custom Libraries */
 # include "libft/libft.h"
@@ -33,12 +34,12 @@ typedef struct s_env
 
 /* Builtin Commands */
 
-void	cmd_cd(char *path);
+void	cmd_cd(char **path);
 void	cmd_pwd(void);
-void	cmd_echo(char *line);
+void	cmd_echo(char **line);
 void	cmd_env(void);
-void	cmd_export(char *variable);
-void	cmd_unset(char *variable);
+void	cmd_export(char **variable);
+void	cmd_unset(char **variable);
 void	cmd_exit(void);
 
 /* Parsing */
@@ -54,6 +55,10 @@ char	*change_env(char *str, int i);
 int		get_env_len_diff(char *str, int i);
 char	*valid_cmd_path(char *cmd);
 
+/* Execute */
+
+void	execute_input(t_list *node);
+
 /* Struct Getters */
 
 t_list	*data(void);
@@ -64,6 +69,7 @@ t_env	*get_env(void);
 void	free_data(void);
 void	free_keys(char **keys);
 void	free_tokens(char **list);
+void	free_parse(void);
 
 /* Signal Handlers */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 01:15:58 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 18:21:51 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,14 @@
 - If the directory change is successful, chdir returns 0. 
 - Update "PWD" and "OLDPWD" env variables once it sucessfully changed dir.
 */
-void	cmd_cd(char *path)
+void	cmd_cd(char **path)
 {
 	char	cwd[1024];
-	char	**path1;
 	char	*parsed_path;
 	char	*oldpwd;
 
-	path1 = ft_split(path, ' ');
-	parsed_path = ft_strdup(path1[1]);
+	parsed_path = ft_strdup(path[1]);
 	oldpwd = ft_strdup(getcwd(cwd, sizeof(cwd)));
-	free_keys(path1);
 	if (chdir(parsed_path) != 0)
 	{
 		if (access(parsed_path, F_OK) == -1)

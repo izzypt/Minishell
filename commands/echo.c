@@ -3,36 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:40:25 by simao             #+#    #+#             */
-/*   Updated: 2023/06/16 17:17:31 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/18 18:28:42 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	cmd_echo(char *line)
+void	cmd_echo(char **line)
 {
 	int		i;
-	char	**args;
 
 	i = 0;
-	args = ft_split(line, ' ');
-	if (!ft_strncmp(args[1], "-n", 2))
+	if (!ft_strncmp(line[1], "-n", 2))
 		i = 2;
 	else
 		i = 1;
-	while (args[i])
+	while (line[i])
 	{
-		printf("%s ", args[i]);
+		printf("%s ", line[i]);
 		i++;
 	}
-	if (ft_strncmp(args[1], "-n", 2))
+	if (ft_strncmp(line[1], "-n", 2))
 		printf("\n");
-	i = 0;
-	while (args[i])
-		free(args[i++]);
-	free(args);
 }
 

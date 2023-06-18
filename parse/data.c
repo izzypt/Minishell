@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 17:33:37 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:12:44 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_list(void)
 		i = 0;
 		while (list->token[i] != NULL)
 		{
-			printf("%i. %s ", i, list->token[i]);
+			//printf("%i. %s ", i, list->token[i]);
 			i++;
 		}
 		list = list->next;

@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 17:34:23 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:13:45 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void new_list_token(int i, int len, char **token)
 	j = 0;
 	while (print->token[j])
 	{
-		printf("%i. %s ", j, print->token[j]);
+		//printf("%i. %s ", j, print->token[j]);
 		j++;
 	}
-	printf("path: %s\n", print->path);
+	//printf("path: %s\n", print->path);
 }
 
 /* retruns length of token variable for next list element */
@@ -81,6 +81,6 @@ void	parse(char *input)
 		i = i + len;
 	}
 	free_keys(token);
-	print_lists();
+	//print_lists();
 	//free_token(token);
 }
