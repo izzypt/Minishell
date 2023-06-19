@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 20:38:35 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:35:07 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void new_list_token(int i, int len, char **token)
 	char	**new_token;
 	int		j;
 	char	*path;
+	t_list	*lst_old;
 
 	new_token = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!new_token)
@@ -30,7 +31,8 @@ void new_list_token(int i, int len, char **token)
 	}
 	new_token[j] = NULL;
 	path = valid_cmd_path(new_token[0]);
-	ft_lstlast(list_heads())->next = ft_lstnew(new_token, path);
+	lst_old = ft_lstlast(list_heads());
+	lst_old->next = ft_lstnew(new_token, path, lst_old);
 }
 
 /* retruns length of token variable for next list element */

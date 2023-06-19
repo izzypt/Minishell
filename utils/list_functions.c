@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   list_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:14:32 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 20:36:50 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:32:47 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_list	*ft_lstnew(char **token, char *path)
+t_list	*ft_lstnew(char **token, char *path, t_list *lst_old)
 {
 	t_list	*new_ele;
 
@@ -22,6 +22,7 @@ t_list	*ft_lstnew(char **token, char *path)
 	new_ele->next = NULL;
 	new_ele->token = token;
 	new_ele->path = path;
+	new_ele->prev = lst_old;
 	return (new_ele);
 }
 
