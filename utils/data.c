@@ -6,19 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 23:07:31 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/19 20:16:18 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* returns head of linked list */
-t_list	*list_heads(void)
-{
-	static t_list	list;
-
-	return (&list);
-}
 
 void	print_lists(void)
 {

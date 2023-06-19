@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/19 17:35:07 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/20 00:09:53 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* creates new list ele */
-void new_list_token(int i, int len, char **token)
+void	new_list_token(int i, int len, char **token)
 {
 	char	**new_token;
 	int		j;
@@ -44,7 +44,7 @@ int	get_len(int i, char	**token)
 	save_i = i;
 	if (is_special_char(token[i]))
 		return (1);
-	while(token[i] && !is_special_char(token[i]))
+	while (token[i] && !is_special_char(token[i]))
 		i++;
 	return (i - save_i);
 }
