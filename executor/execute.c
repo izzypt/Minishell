@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/19 00:19:24 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/19 23:05:40 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	execute_path(t_list *node)
 	int		pid1;
 	char	**envp;
 
+	if (ft_lstsize(node) > 1)
+	{
+		command_chain(node);
+		return ;
+	}
 	envp = (char **)malloc(2 * sizeof(char *));
 	envp[0] = (char *)malloc(strlen("TERM=xterm") + 1);
 	ft_strlcpy(envp[0], "TERM=xterm", 11);
