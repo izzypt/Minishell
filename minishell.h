@@ -14,15 +14,24 @@
 # include <sys/wait.h>
 
 /* Custom Libraries */
+
 # include "libft/libft.h"
 
 # define CTRL_D NULL
+
+/* Structs */
+
+typedef struct s_pipe
+{
+	int	fd[2];
+}				t_pipe;
 
 typedef struct s_list
 {
 	char			**token;
 	char			*path;
 	struct s_list	*next;
+	struct s_list	*prev;
 }				t_list;
 
 typedef struct s_env
@@ -55,18 +64,24 @@ char	*change_env(char *str, int i);
 int		get_env_len_diff(char *str, int i);
 char	*valid_cmd_path(char *cmd);
 
-/* Execute */
+/* Executing */
 
 void	execute_input(t_list *node);
+int		check_redirection(t_list *node);
+void	write_to_pipe(t_list *node);
+void	output_from_pipe(t_list *node);
+void	write_to_fd(t_list *node);
+void	append_to_fd(t_list *node);
+void	command_chain(t_list *node);
 
 /* Struct Getters */
 
-t_list	*data(void);
+t_list	*list_heads(void);
 t_env	*get_env(void);
+t_pipe	*get_pipe(void);
 
 /* Memory Management */
 
-void	free_data(void);
 void	free_keys(char **keys);
 void	free_parse(void);
 
@@ -78,8 +93,7 @@ void	handle_sigquit(int sig);
 
 /* List */
 
-t_list	*list_heads(void);
-t_list	*ft_lstnew(char **token, char *path);
+t_list	*ft_lstnew(char **token, char *path, t_list *lst_old);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	print_lists(void);
