@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 01:13:37 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/20 15:38:44 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	cmd_exit(void)
 	t_env	*lst;
 	t_env	*tmp;
 
+	printf("RUnning exit command.\n");
 	lst = get_env();
 	lst = lst->nxt;
 	while (lst != NULL)
