@@ -9,7 +9,7 @@ saves the exit status of the last executed command or process
 - 127-255: If a signal Kill or interrupte the command 127 + signal
 
 
-[x] special char at beginning
+[] special char at beginning
 [] pipes and redirections behind each other
 [] env var with num and _
 
@@ -17,6 +17,9 @@ saves the exit status of the last executed command or process
 [] take care of following env variable:
 	[] $11askjdhakd -> $1 is looked up, rest is ignored
 	[] $sadlj123516723 -> full string is looked up
+	[] $USER$USER
+
+[x] empty env_var
 
 [] ERROR message
 	[]  invalid command

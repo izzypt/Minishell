@@ -6,14 +6,14 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/19 19:30:10 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/20 16:22:11 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* creates new list ele */
-void new_list_token(int i, int len, char **token)
+void	new_list_token(int i, int len, char **token)
 {
 	char	**new_token;
 	int		j;
@@ -40,17 +40,35 @@ int	get_len(int i, char	**token)
 {
 	int	save_i;
 
-
 	save_i = i;
 	if (is_special_char(token[i]))
 		return (1);
-	while(token[i] && !is_special_char(token[i]))
+	while (token[i] && !is_special_char(token[i]))
 		i++;
 	return (i - save_i);
 }
 
 /*
-calls function to seperate each token into own element and saves them into list object
+ parses the userinput from readline and returns it in array of strings
+ */
+char	**split_token(char *input)
+{
+	int		length;
+	char	**token;
+
+	length = get_nr_token(input);
+	if (length == 0)
+		return (NULL);
+	token = (char **)malloc(sizeof(char *) * (length + 1));
+	if (!token)
+		return (NULL);
+	fill_token(token, length, input);
+	return (token);
+}
+
+/*
+calls function to seperate each token into own element and saves them
+into list object
 ex. echo hello | grep hello -> 1. echo hello  2. |   3. grep hello
 */
 int	parse(char *input)
@@ -70,5 +88,6 @@ int	parse(char *input)
 		i = i + len;
 	}
 	free_keys(token);
+	print_lists();
 	return (1);
 }

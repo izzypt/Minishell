@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
+/*   Updated: 2023/06/20 17:16:08 by esali            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -33,10 +44,10 @@ typedef struct s_env
 	struct s_env	*nxt;
 }	t_env;
 
-typedef struct s_minishell
+typedef struct s_exit
 {
 	int	exit;
-}	t_minishell;
+}	t_exit;
 
 /* Builtin Commands */
 
@@ -54,13 +65,13 @@ void	create_env(char **env);
 void	get_user_input(void);
 int		parse(char *input);
 void	replace_env_var(char *key, char *value);
-char	**split_token(char *input);
+int		get_nr_token(char *input);
+void	fill_token(char **token, int length, char *input);
 int		is_special_char(char *input);
-char	*remove_char(char *token, int pos);
-char	*change_env(char *str, int i);
-int		get_env_len_diff(char *str, int i);
 char	*valid_cmd_path(char *cmd);
-
+char	*remove_quotes(char *str, int *count, char c);
+char	*manage_env(char *str, int *count);
+char	*manage_double_quotes(char *str, int *c);
 /* Execute */
 
 void	execute_input(t_list *node);
@@ -69,6 +80,7 @@ void	execute_input(t_list *node);
 
 t_list	*data(void);
 t_env	*get_env(void);
+t_exit	*get_exit(void);
 
 /* Memory Management */
 
@@ -80,7 +92,6 @@ void	free_parse(void);
 
 // void	handle_sigint(int sig);
 // void	handle_sigquit(int sig);
-
 
 /* List */
 

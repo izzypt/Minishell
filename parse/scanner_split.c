@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 20:39:53 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:22:14 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,82 +84,39 @@ int	get_nr_token(char *input)
 /*
 checks if next element has env variable and removes quotes
 returns next token element
+count[0] : i
+count[1] : len
 */
-char	*fill_token(char *input)
+char	*modify_token(char *input)
 {
-	int		i;
-	int		len;
-	int		len_diff;
+	int		*c;
 	char	*str;
 
-	i = 0;
+	c = (int *)malloc(sizeof(int) * 3);
+	c[0] = 0;
+	c[1] = ft_strlen(input);
 	str = ft_strdup(input);
-	len = ft_strlen(input);
-	while (i < len)
+	while (c[0] < c[1])
 	{
-		if (str[i] == 39)
-		{
-			str = remove_char(str, i);
-			len--;
-			while (str[i] && str[i] != 39)
-				i++;
-			if (str[i])
-			{
-				str = remove_char(str, i);
-				len--;
-			}
-		}
-		if (str[i] == '$' && str[i + 1])
-		{
-			len_diff = get_env_len_diff(str, i);
-			str = change_env(str, i);
-			len = len + len_diff;
-			i = i + len_diff;
-		}
-		if (str[i] == '"')
-		{
-			str = remove_char(str, i);
-			len--;
-			while (str[i] && str[i] != '"')
-			{
-				if (str[i] == '$')
-				{
-					len_diff = get_env_len_diff(str, i);
-					str = change_env(str, i);
-					len = len + len_diff;
-					i = i + len_diff;
-				}
-				i++;
-			}
-			if (str[i])
-			{
-				str = remove_char(str, i);
-				len--;
-			}
-		}
-		i++;
+		if (str[c[0]] == 39)
+			str = remove_quotes(str, c, 39);
+		if (str[c[0]] == '$')
+			str = manage_env(str, c);
+		if (str[c[0]] == '"')
+			str = manage_double_quotes(str, c);
+		c[0]++;
 	}
+	free(c);
 	free(input);
 	return (str);
 }
 
-/*
- parses the userinput from readline and returns it in array of strings
- */
-char	**split_token(char *input)
+void	fill_token(char **token, int length, char *input)
 {
-	int		length;
-	char	**token;
-	int		token_length;
-	int		iterator;
-	int		i;
+	int	i;
+	int	iterator;
+	int	token_length;
 
-	length = get_nr_token(input);
-	if (length == 0)
-		return (NULL);
-	token = (char **)malloc(sizeof(char *) * (length + 1));
-	if (!token)
-		return (NULL);
 	i = 0;
 	iterator = 0;
 	while (iterator < length)
@@ -167,10 +124,9 @@ char	**split_token(char *input)
 		while (input[i] == ' ')
 			i++;
 		token_length = get_token_length(&input[i]);
-		token[iterator] = fill_token(ft_substr(input, i, token_length));
+		token[iterator] = modify_token(ft_substr(input, i, token_length));
 		i = i + token_length;
 		iterator++;
 	}
 	token[iterator] = NULL;
-	return (token);
 }

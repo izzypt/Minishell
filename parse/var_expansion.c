@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   var_expansion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 20:41:51 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:10:01 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* removes char in position pos from the string */
-char	*remove_char(char *token, int pos)
-{
-	char	*substr;
-
-	if (pos == 0)
-	{
-		substr = ft_substr(token, 1, ft_strlen(token));
-		free(token);
-		return (substr);
-	}
-	substr = ft_strjoin(ft_substr(token, 0, pos), ft_substr(token, pos + 1, ft_strlen(token)));
-	free(token);
-	return (substr);
-}
 
 /**
  returns difference in env var to value saved inside
@@ -40,38 +24,31 @@ int	get_env_len_diff(char *str, int i)
 
 	if (ft_strncmp(&str[i], "$?", 2) == 0)
 		return (0);
+	val_len = 0;
 	env_len = 1;
 	while (str[i + env_len] && ft_isalpha(str[i + env_len]))
 		env_len++;
 	tmp = ft_substr(str, i + 1, env_len - 1);
-	val_len = ft_strlen(ft_getenv(tmp));
+	if (ft_getenv(tmp) != NULL)
+		val_len = ft_strlen(ft_getenv(tmp));
 	free(tmp);
 	return (val_len - env_len);
 }
 
-/* changes string in a way, that it exchanges the $... for the saved value*/
-char	*change_env(char *input, int i)
+char	*fill_env(char *input, char *env_val, int i, int env_len)
 {
 	char	*str;
-	char	*env_val;
-	int 	env_len;
 	char	*tmp;
 
-	if (ft_strncmp(&input[i], "$?", 2) == 0)
-		return (input);
-	env_len = 1;
-	while (input[i + env_len] && ft_isalpha(input[i + env_len]))
-		env_len++;
-	tmp = ft_substr(input, i + 1, env_len - 1);
-	env_val = ft_getenv(tmp);
-	free(tmp);
-	if (i == 0)
+	if (i == 0 && env_val != NULL)
 		str = ft_strdup(env_val);
+	else if (i == 0)
+		str = ft_calloc(1, sizeof(char));
 	else
 	{
-		tmp = ft_substr(input, 0, i);
-		str = ft_strjoin(tmp, env_val);
-		free(tmp);
+		str = ft_substr(input, 0, i);
+		if (env_val != NULL)
+			str = ft_strjoin(str, env_val);
 	}
 	if (input[i + env_len] != '\0')
 	{
@@ -83,3 +60,38 @@ char	*change_env(char *input, int i)
 	return (str);
 }
 
+/* changes string in a way, that it exchanges the $... for the saved value*/
+char	*change_env(char *input, int i)
+{
+	char	*env_val;
+	int		env_len;
+	char	*tmp;
+
+	if (ft_strncmp(&input[i], "$?", 2) == 0)
+		return (input);
+	env_len = 1;
+	while (input[i + env_len] && ft_isalpha(input[i + env_len]))
+		env_len++;
+	tmp = ft_substr(input, i + 1, env_len - 1);
+	env_val = ft_getenv(tmp);
+	free(tmp);
+	return (fill_env(input, env_val, i, env_len));
+}
+
+char	*manage_env(char *str, int *c)
+{
+	int		len_diff;
+	char	*ret;
+
+	ret = ft_strdup(str);
+	if (str[c[0] + 1] && str[c[0] + 1] != ' ' && str[c[0] + 1] != '"')
+	{
+		len_diff = get_env_len_diff(ret, c[0]);
+		ret = change_env(ret, c[0]);
+		c[1] = c[1] + len_diff;
+		if (len_diff > 0)
+			c[0] = c[0] + len_diff;
+	}
+	free(str);
+	return (ret);
+}

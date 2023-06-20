@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:14:32 by esali             #+#    #+#             */
-/*   Updated: 2023/06/19 19:29:08 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/20 16:10:06 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (lst);
 }
-
 
 int	ft_lstsize(t_list *lst)
 {
