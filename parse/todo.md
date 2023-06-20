@@ -1,0 +1,32 @@
+
+[] $?
+saves the exit status of the last executed command or process
+- 0: SUCCES
+- 1: generic or unspecified error occured
+- 2: indictae syntax error in command
+- 126: command was found but could not be executed due to insufficient permission or other execution related issues
+- 127: command was not found
+- 127-255: If a signal Kill or interrupte the command 127 + signal
+
+
+[x] special char at beginning
+[] pipes and redirections behind each other
+[] env var with num and _
+
+[x] change 'env' to env variable in parser?
+[] take care of following env variable:
+	[] $11askjdhakd -> $1 is looked up, rest is ignored
+	[] $sadlj123516723 -> full string is looked up
+
+[] ERROR message
+	[]  invalid command
+	[] 2 special chars behind each other
+
+[x] free token (scanner_split.c)
+[x] free list after each readline
+[x] free paths (paths.c)
+
+[] echo in the middle
+	ex. cat echo test.txt
+
+[] Not interpret unclosed quotes or special characters which are not required by the subject such as \ (backslash) or ; (semicolon).

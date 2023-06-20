@@ -23,7 +23,8 @@ typedef struct s_list
 	char			**token;
 	char			*path;
 	struct s_list	*next;
-}				t_list;
+	struct s_list	*prev;
+}	t_list;
 
 typedef struct s_env
 {
@@ -31,6 +32,11 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*nxt;
 }	t_env;
+
+typedef struct s_minishell
+{
+	int	exit;
+}	t_minishell;
 
 /* Builtin Commands */
 
@@ -72,14 +78,14 @@ void	free_parse(void);
 
 /* Signal Handlers */
 
-void	handle_sigint(int sig);
-void	handle_sigquit(int sig);
+// void	handle_sigint(int sig);
+// void	handle_sigquit(int sig);
 
 
 /* List */
 
 t_list	*list_heads(void);
-t_list	*ft_lstnew(char **token, char *path);
+t_list	*ft_lstnew(char **token, char *path, t_list *lst_old);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	print_lists(void);
