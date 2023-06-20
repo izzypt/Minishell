@@ -12,6 +12,7 @@
 # include <dirent.h>
 # include <signal.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 
 /* Custom Libraries */
 
