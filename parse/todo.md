@@ -8,7 +8,6 @@ saves the exit status of the last executed command or process
 - 127: command was not found
 - 127-255: If a signal Kill or interrupte the command 127 + signal
 
-
 [] special char at beginning
 [] pipes and redirections behind each other
 [] env var with num and _
@@ -23,7 +22,7 @@ saves the exit status of the last executed command or process
 
 [] ERROR message
 	[]  invalid command
-	[] 2 special chars behind each other
+	[x] 2 special chars behind each other
 
 [x] free token (scanner_split.c)
 [x] free list after each readline

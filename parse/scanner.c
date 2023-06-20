@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/06/20 16:22:11 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/20 18:33:51 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	parse(char *input)
 	token = split_token(input);
 	if (!token)
 		return (0);
+	// TODO: call check_syntax here
 	i = 0;
 	while (token[i])
 	{
