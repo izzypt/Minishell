@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:14:32 by esali             #+#    #+#             */
-/*   Updated: 2023/06/20 16:10:06 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:44:25 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,6 @@ t_list	*ft_lstnew(char **token, char *path, t_list *lst_old)
 	new_ele->path = path;
 	new_ele->prev = lst_old;
 	return (new_ele);
-}
-
-char	*ft_getenv(char *key)
-{
-	t_env	*lst;
-
-	lst = get_env();
-	lst = lst->nxt;
-	while (lst != NULL)
-	{
-		if (!ft_strncmp(lst->key, key, ft_strlen(key)))
-		{
-			return (lst->value);
-			break ;
-		}
-		lst = lst->nxt;
-	}
-	return (NULL);
 }
 
 t_list	*ft_lstlast(t_list *lst)
@@ -66,4 +48,21 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
+}
+
+char	*ft_getenv(char *key)
+{
+	t_env	*lst;
+	lst = get_env();
+	lst = lst->nxt;
+	while (lst != NULL)
+	{
+		if (!ft_strncmp(lst->key, key, ft_strlen(key)))
+		{
+			return (lst->value);
+			break ;
+		}
+		lst = lst->nxt;
+	}
+	return (NULL);
 }

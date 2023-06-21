@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/20 18:32:38 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:37:12 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,21 @@
 # include <dirent.h>
 # include <signal.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 
 /* Custom Libraries */
+
 # include "libft/libft.h"
 
 # define CTRL_D NULL
+
+/* Structs */
+
+typedef struct s_pipe
+{
+	int	fd[2];
+	int	stdin;
+}				t_pipe;
 
 typedef struct s_list
 {
@@ -74,19 +84,25 @@ char	*manage_env(char *str, int *count);
 char	*manage_double_quotes(char *str, int *c);
 int		check_syntax(char	**token);
 
-/* Execute */
+/* Executing */
 
 void	execute_input(t_list *node);
+int		check_redirection(t_list *node);
+void	write_to_pipe(t_list *node);
+void	output_from_pipe(t_list *node);
+void	write_to_fd(t_list *node);
+void	append_to_fd(t_list *node);
+void	command_chain(t_list *node);
 
 /* Struct Getters */
 
-t_list	*data(void);
+t_list	*list_heads(void);
 t_env	*get_env(void);
 t_exit	*get_exit(void);
+t_pipe	*get_pipe(void);
 
 /* Memory Management */
 
-void	free_data(void);
 void	free_keys(char **keys);
 void	free_parse(void);
 
