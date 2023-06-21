@@ -25,6 +25,7 @@
 typedef struct s_pipe
 {
 	int	fd[2];
+	int	stdin;
 }				t_pipe;
 
 typedef struct s_list
