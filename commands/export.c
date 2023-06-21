@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 18:31:12 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:50:47 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	cmd_export(char **variable)
 	if (!ft_strchr(variable[1], '='))
 		return ;
 	key_value = ft_split(variable[1], '=');
+	if (replace_env_var(key_value[0], key_value[1]))
+		return ;
 	while (lst->nxt != NULL)
 		lst = lst->nxt;
 	lst->nxt = malloc(sizeof(t_env));
