@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 18:33:35 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:38:53 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	command_chain(t_list *node)
 			write_to_fd(curr);
 		else if (check_redirection(curr->next) == 4)
 			append_to_fd(curr);
+		//else if (check_redirection(curr->next) == 5)
+
 		curr = curr->next;
 	}
 	free_parse();
