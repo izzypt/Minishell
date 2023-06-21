@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:14:32 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 14:44:25 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 15:04:35 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_lstsize(t_list *lst)
 char	*ft_getenv(char *key)
 {
 	t_env	*lst;
+
 	lst = get_env();
 	lst = lst->nxt;
 	while (lst != NULL)

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 14:37:12 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 15:38:02 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ void	free_parse(void);
 
 /* Signal Handlers */
 
-// void	handle_sigint(int sig);
-// void	handle_sigquit(int sig);
+void	handle_sigint(int sig);
+void	handle_sigquit(int sig);
 
 /* List */
 

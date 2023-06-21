@@ -6,11 +6,23 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/20 18:08:14 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 16:45:24 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+/* checks if char in env var is valid */
+int	is_env(char *str, int start, int cur)
+{
+	if (cur == 1)
+		return (1);
+	else if (!isalpha(str[start + 1]))
+		return (0);
+	else if (isalnum(str[start + cur] || str[start + cur] == '_'))
+		return (1);
+	return (0);
+}
 
 /**
  returns difference in env var to value saved inside
@@ -22,15 +34,15 @@ int	get_env_len_diff(char *str, int i)
 	int		val_len;
 	char	*tmp;
 
-	if (ft_strncmp(&str[i], "$?", 2) == 0)
-		return (0);
 	val_len = 0;
 	env_len = 1;
-	while (str[i + env_len] && ft_isalpha(str[i + env_len]))
+	while (str[i + env_len] && is_env(str, i, env_len))
 		env_len++;
 	tmp = ft_substr(str, i + 1, env_len - 1);
 	if (ft_getenv(tmp) != NULL)
 		val_len = ft_strlen(ft_getenv(tmp));
+	if (ft_strncmp(tmp, "$?", 2) == 0)
+		val_len = ft_strlen(ft_itoa(get_exit()->exit));
 	free(tmp);
 	return (val_len - env_len);
 }
@@ -67,13 +79,16 @@ char	*change_env(char *input, int i)
 	int		env_len;
 	char	*tmp;
 
-	if (ft_strncmp(&input[i], "$?", 2) == 0)
-		return (input);
 	env_len = 1;
-	while (input[i + env_len] && ft_isalpha(input[i + env_len]))
+	while (input[i + env_len] && is_env(input, i, env_len))
 		env_len++;
 	tmp = ft_substr(input, i + 1, env_len - 1);
 	env_val = ft_getenv(tmp);
+	if (ft_strncmp(&input[i], "$?", 2) == 0)
+	{
+		env_val = ft_itoa(get_exit()->exit);
+		ft_printf("exit: %i, env_val: %s\n",get_exit()->exit,  env_val);
+	}
 	free(tmp);
 	return (fill_env(input, env_val, i, env_len));
 }

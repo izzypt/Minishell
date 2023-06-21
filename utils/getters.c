@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:15:14 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 14:15:36 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/21 15:37:33 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,11 @@ t_pipe	*get_pipe(void)
 	static t_pipe	data;
 
 	return (&data);
+}
+
+t_exit	*get_exit(void)
+{
+	static t_exit	exit_node;
+
+	return (&exit_node);
 }

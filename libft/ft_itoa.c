@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 21:52:12 by esali             #+#    #+#             */
-/*   Updated: 2022/06/07 14:13:49 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 16:24:41 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char	*ft_itoa(int n)
 	int		i;
 
 	i = count_nb(n);
+	ft_printf("countnb: %i, nb: %i ", i, n);
 	if (n == -2147483648)
 		ret = create_malloc(12, n);
 	else if (n < 0)
