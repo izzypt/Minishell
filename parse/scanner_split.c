@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/06/18 20:39:53 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:32:55 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 int	is_special_char(char *input)
 {
 	if (!ft_strncmp(input, "<<", 2) || !ft_strncmp(input, ">>", 2))
-		return (2);
-	if (input[0] == '|' || input[0] == '<' || input[0] == '>')
-		return (1);
-	return (0);
-}
-
+		return (2);You
 /**
  * @brief Get the length of next token
  * seperated by the following:

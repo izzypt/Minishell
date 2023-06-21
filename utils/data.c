@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:51 by esali             #+#    #+#             */
-/*   Updated: 2023/06/19 20:16:18 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/21 13:37:52 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ void	print_lists(void)
 	while (list != NULL)
 	{
 		i = 0;
+		ft_printf("path: %s\n", list->path);
 		while (list->token[i])
 		{
-			printf("%i. %s ", i, list->token[i]);
+			ft_printf("%i. %s ", i, list->token[i]);
 			i++;
 		}
+		ft_printf("\n");
 		list = list->next;
 	}
 }
