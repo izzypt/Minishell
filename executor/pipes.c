@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 14:17:46 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/21 15:55:36 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h" //cat parse/todo.txt | grep free | grep list
 
+/*
+- If node is the last in the list 
+- and previous node is a pipe this function will run.
+- 
+- 
+*/
 void	output_from_pipe(t_list *node)
 {
 	int	pid2;
@@ -54,6 +60,14 @@ void	write_to_pipe(t_list *node)
 	waitpid(pid1, NULL, 0);
 }
 
+/*
+- Will open the file following the node which holds ">"
+- If the previous node is a pipe, we will read from the pipe.
+- Fork the process and in the child process:
+  - swtich the stdoutput to the file
+  - execute the command
+- At the end we reset the Stdinput of the main process.
+*/
 void	write_to_fd(t_list *node)
 {
 	int		pid;
@@ -64,7 +78,6 @@ void	write_to_fd(t_list *node)
 	outfile = open(file, O_WRONLY | O_CREAT, 0644);
 	if (check_redirection(node->prev) == 1)
 	{
-		get_pipe()->stdin = dup(STDIN_FILENO);
 		close(get_pipe()->fd[1]);
 		dup2(get_pipe()->fd[0], STDIN_FILENO);
 		close(get_pipe()->fd[0]);
@@ -82,5 +95,26 @@ void	write_to_fd(t_list *node)
 
 void	append_to_fd(t_list *node)
 {
-	node = node;
+	int		pid;
+	int		outfile;
+	char	*file;
+
+	file = node->next->next->token[0];
+	outfile = open(file, O_CREAT | O_APPEND | O_WRONLY, 0644);
+	if (check_redirection(node->prev) == 1)
+	{
+		close(get_pipe()->fd[1]);
+		dup2(get_pipe()->fd[0], STDIN_FILENO);
+		close(get_pipe()->fd[0]);
+	}
+	pid = fork();
+	if (pid == 0)
+	{
+		dup2(outfile, STDOUT_FILENO);
+		printf("dup2 error");
+		execve(node->path, node->token, NULL);
+	}
+	close(outfile);
+	waitpid(pid, NULL, 0);
+	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
