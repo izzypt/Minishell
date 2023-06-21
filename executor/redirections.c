@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/06/20 00:38:42 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/21 18:33:35 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/*
+- Iterates through the list of commands.
+- It will check if the next node is a redirection or a pipe.
+- Each redirection or pipe has a different code.
+*/
 void	command_chain(t_list *node)
 {
 	t_list	*curr;
@@ -32,6 +37,10 @@ void	command_chain(t_list *node)
 	free_parse();
 }
 
+/*
+- Checks if it a redirection
+- If it is it will return the corresponding code.
+*/
 int	check_redirection(t_list *node)
 {
 	if (!node || !node->token)
@@ -46,6 +55,5 @@ int	check_redirection(t_list *node)
 		return (4);
 	if (!ft_strncmp(node->token[0], "<<", 2))
 		return (5);
-	//printf("Did not enter any options!\n");
 	return (0);
 }
