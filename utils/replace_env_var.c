@@ -6,13 +6,17 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:06:27 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 18:41:42 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:53:40 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	replace_env_var(char *key, char *value)
+/*
+- Return 1 if it has replaced an env variable value.
+- Return 0 if it has not replaced env variable value or hasn't found a key.
+*/
+int	replace_env_var(char *key, char *value)
 {
 	t_env	*curr;
 
@@ -24,8 +28,9 @@ void	replace_env_var(char *key, char *value)
 		{
 			free(curr->value);
 			curr->value = value;
-			break ;
+			return (1);
 		}
 		curr = curr->nxt;
 	}
+	return (0);
 }
