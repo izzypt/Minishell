@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 16:45:24 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 17:21:28 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@
 int	is_env(char *str, int start, int cur)
 {
 	if (cur == 1)
+	{
 		return (1);
+	}
 	else if (!isalpha(str[start + 1]))
+	{
 		return (0);
-	else if (isalnum(str[start + cur] || str[start + cur] == '_'))
+	}
+	else if (isalnum(str[start + cur]) || str[start + cur] == '_')
+	{
 		return (1);
+	}
 	return (0);
 }
 

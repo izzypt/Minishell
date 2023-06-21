@@ -8,15 +8,15 @@ saves the exit status of the last executed command or process
 - 127: command was not found
 - 127-255: If a signal Kill or interrupte the command 127 + signal
 
-[] special char at beginning
+[x] special char at beginning
 [] pipes and redirections behind each other
 [] env var with num and _
 
 [x] change 'env' to env variable in parser?
 [] take care of following env variable:
-	[] $11askjdhakd -> $1 is looked up, rest is ignored
-	[] $sadlj123516723 -> full string is looked up
-	[] $USER$USER
+	[x] $11askjdhakd -> $1 is looked up, rest is ignored
+	[x] $sadlj123516723 -> full string is looked up
+	[x] $USER$USER
 
 [x] empty env_var
 
@@ -31,4 +31,4 @@ saves the exit status of the last executed command or process
 [] echo in the middle
 	ex. cat echo test.txt
 
-[] Not interpret unclosed quotes or special characters which are not required by the subject such as \ (backslash) or ; (semicolon).
+[x] Not interpret unclosed quotes or special characters which are not required by the subject such as \ (backslash) or ; (semicolon).
