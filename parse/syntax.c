@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/20 18:33:18 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:59:41 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_pipe(char *token)
 {
-	if (ft_strncmp(token[0], "|", 1) == 0)
+	if (ft_strncmp(token, "|", 1) == 0)
 		return (1);
 	return (0);
 }
@@ -33,20 +33,20 @@ int	check_syntax(char	**token)
 
 	if (ft_strncmp(token[0], "|", 1) == 0)
 	{
-		ft_pritntf("syntax error, unexpected token: '|'")
+		ft_printf("syntax error, unexpected token: '|'");
 		return (2);
 	}
 	i = 0;
 	while (token[i + 1])
 	{
-		if (is_pipe(token[i] && is_pipe(token[i + 1])))
+		if (is_pipe(token[i]) && is_pipe(token[i + 1]))
 		{
-			ft_pritntf("syntax error, unexpected token: '|'")
+			ft_printf("syntax error, unexpected token: '|'");
 			return (2);
 		}
-		else if (is_red(token[i] && is_red(token[i + 1])))
+		else if (is_red(token[i]) && is_red(token[i + 1]))
 		{
-			ft_pritntf("syntax error, unexpected redirection")
+			ft_printf("syntax error, unexpected redirection");
 			return (2);
 		}
 	}
