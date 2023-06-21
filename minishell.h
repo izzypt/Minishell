@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 15:38:02 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/21 17:46:27 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	cmd_exit(void);
 void	create_env(char **env);
 void	get_user_input(void);
 int		parse(char *input);
-void	replace_env_var(char *key, char *value);
+int		replace_env_var(char *key, char *value);
 int		get_nr_token(char *input);
 void	fill_token(char **token, int length, char *input);
 int		is_special_char(char *input);
