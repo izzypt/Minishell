@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:15:14 by simao             #+#    #+#             */
-/*   Updated: 2023/06/19 20:17:50 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:15:36 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_list	*list_heads(void)
 {
 	static t_list	list;
 
+	list.prev = NULL;
 	return (&list);
 }
 

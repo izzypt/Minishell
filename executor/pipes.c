@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 02:11:06 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:17:46 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ void	write_to_pipe(t_list *node)
 {
 	int			pid1;
 
+	if (node->prev->prev == NULL)
+		get_pipe()->stdin = dup(STDIN_FILENO);
 	if (check_redirection(node->prev) == 1)
 	{
-		get_pipe()->stdin = dup(STDIN_FILENO);
 		close(get_pipe()->fd[1]);
 		dup2(get_pipe()->fd[0], STDIN_FILENO);
 		close(get_pipe()->fd[0]);
@@ -63,6 +64,7 @@ void	write_to_fd(t_list *node)
 	outfile = open(file, O_WRONLY | O_CREAT, 0644);
 	if (check_redirection(node->prev) == 1)
 	{
+		get_pipe()->stdin = dup(STDIN_FILENO);
 		close(get_pipe()->fd[1]);
 		dup2(get_pipe()->fd[0], STDIN_FILENO);
 		close(get_pipe()->fd[0]);
@@ -75,6 +77,7 @@ void	write_to_fd(t_list *node)
 	}
 	close(outfile);
 	waitpid(pid, NULL, 0);
+	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
 void	append_to_fd(t_list *node)
