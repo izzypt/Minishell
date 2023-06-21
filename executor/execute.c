@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/20 15:20:07 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:20:28 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	execute_path(t_list *node)
 	pid1 = fork();
 	if (pid1 == 0)
 	{
+		if (!access(node->token[0], X_OK))
+			node->path = node->token[0];
 		execve(node->path, node->token, envp);
 	}
 	waitpid(pid1, NULL, 0);
