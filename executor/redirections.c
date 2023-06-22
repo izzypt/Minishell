@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 19:38:53 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/22 15:48:29 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 /*
 - Iterates through the list of commands.
 - It will check if the next node is a redirection or a pipe.
-- Each redirection or pipe has a different code.
+- Each redirection type has a different code :
+- 1 = |
+- 2 = >
+- 3 = <
+- 4 = >>
+- 5 = <<
 */
 void	command_chain(t_list *node)
 {
@@ -30,6 +35,8 @@ void	command_chain(t_list *node)
 			write_to_pipe(curr);
 		else if (check_redirection(curr->next) == 2)
 			write_to_fd(curr);
+		/*else if (check_redirection(curr->next) == 3)
+			input_from_fd(curr);*/
 		else if (check_redirection(curr->next) == 4)
 			append_to_fd(curr);
 		//else if (check_redirection(curr->next) == 5)
@@ -40,8 +47,8 @@ void	command_chain(t_list *node)
 }
 
 /*
-- Checks if it a redirection
-- If it is it will return the corresponding code.
+- Checks if there are redirections.
+- If there are it will return the corresponding code.
 */
 int	check_redirection(t_list *node)
 {
