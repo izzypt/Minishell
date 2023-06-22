@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/22 17:05:48 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/22 19:52:30 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	execute_input(t_list *node)
 
 /*
 - Will check which bultin function to call based on the input.
-- If there isn't a match, it will run the path of the binarie.
+- NO return value.
 */
 void	execute_builtin(t_list *node)
 {
@@ -65,6 +65,10 @@ void	execute_builtin(t_list *node)
 		cmd_exit();
 }
 
+/*
+- Checks if te given node is trying to execute a built-in command
+- Returns 1 if there is match, 0 otherwise.
+*/
 int	is_builtin(t_list *node)
 {
 	if (!ft_strncmp(node->token[0], "cd", 2))
