@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/22 17:30:07 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/22 20:06:51 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 /*
 - If node is the last in the list 
 - and previous node is a pipe this function will run.
-- 
-- 
 */
 void	output_from_pipe(t_list *node)
 {
@@ -71,16 +69,14 @@ void	write_to_pipe(t_list *node)
 - Fork the process and in the child process:
   - swtich the stdoutput to the file
   - execute the command
-- At the end we reset the Stdinput of the main process.
+- At the end we reset the stdouput of the main process.
 */
 void	write_to_fd(t_list *node)
 {
 	int		pid;
 	int		outfile;
-	char	*file;
 
-	file = node->next->next->token[0];
-	outfile = open(file, O_WRONLY | O_CREAT, 0644);
+	outfile = open(node->next->next->token[0], O_WRONLY | O_CREAT);
 	if (check_redirection(node->prev) == 1)
 	{
 		close(get_pipe()->fd[1]);
@@ -98,17 +94,20 @@ void	write_to_fd(t_list *node)
 	}
 	close(outfile);
 	waitpid(pid, NULL, 0);
+	dup2(get_pipe()->stdin, STDIN_FILENO);
 	dup2(get_pipe()->stdout, STDOUT_FILENO);
 }
 
+/*
+- It opens the given file in append mode and writes to it.
+- If the previous node is a redirection pipe. it will read from it.
+*/
 void	append_to_fd(t_list *node)
 {
 	int		pid;
 	int		outfile;
-	char	*file;
 
-	file = node->next->next->token[0];
-	outfile = open(file, O_CREAT | O_APPEND | O_WRONLY, 0644);
+	outfile = open(node->next->next->token[0], O_CREAT | O_APPEND | O_WRONLY);
 	if (check_redirection(node->prev) == 1)
 	{
 		close(get_pipe()->fd[1]);
