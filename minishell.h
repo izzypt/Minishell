@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/22 12:27:39 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/22 17:29:19 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_pipe
 {
 	int	fd[2];
 	int	stdin;
+	int	stdout;
 }				t_pipe;
 
 typedef struct s_list
@@ -74,7 +75,6 @@ void	cmd_exit(void);
 void	create_env(char **env);
 void	get_user_input(void);
 int		parse(char *input);
-int		replace_env_var(char *key, char *value);
 int		get_nr_token(char *input);
 void	fill_token(char **token, int length, char *input);
 int		is_special_char(char *input);
@@ -87,12 +87,16 @@ int		check_syntax(char	**token);
 /* Executing */
 
 void	execute_input(t_list *node);
+void	execute_builtin(t_list *node);
+void	command_chain(t_list *node);
+
+/* Pipes and Redirections */
+
 int		check_redirection(t_list *node);
 void	write_to_pipe(t_list *node);
 void	output_from_pipe(t_list *node);
 void	write_to_fd(t_list *node);
 void	append_to_fd(t_list *node);
-void	command_chain(t_list *node);
 
 /* Struct Getters */
 
@@ -120,5 +124,9 @@ t_list	*ft_lstlast(t_list *lst);
 void	print_lists(void);
 char	*ft_getenv(char *key);
 char	**list_to_array(void);
+
+/* Utils */
+int		is_builtin(t_list *node);
+int		replace_env_var(char *key, char *value);
 
 #endif
