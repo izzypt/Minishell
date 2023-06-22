@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/22 15:52:25 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/22 17:30:07 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void	output_from_pipe(t_list *node)
 		close(get_pipe()->fd[1]);
 		dup2(get_pipe()->fd[0], STDIN_FILENO);
 		close(get_pipe()->fd[0]);
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 	}
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
@@ -88,11 +91,14 @@ void	write_to_fd(t_list *node)
 	if (pid == 0)
 	{
 		dup2(outfile, STDOUT_FILENO);
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 	}
 	close(outfile);
 	waitpid(pid, NULL, 0);
-	dup2(get_pipe()->stdin, STDIN_FILENO);
+	dup2(get_pipe()->stdout, STDOUT_FILENO);
 }
 
 void	append_to_fd(t_list *node)
