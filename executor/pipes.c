@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 15:55:36 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:52:25 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ void	output_from_pipe(t_list *node)
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
+/*
+- Executes the given command and output it to the write end of the pipe.
+- It will read from the read end of the pipe if the previous node is a pipe.
+*/
 void	write_to_pipe(t_list *node)
 {
 	int			pid1;
 
-	if (node->prev->prev == NULL)
-		get_pipe()->stdin = dup(STDIN_FILENO);
 	if (check_redirection(node->prev) == 1)
 	{
 		close(get_pipe()->fd[1]);
@@ -111,7 +113,6 @@ void	append_to_fd(t_list *node)
 	if (pid == 0)
 	{
 		dup2(outfile, STDOUT_FILENO);
-		printf("dup2 error");
 		execve(node->path, node->token, NULL);
 	}
 	close(outfile);
