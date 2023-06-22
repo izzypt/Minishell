@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/21 18:20:28 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/22 12:30:49 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	execute_path(t_list *node)
 		command_chain(node);
 		return ;
 	}
-	envp = (char **)malloc(2 * sizeof(char *));
-	envp[0] = (char *)malloc(strlen("TERM=xterm") + 1);
-	ft_strlcpy(envp[0], "TERM=xterm", 11);
-	envp[1] = NULL;
+	envp = list_to_array();
 	pid1 = fork();
 	if (pid1 == 0)
 	{

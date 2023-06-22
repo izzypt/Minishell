@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_to_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:17:44 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/21 19:34:51 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/22 12:40:17 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,53 @@ int	ft_envsize(t_env *lst)
 	return (i);
 }
 
-void	list_to_array(void)
+char	*join_pair(char *key, const char *value)
 {
-	int		len;
+	char			*pair;
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	pair = malloc(sizeof(char) * ft_strlen(key) + ft_strlen(value) + 2);
+	while (key[i] != '\0')
+	{
+		pair[i] = key[i];
+		i++;
+	}
+	pair[i] = '=';
+	i++;
+	while (value[j] != '\0')
+	{
+		pair[i + j] = value[j];
+		j++;
+	}
+	pair[i + j] = '\0';
+	return (pair);
+}
+
+/*
+- It converts the linked list of env variables into a array of strings.
+- It returns the array of strings.
+- Memory must be released by the caller. Use free_keys().
+*/
+char	**list_to_array(void)
+{
+	int		i;
+	int		lst_len;
 	t_env	*curr;
-	//char	**array;
+	char	**strings;
 
+	i = 0;
 	curr = get_env()->nxt;
-	printf("curent data %s\n", curr->key);
-	len = ft_envsize(curr);
-	printf("Linked list size : %d\n", len);
-	//array = malloc(sizeof(len) * (char *))
-
-
+	lst_len = ft_envsize(curr);
+	strings = malloc(lst_len * sizeof(char *) + 1);
+	while (i < lst_len)
+	{
+		strings[i] = join_pair(curr->key, curr->value);
+		curr = curr->nxt;
+		i++;
+	}
+	strings[i] = NULL;
+	return (strings);
 }
