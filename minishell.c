@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 19:23:23 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:47:51 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv, char **env)
 		return (0);
 	create_env(env);
 	get_exit()->exit = 0;
+	get_pipe()->stdin = dup(STDIN_FILENO);
 	list_to_array();
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, handle_sigquit);
