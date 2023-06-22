@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/22 20:06:51 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/22 20:38:58 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	write_to_fd(t_list *node)
 	int		pid;
 	int		outfile;
 
-	outfile = open(node->next->next->token[0], O_WRONLY | O_CREAT);
+	outfile = open(node->next->next->token[0], O_WRONLY | O_CREAT, 0644);
 	if (check_redirection(node->prev) == 1)
 	{
 		close(get_pipe()->fd[1]);
@@ -105,9 +105,9 @@ void	write_to_fd(t_list *node)
 void	append_to_fd(t_list *node)
 {
 	int		pid;
-	int		outfile;
+	int		out;
 
-	outfile = open(node->next->next->token[0], O_CREAT | O_APPEND | O_WRONLY);
+	out = open(node->next->next->token[0], O_CREAT | O_APPEND | O_WRONLY, 0644);
 	if (check_redirection(node->prev) == 1)
 	{
 		close(get_pipe()->fd[1]);
@@ -117,10 +117,28 @@ void	append_to_fd(t_list *node)
 	pid = fork();
 	if (pid == 0)
 	{
-		dup2(outfile, STDOUT_FILENO);
+		dup2(out, STDOUT_FILENO);
 		execve(node->path, node->token, NULL);
 	}
-	close(outfile);
+	close(out);
 	waitpid(pid, NULL, 0);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
+}
+
+void	input_from_fd(t_list *node)
+{
+	int		pid;
+	int		in;
+
+	in = open(node->next->next->token[0], O_RDONLY, 0644);
+	pid = fork();
+	if (pid == 0)
+	{
+		dup2(in, STDIN_FILENO);
+		execve(node->path, node->token, NULL);
+	}
+	close(in);
+	waitpid(pid, NULL, 0);
+	dup2(get_pipe()->stdin, STDIN_FILENO);
+	dup2(get_pipe()->stdout, STDOUT_FILENO);
 }
