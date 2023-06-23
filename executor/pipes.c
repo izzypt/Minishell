@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/22 20:38:58 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/23 01:29:15 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 void	output_from_pipe(t_list *node)
 {
 	int	pid2;
+	int	child_id;
 
 	pid2 = fork();
 	if (pid2 == 0)
 	{
+		child_id = getpid();
 		close(get_pipe()->fd[1]);
 		dup2(get_pipe()->fd[0], STDIN_FILENO);
 		close(get_pipe()->fd[0]);
@@ -34,6 +36,7 @@ void	output_from_pipe(t_list *node)
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
 	waitpid(pid2, NULL, 0);
+	kill(child_id, SIGKILL);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
@@ -44,6 +47,7 @@ void	output_from_pipe(t_list *node)
 void	write_to_pipe(t_list *node)
 {
 	int			pid1;
+	int			child_id;
 
 	if (check_redirection(node->prev) == 1)
 	{
@@ -55,12 +59,17 @@ void	write_to_pipe(t_list *node)
 	pid1 = fork();
 	if (pid1 == 0)
 	{
+		child_id = getpid();
 		close(get_pipe()->fd[0]);
 		dup2(get_pipe()->fd[1], STDOUT_FILENO);
 		close(get_pipe()->fd[1]);
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 	}
 	waitpid(pid1, NULL, 0);
+	kill(child_id, SIGKILL);
 }
 
 /*
