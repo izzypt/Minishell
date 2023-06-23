@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 17:27:04 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:50:18 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	cmd_env(void)
 	t_env	*env;
 
 	env = get_env();
+	env = env->nxt;
 	if (env == NULL)
 	{
 		printf("No environment variables found.\n");
@@ -87,8 +88,7 @@ void	cmd_env(void)
 	}
 	while (env)
 	{
-		if (env->key)
-			printf("%s=%s\n", env->key, env->value);
+		printf("%s=%s\n", env->key, env->value);
 		env = env->nxt;
 	}
 }
