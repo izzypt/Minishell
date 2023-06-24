@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:15:14 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 15:37:33 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/24 13:12:26 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,11 @@ t_exit	*get_exit(void)
 	static t_exit	exit_node;
 
 	return (&exit_node);
+}
+
+t_heredoc *get_hdoc()
+{
+	static t_heredoc	h_data;
+
+	return (&h_data);
 }

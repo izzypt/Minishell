@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/22 20:36:53 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/24 13:13:45 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,30 @@ typedef struct s_pipe
 	int	stdout;
 }				t_pipe;
 
+typedef struct s_heredoc
+{
+	char *input;
+}				t_heredoc;
+
 typedef struct s_list
 {
 	char			**token;
 	char			*path;
 	struct s_list	*next;
 	struct s_list	*prev;
-}	t_list;
+}				t_list;
 
 typedef struct s_env
 {
 	char			*key;
 	char			*value;
 	struct s_env	*nxt;
-}	t_env;
+}				t_env;
 
 typedef struct s_exit
 {
 	int	exit;
-}	t_exit;
+}				t_exit;
 
 /* Builtin Commands */
 
@@ -101,10 +106,11 @@ void	input_from_fd(t_list *node);
 
 /* Struct Getters */
 
-t_list	*list_heads(void);
-t_env	*get_env(void);
-t_exit	*get_exit(void);
-t_pipe	*get_pipe(void);
+t_list		*list_heads(void);
+t_env		*get_env(void);
+t_exit		*get_exit(void);
+t_pipe		*get_pipe(void);
+t_heredoc	*get_hdoc();
 
 /* Memory Management */
 
