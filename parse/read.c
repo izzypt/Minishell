@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/06/24 14:40:32 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/24 15:29:39 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	get_user_input(void)
 		free_parse();
 	}
 	if (input && ft_strlen(input) > 0)
-		add_history(input);
-	free(input);
+		add_history(get_data()->input);
+	free(get_data()->input);
 }

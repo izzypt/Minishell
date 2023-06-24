@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/06/24 15:24:56 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/24 15:50:26 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void change_input(char *prompt)
 	char *tmp;
 
 	tmp = get_data()->input;
+	get_data()->input = ft_strjoin(tmp, "\n");
+	free(tmp);
+	tmp = get_data()->input;
 	get_data()->input = ft_strjoin(tmp, prompt);
 	//free(tmp);
 }
@@ -42,21 +45,19 @@ void	heredoc(t_list *cur)
 		ft_printf("unexpected token: %s\n", cur->next->token[1]);
 		return ;
 	}
-	new_line = get_next_prompt();
-	get_hdoc()->input = new_line;
+	new_line = "";
 	while (ft_strncmp(cur->next->token[0], new_line, ft_strlen(new_line)) != 0)
 	{
-		tmp = get_hdoc()->input;
-		get_hdoc()->input = ft_strjoin(get_hdoc()->input, "\n");
-		free(tmp);
 		new_line = get_next_prompt();
-		tmp = get_hdoc()->input;
-		get_hdoc()->input = ft_strjoin(get_hdoc()->input, new_line);
+		tmp = get_data()->input;
+		get_data()->input = ft_strjoin(get_data()->input, "\n");
+		free(tmp);
+		tmp = get_data()->input;
+		get_data()->input = ft_strjoin(get_data()->input, new_line);
 		free(tmp);
 	}
-	free(new_line);
-	change_input(get_hdoc()->input);
-	ft_printf("%s\n", get_hdoc()->input);
+	//free(new_line);
+	ft_printf("%s\n", get_data()->input);
 	free(get_hdoc()->input);
 }
 
