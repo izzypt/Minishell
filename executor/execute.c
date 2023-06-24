@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/23 01:24:32 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/24 22:57:45 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	execute_input(t_list *node)
 {
 	int		pid1;
 	char	**envp;
-	int		child_id;
 
 	if (ft_lstsize(node) > 1)
 	{
@@ -31,7 +30,6 @@ void	execute_input(t_list *node)
 	pid1 = fork();
 	if (pid1 == 0)
 	{
-		child_id = getpid();
 		if (is_builtin(node))
 			execute_builtin(node);
 		else
@@ -40,9 +38,9 @@ void	execute_input(t_list *node)
 				node->path = node->token[0];
 			execve(node->path, node->token, envp);
 		}
+		exit(0);
 	}
 	waitpid(pid1, NULL, 0);
-	kill(child_id, SIGKILL);
 	free_keys(envp);
 }
 
