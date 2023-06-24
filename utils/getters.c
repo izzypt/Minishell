@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:15:14 by simao             #+#    #+#             */
-/*   Updated: 2023/06/24 13:12:26 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/24 14:42:01 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ t_pipe	*get_pipe(void)
 	return (&data);
 }
 
-t_exit	*get_exit(void)
+t_data	*get_data(void)
 {
-	static t_exit	exit_node;
+	static t_data	data_node;
 
-	return (&exit_node);
+	return (&data_node);
 }
 
 t_heredoc *get_hdoc()

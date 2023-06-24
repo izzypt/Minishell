@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/06/22 17:33:37 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/24 14:40:00 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv, char **env)
 	if (argc != 1 || argv[1] != NULL)
 		return (0);
 	create_env(env);
-	get_exit()->exit = 0;
+	get_data()->exit = 0;
 	get_pipe()->stdin = dup(STDIN_FILENO);
 	get_pipe()->stdout = dup(STDOUT_FILENO);
 	signal(SIGINT, handle_sigint);

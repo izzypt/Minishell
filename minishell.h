@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/24 13:13:45 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/24 14:39:31 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ typedef struct s_env
 	struct s_env	*nxt;
 }				t_env;
 
-typedef struct s_exit
+typedef struct s_data
 {
-	int	exit;
-}				t_exit;
+	int		exit;
+	char	*input;
+}				t_data;
 
 /* Builtin Commands */
 
@@ -103,12 +104,13 @@ void	output_from_pipe(t_list *node);
 void	write_to_fd(t_list *node);
 void	append_to_fd(t_list *node);
 void	input_from_fd(t_list *node);
+void	heredoc(t_list *cur);
 
 /* Struct Getters */
 
 t_list		*list_heads(void);
 t_env		*get_env(void);
-t_exit		*get_exit(void);
+t_data		*get_data(void);
 t_pipe		*get_pipe(void);
 t_heredoc	*get_hdoc();
 

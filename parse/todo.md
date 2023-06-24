@@ -9,19 +9,21 @@ saves the exit status of the last executed command or process
 - 127-255: If a signal Kill or interrupte the command 127 + signal
 
 [x] special char at beginning
-[] pipes and redirections behind each other
-[] env var with num and _
+[x] pipes and redirections behind each other
+[x] env var with num and _
 
 [x] change 'env' to env variable in parser?
-[] take care of following env variable:
+[x] take care of following env variable:
 	[x] $11askjdhakd -> $1 is looked up, rest is ignored
 	[x] $sadlj123516723 -> full string is looked up
 	[x] $USER$USER
 
 [x] empty env_var
 
+[] Pipe at end asking for more prompt
+
 [] ERROR message
-	[]  invalid command
+	[] redirections at end
 	[x] 2 special chars behind each other
 
 [x] free token (scanner_split.c)

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 17:21:28 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/24 14:41:21 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_env_len_diff(char *str, int i)
 	if (ft_getenv(tmp) != NULL)
 		val_len = ft_strlen(ft_getenv(tmp));
 	if (ft_strncmp(tmp, "$?", 2) == 0)
-		val_len = ft_strlen(ft_itoa(get_exit()->exit));
+		val_len = ft_strlen(ft_itoa(get_data()->exit));
 	free(tmp);
 	return (val_len - env_len);
 }
@@ -92,8 +92,8 @@ char	*change_env(char *input, int i)
 	env_val = ft_getenv(tmp);
 	if (ft_strncmp(&input[i], "$?", 2) == 0)
 	{
-		env_val = ft_itoa(get_exit()->exit);
-		ft_printf("exit: %i, env_val: %s\n",get_exit()->exit,  env_val);
+		env_val = ft_itoa(get_data()->exit);
+		ft_printf("exit: %i, env_val: %s\n",get_data()->exit,  env_val);
 	}
 	free(tmp);
 	return (fill_env(input, env_val, i, env_len));
