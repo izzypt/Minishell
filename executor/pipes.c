@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/23 13:16:56 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/24 21:25:42 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 */
 void	output_from_pipe(t_list *node)
 {
-	int	pid2;
-	int	child_id;
+	int	pid;
 
-	pid2 = fork();
-	if (pid2 == 0)
+	pid = fork();
+	if (pid == 0)
 	{
-		child_id = getpid();
 		close(get_pipe()->fd[1]);
 		dup2(get_pipe()->fd[0], STDIN_FILENO);
 		close(get_pipe()->fd[0]);
@@ -32,11 +30,11 @@ void	output_from_pipe(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		exit(0);
 	}
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
-	waitpid(pid2, NULL, 0);
-	kill(child_id, SIGKILL);
+	waitpid(pid, NULL, 0);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
@@ -46,8 +44,7 @@ void	output_from_pipe(t_list *node)
 */
 void	write_to_pipe(t_list *node)
 {
-	int			pid1;
-	int			child_id;
+	int			pid;
 
 	if (check_redirection(node->prev) == 1)
 	{
@@ -56,10 +53,9 @@ void	write_to_pipe(t_list *node)
 		close(get_pipe()->fd[0]);
 	}
 	pipe(get_pipe()->fd);
-	pid1 = fork();
-	if (pid1 == 0)
+	pid = fork();
+	if (pid == 0)
 	{
-		child_id = getpid();
 		close(get_pipe()->fd[0]);
 		dup2(get_pipe()->fd[1], STDOUT_FILENO);
 		close(get_pipe()->fd[1]);
@@ -67,9 +63,9 @@ void	write_to_pipe(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		exit(0);
 	}
-	waitpid(pid1, NULL, 0);
-	kill(child_id, SIGKILL);
+	waitpid(pid, NULL, 0);
 }
 
 /*
@@ -100,6 +96,7 @@ void	write_to_fd(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		exit(0);
 	}
 	close(outfile);
 	waitpid(pid, NULL, 0);
@@ -115,7 +112,6 @@ void	append_to_fd(t_list *node)
 {
 	int		pid;
 	int		out;
-	int		child_id;
 
 	out = open(node->next->next->token[0], O_CREAT | O_APPEND | O_WRONLY, 0644);
 	if (check_redirection(node->prev) == 1)
@@ -127,13 +123,12 @@ void	append_to_fd(t_list *node)
 	pid = fork();
 	if (pid == 0)
 	{
-		child_id = getpid();
 		dup2(out, STDOUT_FILENO);
 		execve(node->path, node->token, NULL);
+		exit(0);
 	}
 	close(out);
 	waitpid(pid, NULL, 0);
-	kill(child_id, SIGKILL);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
@@ -141,19 +136,17 @@ void	input_from_fd(t_list *node)
 {
 	int		pid;
 	int		in;
-	int		child_id;
 
 	in = open(node->next->next->token[0], O_RDONLY, 0644);
 	pid = fork();
 	if (pid == 0)
 	{
-		child_id = getpid();
 		dup2(in, STDIN_FILENO);
 		execve(node->path, node->token, NULL);
+		exit(0);
 	}
 	close(in);
 	waitpid(pid, NULL, 0);
-	kill(child_id, SIGKILL);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 	dup2(get_pipe()->stdout, STDOUT_FILENO);
 }
