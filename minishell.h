@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/24 20:37:58 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/25 10:38:29 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_pipe
 
 typedef struct s_heredoc
 {
-	char *input;
+	int	fd;
 }				t_heredoc;
 
 typedef struct s_list
