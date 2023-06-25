@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 16:49:19 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/25 18:14:49 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ int	is_red(char *token)
 	return (0);
 }
 
+int	check_following_red(char **token, int i)
+{
+	if (is_pipe(token[i]) && is_pipe(token[i + 1]))
+	{
+		ft_printf("syntax error, unexpected token'%s'\n", token[i + 1]);
+		return (2);
+	}
+	else if (is_red(token[i]) && is_special_char(token[i + 1]))
+	{
+		ft_printf("syntax error, unexpected token: '%s'\n", token[i + 1]);
+		return (2);
+	}
+	return (0);
+}
+
 int	check_syntax(char	**token)
 {
 	int	i;
@@ -39,17 +54,14 @@ int	check_syntax(char	**token)
 	i = 0;
 	while (token[i + 1])
 	{
-		if (is_pipe(token[i]) && is_pipe(token[i + 1]))
-		{
-			ft_printf("syntax error, unexpected token'%s'\n", token[i + 1]);
-			return (2);
-		}
-		else if (is_red(token[i]) && is_special_char(token[i + 1]))
-		{
-			ft_printf("syntax error, unexpected token: '%s'\n", token[i + 1]);
-			return (2);
-		}
+		if (check_following_red(token, i) != 0)
+			return (check_following_red(token, i));
 		i++;
+	}
+	if (is_red(token[i + 1]))
+	{
+		ft_printf("syntax error near unexpected token: newline");
+		return (258);
 	}
 	return (0);
 }
