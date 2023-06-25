@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
@@ -13,7 +13,7 @@
 #include "../minishell.h" //cat parse/todo.txt | grep free | grep list
 
 /*
-- If node is the last in the list 
+- If node is the last in the list
 - and previous node is a pipe this function will run.
 */
 void	output_from_pipe(t_list *node)
