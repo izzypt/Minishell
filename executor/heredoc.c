@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/06/24 15:50:26 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/25 09:03:19 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	heredoc(t_list *cur)
 		ft_printf("unexpected token: %s\n", cur->next->token[1]);
 		return ;
 	}
-	new_line = "";
+	new_line = "  ";
 	while (ft_strncmp(cur->next->token[0], new_line, ft_strlen(new_line)) != 0)
 	{
 		new_line = get_next_prompt();

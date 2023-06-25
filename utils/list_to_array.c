@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_to_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:17:44 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/24 23:10:45 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/25 09:07:58 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**list_to_array(void)
 	i = 0;
 	curr = get_env()->nxt;
 	lst_len = ft_envsize(curr);
-	strings = malloc((lst_len + 1) * sizeof(char *));
+	strings = malloc(sizeof(char *) *(lst_len + 1));
 	while (i < lst_len)
 	{
 		strings[i] = join_pair(curr->key, curr->value);
