@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/24 14:41:21 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/25 13:17:54 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char	*fill_env(char *input, char *env_val, int i, int env_len)
 		str = ft_strjoin(str, tmp);
 		free(tmp);
 	}
+	free(env_val);
 	free(input);
 	return (str);
 }
@@ -91,10 +92,7 @@ char	*change_env(char *input, int i)
 	tmp = ft_substr(input, i + 1, env_len - 1);
 	env_val = ft_getenv(tmp);
 	if (ft_strncmp(&input[i], "$?", 2) == 0)
-	{
 		env_val = ft_itoa(get_data()->exit);
-		ft_printf("exit: %i, env_val: %s\n",get_data()->exit,  env_val);
-	}
 	free(tmp);
 	return (fill_env(input, env_val, i, env_len));
 }

@@ -34,3 +34,8 @@ saves the exit status of the last executed command or process
 	ex. cat echo test.txt
 
 [x] Not interpret unclosed quotes or special characters which are not required by the subject such as \ (backslash) or ; (semicolon).
+
+[] HEREDOC
+	https://linuxize.com/post/bash-heredoc/?utm_content=cmp-true
+	https://www.codequoi.com/en/handling-a-file-by-its-descriptor-in-c#closing_a_file_descriptor_in_c
+
