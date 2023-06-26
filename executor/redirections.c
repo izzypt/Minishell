@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/06/24 14:15:51 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/26 22:04:05 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	command_chain(t_list *node)
 	curr = node;
 	while (curr != NULL)
 	{
+		ft_printf("command chain: %s\n", curr->token[0]);
 		if (check_redirection(curr->prev) == 1 && !curr->next)
 			output_from_pipe(curr);
 		else if (check_redirection(curr->next) == 1)
@@ -40,7 +41,10 @@ void	command_chain(t_list *node)
 		else if (check_redirection(curr->next) == 4)
 			append_to_fd(curr);
 		else if (check_redirection(curr->next) == 5)
+		{
 			heredoc(curr->next);
+			curr = curr->next->next;
+		}
 		curr = curr->next;
 	}
 	free_parse();

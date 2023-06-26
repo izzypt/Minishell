@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/06/26 18:08:11 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/26 22:04:03 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,31 @@ char	*get_next_prompt(void)
 void	write_to_command(t_list *cur)
 {
 	int pid;
+	int	in;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		dup2(get_hdoc()->fd, STDIN_FILENO);
-		execve(cur->prev->path, cur->prev->token, NULL);
+		in = open(cur->next->token[0], O_RDONLY, 0644);
+		dup2(in, STDIN_FILENO);
+		if (cur->next->next != NULL)
+		{
+			//if (check_redirection(cur->next->next) == 1)
+
+		}
+		else
+			execve(cur->prev->path, cur->prev->token, NULL);
+		close(in);
 		exit(0);
 	}
 	waitpid(pid, NULL, 0);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
+	unlink(cur->next->token[0]);
 }
 
 void	heredoc(t_list *cur)
 {
 	char	*new_line;
-	//char	buf[1000];
-	//int		nb_read;
 
 	get_hdoc()->fd = open(cur->next->token[0], O_APPEND| O_RDWR | O_CREAT, 0644);
 	new_line = get_next_prompt();
@@ -51,16 +59,9 @@ void	heredoc(t_list *cur)
 		new_line = get_next_prompt();
 	}
 	free(new_line);
-	write_to_command(cur);
-	// nb_read = read(fd, buf, 1000);
-	// if (nb_read == -1)
-	// 	ft_printf("nb_read = -1");
-	// ft_printf("nb_read = %i", nb_read);
-	// buf[nb_read] = '\0';
-	// ft_printf("%s", buf);
-
 	close(get_hdoc()->fd);
-	unlink(cur->next->token[0]);
+	write_to_command(cur);
+
 }
 
 

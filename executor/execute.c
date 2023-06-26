@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/24 22:57:45 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/26 21:22:09 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	execute_input(t_list *node)
 	}
 	envp = list_to_array();
 	pid1 = fork();
+	if (!ft_strncmp(node->token[0], "exit", 4))
+		execute_builtin(node);
 	if (pid1 == 0)
 	{
 		if (is_builtin(node))
