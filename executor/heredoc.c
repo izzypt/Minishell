@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/06/25 14:45:21 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/26 18:08:11 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,6 @@ char	*get_next_prompt(void)
 
 	input = readline(">");
 	return (input);
-}
-
-
-/* IDEE: Create new list item */
-void	new_list_item(t_list *cur)
-{
-	char	**token;
-	int		nr_ele;
-	int		i;
-
-	nr_ele = 0;
-	while (cur->prev->token[nr_ele])
-		nr_ele++;
-	i = nr_ele;
-	while (cur->next->token[nr_ele - i])
-		nr_ele++;
-	token = (char **)malloc(sizeof(char *) * (nr_ele + 1));
-	i = 0;
-	while (cur->prev->token[nr_ele])
-	{
-		token[nr_ele] = ft_strdup(cur->prev->token[nr_ele]);
-		nr_ele++;
-	}
-	token[nr_ele] = ft_strdup(cur->next->token[0]);
-
-
-	// if (cur->next->next != NULL)
-	// 	new->next = cur->next->next
-	// 	write into input_from_fd()
-	// else
-	// 	execve
 }
 
 void	write_to_command(t_list *cur)

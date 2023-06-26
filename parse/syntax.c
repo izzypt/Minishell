@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/25 18:14:49 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/26 18:11:26 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int	check_syntax(char	**token)
 			return (check_following_red(token, i));
 		i++;
 	}
-	if (is_red(token[i + 1]))
+	if (is_red(token[i]))
 	{
-		ft_printf("syntax error near unexpected token: newline");
+		ft_printf("syntax error near unexpected token: newline\n");
 		return (258);
 	}
 	return (0);
