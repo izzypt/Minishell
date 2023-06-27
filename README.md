@@ -3,16 +3,27 @@ This project is about creating a simple shell. We will learn a lot about process
 
 ## Checks
 [] Simao:cd is not working
+
 [] Simao: exit is no working
+
 [] set exit status
+
 [] check is valid command
+
 [] Simao: echo without arguments sens deadly signal
+
 [] after control-c in blocking command -> 2 new lines
+
 [] quotes: leaks
+
 [] export env var
+
 [] unset
+
 [] heredoc update fds
+
 [] echo $USER -> fill_env parse/var_expansion.c:77 -> memory issue
+
 []
 
 
