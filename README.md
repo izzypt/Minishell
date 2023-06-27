@@ -33,15 +33,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 ## TODO :
 - Make sure Makefile doesnt have wildcards.
-- Execute a command with the absolute path.
-- Handle all white spaces on terminal without characters.
-- Check if exit() takes any arguments
 - Handle "$?" , investigate what exit status is and which status we hould have in which situations.
-- Handle replacement in export command.
-- Check what happens when there is something blocked like using "cat" with no arguments and then you press Ctrl-C.
-- Implement pipes
-- Implement redirections
-- Check why clear doesn't work
 
 ## Key concepts
 
