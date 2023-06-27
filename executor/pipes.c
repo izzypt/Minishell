@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
@@ -6,11 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/24 21:25:42 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/27 14:17:25 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h" //cat parse/todo.txt | grep free | grep list
+#include "../minishell.h"
 
 /*
 - If node is the last in the list
@@ -20,8 +20,6 @@ void	output_from_pipe(t_list *node)
 {
 	int	pid;
 
-	ft_printf("Iam inside output\n");
-	ft_printf("FIle descriptor pipe : [%d][%d]\n", get_pipe()->fd[0], get_pipe()->fd[1]);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -50,8 +48,6 @@ void	write_to_pipe(t_list *node)
 
 	if (check_redirection(node->prev) == 5)
 		return ;
-	ft_printf("Iam inside write to pipe\n");
-	ft_printf("Trying to execute: %s and %s\n", node->path, node->token[0]);
 	if (check_redirection(node->prev) == 1)
 	{
 		close(get_pipe()->fd[1]);
@@ -72,7 +68,6 @@ void	write_to_pipe(t_list *node)
 		exit(0);
 	}
 	waitpid(pid, NULL, 0);
-	ft_printf("FIle descriptor pipe : [%d][%d]\n", get_pipe()->fd[0], get_pipe()->fd[1]);
 }
 
 /*
