@@ -10,15 +10,15 @@ This project is about creating a simple shell. We will learn a lot about process
 
 [] check is valid command
 
-[] Simao: echo without arguments sens deadly signal
+[X] Simao: echo without arguments sens deadly signal
 
 [] after control-c in blocking command -> 2 new lines
 
 [] quotes: leaks
 
-[] export env var
+[X] export env var
 
-[] unset
+[X] unset
 
 [] heredoc update fds
 
