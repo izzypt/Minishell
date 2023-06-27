@@ -1,6 +1,14 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
+## Current Fails
+
+- Try Ctrl - C  after running a blocking command like cat without arguments.
+- Try Ctrl - \  after running a blocking command like cat without arguments.
+- Execute a simple command with arguments and , this time, use double quotes. Examples: 
+  - "ls -la"
+  - "   /usr/bin/ls -la"
+- Execute a simple command with arguments and , this time, using single quotes
 ## Checks
 [X] Simao:cd is not working
 
