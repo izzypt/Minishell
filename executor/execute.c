@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/26 21:22:09 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/27 10:17:56 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,26 @@
 - Will execute the comand if there is only 1 command in the list.
 - Otherwise, it will call the command chain.
 */
-void	execute_input(t_list *node)
+void	execute_input(t_list *node, char **envp)
 {
 	int		pid1;
-	char	**envp;
 
 	if (ft_lstsize(node) > 1)
-	{
 		command_chain(node);
-		return ;
-	}
-	envp = list_to_array();
-	pid1 = fork();
-	if (!ft_strncmp(node->token[0], "exit", 4))
+	else if (is_builtin(node))
 		execute_builtin(node);
-	if (pid1 == 0)
+	else
 	{
-		if (is_builtin(node))
-			execute_builtin(node);
-		else
+		pid1 = fork();
+		if (pid1 == 0)
 		{
 			if (!access(node->token[0], X_OK))
 				node->path = node->token[0];
 			execve(node->path, node->token, envp);
+			exit(0);
 		}
-		exit(0);
+		waitpid(pid1, NULL, 0);
 	}
-	waitpid(pid1, NULL, 0);
-	free_keys(envp);
 }
 
 /*

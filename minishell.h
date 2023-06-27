@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/06/26 22:04:04 by esali            ###   ########.fr       */
+/*   Updated: 2023/06/27 10:11:58 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		check_syntax(char	**token);
 
 /* Executing */
 
-void	execute_input(t_list *node);
+void	execute_input(t_list *node, char **envp);
 void	execute_builtin(t_list *node);
 void	command_chain(t_list *node);
 
