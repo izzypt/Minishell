@@ -2,17 +2,28 @@
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
 ## Checks
-[] Simao:cd is not working
-[] Simao: exit is no working
+[X] Simao:cd is not working
+
+[X] Simao: exit is no working
+
 [] set exit status
+
 [] check is valid command
-[] Simao: echo without arguments sens deadly signal
+
+[X] Simao: echo without arguments sens deadly signal
+
 [] after control-c in blocking command -> 2 new lines
+
 [] quotes: leaks
-[] export env var
-[] unset
+
+[X] export env var
+
+[X] unset
+
 [] heredoc update fds
+
 [] echo $USER -> fill_env parse/var_expansion.c:77 -> memory issue
+
 []
 
 
