@@ -2,9 +2,9 @@
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
 ## Checks
-[] Simao:cd is not working
+[X] Simao:cd is not working
 
-[] Simao: exit is no working
+[X] Simao: exit is no working
 
 [] set exit status
 
