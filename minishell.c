@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 18:15:19 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:48:56 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	g_signal;
 
 int	main(int argc, char **argv, char **env)
 {
-
 	if (argc != 1 || argv[1] != NULL)
 		return (0);
 	create_env(env);

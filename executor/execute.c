@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/07/29 18:22:31 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:33:29 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	execute_input(t_list *node, char **envp)
 		command_chain(node);
 	else if (is_builtin(node))
 		execute_builtin(node);
-	printf("Print envp: ")
 	else
 	{
 		pid1 = fork();
