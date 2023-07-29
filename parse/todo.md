@@ -1,5 +1,5 @@
 
-[] $?
+[x] $?
 saves the exit status of the last executed command or process
 - 0: SUCCES
 - 1: generic or unspecified error occured

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 17:40:34 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:14:37 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_data
 {
 	int		exit;
 	char	*input;
+	char	**envp;
 }				t_data;
 
 /* Builtin Commands */

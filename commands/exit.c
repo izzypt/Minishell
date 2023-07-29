@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/22 23:58:47 by simao            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:16:39 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	cmd_exit(void)
 	printf("RUnning exit command on process: %d.\n", getpid());
 	lst = get_env();
 	lst = lst->nxt;
+	if (get_data()->envp)
+		free_keys(get_data()->envp);
 	while (lst != NULL)
 	{
 		tmp = lst->nxt;
