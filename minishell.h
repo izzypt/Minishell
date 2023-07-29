@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 15:27:37 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/29 17:40:34 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ char	*valid_cmd_path(char *cmd);
 char	*remove_quotes(char *str, int *count, char c);
 char	*manage_env(char *str, int *count);
 char	*manage_double_quotes(char *str, int *c);
+int		is_pipe(char *token);
 int		check_syntax(char	**token);
+int		check_lexical();
 
 /* Executing */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 15:53:53 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/29 17:40:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,6 @@ int	parse(char *input)
 	token = split_token(input);
 	if (!token)
 		return (0);
-	get_data()->exit = check_syntax(token);
-	if (get_data()->exit != 0)
-	{
-		free_keys(token);
-		return (0);
-	}
 	i = 0;
 	while (token[i])
 	{
@@ -93,6 +87,13 @@ int	parse(char *input)
 		new_list_token(i, len, token);
 		i = i + len;
 	}
+	get_data()->exit = check_syntax(token);
 	free_keys(token);
+	if (get_data()->exit != 0)
+	{
+		free_parse();
+		return (0);
+	}
+	//print_lists();
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 12:32:09 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/29 17:03:40 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ char	*fill_env(char *input, char *env_val, int i, int env_len)
 		free(tmp);
 		free(end);
 	}
+	free(env_val);
 	free(input);
 	return (str);
 }
