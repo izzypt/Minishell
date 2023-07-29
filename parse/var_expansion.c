@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 17:03:40 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/29 17:55:16 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ char	*change_env(char *input, int i)
 	while (input[i + env_len] && is_env(input, i, env_len))
 		env_len++;
 	tmp = ft_substr(input, i + 1, env_len - 1);
-	env_val = ft_getenv(tmp);
+	if (ft_getenv(tmp) != NULL)
+		env_val = ft_strdup(ft_getenv(tmp));
+	else
+		env_val = NULL;
 	if (ft_strncmp(&input[i], "$?", 2) == 0)
 		env_val = ft_itoa(get_data()->exit);
 	free(tmp);
