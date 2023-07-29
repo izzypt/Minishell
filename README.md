@@ -5,7 +5,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - Try Ctrl - C  after running a blocking command like cat without arguments.
 - Try Ctrl - \  after running a blocking command like cat without arguments.
-- Execute a simple command with arguments and , this time, use double quotes. Examples: 
+- Execute a simple command with arguments and , this time, use double quotes. Examples:
   - "ls -la"
   - "   /usr/bin/ls -la"
 - Execute a simple command with arguments and , this time, using single quotes
@@ -22,7 +22,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 [] after control-c in blocking command -> 2 new lines
 
-[] quotes: leaks
+[x] quotes: leaks
 
 [X] export env var
 
@@ -30,7 +30,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 [] heredoc update fds
 
-[] echo $USER -> fill_env parse/var_expansion.c:77 -> memory issue
+[x] echo $USER -> fill_env parse/var_expansion.c:77 -> memory issue
 
 []
 
