@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/06/26 22:04:03 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/29 12:32:09 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ int	get_env_len_diff(char *str, int i)
 	return (val_len - env_len);
 }
 
+/* swaps $env with saved value and joins them if needed with text before and after */
 char	*fill_env(char *input, char *env_val, int i, int env_len)
 {
 	char	*str;
 	char	*tmp;
+	char	*end;
 
 	if (i == 0 && env_val != NULL)
 		str = ft_strdup(env_val);
@@ -66,20 +68,26 @@ char	*fill_env(char *input, char *env_val, int i, int env_len)
 	{
 		str = ft_substr(input, 0, i);
 		if (env_val != NULL)
-			str = ft_strjoin(str, env_val);
+		{
+			tmp = str;
+			str = ft_strjoin(tmp, env_val);
+			free(tmp);
+		}
 	}
 	if (input[i + env_len] != '\0')
 	{
-		tmp = ft_substr(input, i + env_len, ft_strlen(input));
-		str = ft_strjoin(str, tmp);
+		end = ft_substr(input, i + env_len, ft_strlen(input));
+		tmp = str;
+		str = ft_strjoin(tmp, end);
 		free(tmp);
+		free(end);
 	}
-	free(env_val);
 	free(input);
 	return (str);
 }
 
-/* changes string in a way, that it exchanges the $... for the saved value*/
+/* changes string in a way, that it exchanges the $... for the saved value
+checks if it is exit status*/
 char	*change_env(char *input, int i)
 {
 	char	*env_val;
@@ -97,6 +105,7 @@ char	*change_env(char *input, int i)
 	return (fill_env(input, env_val, i, env_len));
 }
 
+/* checks if there is a valid char after $, and changes counter to the position after var expansion */
 char	*manage_env(char *str, int *c)
 {
 	int		len_diff;
