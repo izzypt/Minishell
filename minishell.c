@@ -3,17 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/06/24 14:40:00 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/29 15:27:39 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int	g_signal;
+
 int	main(int argc, char **argv, char **env)
 {
+
 	if (argc != 1 || argv[1] != NULL)
 		return (0);
 	create_env(env);
