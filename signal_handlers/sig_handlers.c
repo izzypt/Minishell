@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/07/30 23:51:36 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/31 00:20:57 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ void	handle_sigint(int sig)
 
 void	handle_sigquit(int sig)
 {
+	char	*input_buffer;
+
+	input_buffer = rl_line_buffer;
+	if (input_buffer && *input_buffer)
+	{
+		get_data()->exit = 127 + sig;
+		exit(0);
+	}
 	if (get_data()->executing_cmd)
 	{
 		get_data()->exit = 127 + sig;
