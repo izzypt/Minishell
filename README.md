@@ -135,6 +135,9 @@ Here's a brief description of each allowed function for the current project :
 - <termios.h>
 - <curses.h>
 
+
+### GNU Readline
+
 1. `readline`: Reads a line of input from the user, including line editing capabilities.
 
 2. `rl_clear_history`: Clears the history list used by the `readline` function.
@@ -147,11 +150,7 @@ Here's a brief description of each allowed function for the current project :
 
 6. `add_history`: Adds a line to the history list used by the `readline` function.
 
-7. `printf`: Prints formatted output to the console.
-
-8. `malloc`: Allocates a block of memory on the heap.
-
-9. `free`: Releases a previously allocated block of memory.
+### File Related Functions
 
 10. `write`: Writes data to a file descriptor.
 
@@ -163,59 +162,124 @@ Here's a brief description of each allowed function for the current project :
 
 14. `close`: Closes a file descriptor.
 
-15. `fork`: Creates a new process by duplicating the existing process.
+15. `stat`, `lstat`, `fstat`: Retrieves information about a file or file descriptor.
 
-16. `wait`: Suspends execution until one of its child processes exits.
+16. `unlink`: Deletes a file.
 
-17. `waitpid`: Waits for a specific child process to exit.
+### Processes Related Functions
 
-18. `wait3`, `wait4`: Older versions of the `wait` functions with additional options.
+17. `wait`: Suspends execution until one of its child processes exits.
 
-19. `signal`: Sets a signal handler for a specific signal.
+18. `waitpid`: Waits for a specific child process to exit.
 
-20. `sigaction`: Sets a signal handler using a more modern and flexible approach.
+19. `wait3`, `wait4`: Older versions of the `wait` functions with additional options.
 
-21. `sigemptyset`: Initializes an empty signal set.
+20. `fork`: Creates a new process by duplicating the existing process.
 
-22. `sigaddset`: Adds a signal to a signal set.
+### Signal Related Functions
 
-23. `kill`: Sends a signal to a process or a group of processes.
+21. `signal`: Sets a signal handler for a specific signal.
 
-24. `exit`: Terminates the current process and returns an exit status.
+22. `sigaction`: Sets a signal handler using a more modern and flexible approach.
 
-25. `getcwd`: Gets the current working directory.
+23. `sigemptyset`: Initializes an empty signal set.
 
-26. `chdir`: Changes the current working directory.
+24. `sigaddset`: Adds a signal to a signal set.
 
-27. `stat`, `lstat`, `fstat`: Retrieves information about a file or file descriptor.
+25. `kill`: Sends a signal to a process or a group of processes.
 
-28. `unlink`: Deletes a file.
+26. `exit`: Terminates the current process and returns an exit status.
 
-29. `execve`: Executes a program.
+### Processes Related Functions
 
-30. `dup`, `dup2`: Duplicates a file descriptor.
+27. `getcwd`: Gets the current working directory.
 
-31. `pipe`: Creates a pipe for interprocess communication.
+28. `chdir`: Changes the current working directory.
 
-32. `opendir`, `readdir`, `closedir`: Functions for working with directories.
+31. `execve`: Executes a program.
 
-33. `strerror`: Retrieves the string description of an error code.
+32. `dup`, `dup2`: Duplicates a file descriptor.
 
-34. `perror`: Prints a descriptive error message to the console.
+33. `pipe`: Creates a pipe for interprocess communication.
 
-35. `isatty`: Checks if a file descriptor refers to a terminal.
+34. `opendir`, `readdir`, `closedir`: Functions for working with directories.
 
-36. `ttyname`: Returns the name of the terminal associated with a file descriptor.
+35. `strerror`: Retrieves the string description of an error code.
 
-37. `ttyslot`: Returns the slot number of the current terminal.
+36. `perror`: Prints a descriptive error message to the console.
 
-38. `ioctl`: Performs I/O control operations on a file descriptor.
+37. `isatty`: Checks if a file descriptor refers to a terminal.
 
-39. `getenv`: Retrieves the value of an environment variable.
+38. `ttyname`: Returns the name of the terminal associated with a file descriptor.
 
-40. `tcsetattr`, `tcgetattr`: Functions for setting and getting terminal attributes.
+39. `ttyslot`: Returns the slot number of the current terminal.
 
-41. `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`: Functions for working with terminal capabilities in a termcap or terminfo database.
+40. `ioctl`: Performs I/O control operations on a file descriptor.
+
+41. `getenv`: Retrieves the value of an environment variable.
+
+### Terminal Attributes
+
+41. `tcsetattr`, `tcgetattr`: Functions for setting and getting terminal attributes.
+
+### Terminal Capabilities
+
+42. `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`: Functions for working with terminal capabilities in a termcap or terminfo database.
+
+Certainly! Let's provide a comprehensive description of each of these functions:
+
+1. `tcsetattr`:
+   - Description: `tcsetattr` is a C library function that sets terminal attributes, controlling various aspects of the terminal behavior.
+   - Purpose: This function is used to modify the terminal settings, such as input modes, output modes, and control characters, based on the parameters provided in a `termios` structure.
+   - Syntax: `int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);`
+   - Arguments:
+     - `fd`: The file descriptor representing the terminal whose attributes are to be modified.
+     - `optional_actions`: It determines when the changes take effect. Possible values are `TCSANOW` (immediately), `TCSADRAIN` (after all output is transmitted), and `TCSAFLUSH` (after all output is transmitted, and discard pending input).
+     - `termios_p`: A pointer to a `termios` structure containing the new terminal attributes.
+
+2. `tcgetattr`:
+   - Description: `tcgetattr` is a C library function that gets the current terminal attributes.
+   - Purpose: This function is used to retrieve the current terminal settings and store them in a `termios` structure for further examination or modification.
+   - Syntax: `int tcgetattr(int fd, struct termios *termios_p);`
+   - Arguments:
+     - `fd`: The file descriptor representing the terminal from which attributes are to be retrieved.
+     - `termios_p`: A pointer to a `termios` structure where the retrieved terminal attributes will be stored.
+
+3. `tgetent`:
+   - Description: `tgetent` is a function used to access the terminal capability database.
+   - Purpose: This function initializes the termcap database and retrieves the capability information for the specified terminal type. It is typically used with other termcap functions to get terminal-specific information.
+   - Syntax: `int tgetent(char *bp, const char *name);`
+   - Arguments:
+     - `bp`: A buffer where the termcap database information will be stored.
+     - `name`: The name of the terminal type for which you want to retrieve the capabilities.
+
+4. `tgetflag`, `tgetnum`, `tgetstr`:
+   - Description: These are termcap library functions used to extract specific capabilities from the terminal capability database.
+   - Purpose: These functions allow you to retrieve specific terminal capabilities such as boolean flags, numeric values, and string capabilities like cursor movement, color codes, etc.
+   - Syntax:
+     - `int tgetflag(const char *id);`: Returns the value of the boolean capability specified by `id`.
+     - `int tgetnum(const char *id);`: Returns the value of the numeric capability specified by `id`.
+     - `char *tgetstr(const char *id, char **area);`: Returns the value of the string capability specified by `id`.
+
+5. `tgoto`:
+   - Description: `tgoto` is a termcap function used to construct a cursor control sequence for a given cursor position.
+   - Purpose: This function constructs a terminal-specific control sequence for moving the cursor to a specified position on the screen.
+   - Syntax: `char *tgoto(const char *cm, int col, int row);`
+   - Arguments:
+     - `cm`: The string capability representing cursor movement from the termcap database.
+     - `col`: The target column for the cursor.
+     - `row`: The target row for the cursor.
+
+6. `tputs`:
+   - Description: `tputs` is a termcap function used to send a terminal capability string to the terminal.
+   - Purpose: This function is used to send terminal-specific control sequences (capabilities) directly to the terminal. It takes care of expanding padding, delays, and other terminal-specific processing.
+   - Syntax: `int tputs(const char *str, int affcnt, int (*putc)(int));`
+   - Arguments:
+     - `str`: The terminal capability string to be sent to the terminal.
+     - `affcnt`: The number of lines affected by the capability (used for scrolling).
+     - `putc`: A function pointer that specifies how to output each character of the string. It is typically set to `putchar` for standard output.
+
+These functions are part of the termcap/terminfo libraries in C and are used to interact with the terminal in a portable and terminal-independent manner. They allow you to control terminal behavior, display text, move the cursor, and manipulate terminal-specific capabilities without needing to know the details of each specific terminal type.
 
 
 https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
