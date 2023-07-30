@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/07/29 18:33:29 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/30 20:43:11 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ void	execute_input(t_list *node, char **envp)
 		pid1 = fork();
 		if (pid1 == 0)
 		{
-			g_signal = 99;
 			if (!access(node->token[0], X_OK))
 				node->path = node->token[0];
 			execve(node->path, node->token, envp);
 			exit(0);
 		}
+		else
+			signal(SIGINT, SIG_IGN);
 		waitpid(pid1, NULL, 0);
+		signal(SIGINT, handle_sigint);
 	}
 }
 
