@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 18:36:32 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/30 12:33:35 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_lexical(void)
 	t_list	*list;
 
 	list = list_heads()->next;
-	while(list != NULL)
+	while (list != NULL)
 	{
 		if (!is_built_in(list->token[0]))
 		{
