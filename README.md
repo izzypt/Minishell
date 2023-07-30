@@ -5,7 +5,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - [] exit status (save in file?)
 - [] exit status execution
-- [] Ctrl + \ -> should quit after we wrote some stuff
+- [X] Ctrl + \ -> should quit after we wrote some stuff
 - [X] Ctrl + C -> Double prompt
 - [] . -> memory leaks
 - [] .. -> memory leaks
