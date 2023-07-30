@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/07/30 23:21:06 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/30 23:51:36 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,16 @@ void	handle_sigint(int sig)
 
 void	handle_sigquit(int sig)
 {
-	get_data()->exit = 127 + sig;
-	rl_clear_visible_line();
-	rl_on_new_line();
-	rl_redisplay();
+	if (get_data()->executing_cmd)
+	{
+		get_data()->exit = 127 + sig;
+		printf("Quit (core dumped)\n");
+	}
+	else
+	{
+		get_data()->exit = 127 + sig;
+		rl_clear_visible_line();
+		rl_on_new_line();
+		rl_redisplay();
+	}
 }
