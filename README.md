@@ -40,13 +40,8 @@ This project is about creating a simple shell. We will learn a lot about process
 []
 
 
-
-
-
-
 ## TODO :
 - Make sure Makefile doesnt have wildcards.
-- Handle "$?" , investigate what exit status is and which status we hould have in which situations.
 
 ## Key concepts
 
