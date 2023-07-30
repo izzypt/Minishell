@@ -3,16 +3,16 @@ This project is about creating a simple shell. We will learn a lot about process
 
 ## Current Fails
 
-[] exit status (save in file?)
-[] exit status execution
-[] Ctrl + \ -> should quit after we wrote some stuff
-[] Ctrl + C -> Double prompt
-[] . -> memory leaks
-[] .. -> memory leaks
-[] set new PATH-Variable
-[] export: memory leaks
-[] heredoc
-[] unclosed quotes
+- [] exit status (save in file?)
+- [] exit status execution
+- [] Ctrl + \ -> should quit after we wrote some stuff
+- [] Ctrl + C -> Double prompt
+- [] . -> memory leaks
+- [] .. -> memory leaks
+- [] set new PATH-Variable
+- [] export: memory leaks
+- [] heredoc
+- [] unclosed quotes
 
 ## Checks
 [X] Simao:cd is not working
