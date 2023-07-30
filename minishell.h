@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/07/30 12:48:49 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/30 23:19:58 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 # include "libft/libft.h"
 
 # define CTRL_D NULL
-
-extern int	g_signal;
 
 /* Structs */
 
@@ -67,6 +65,7 @@ typedef struct s_data
 	int		exit;
 	char	*input;
 	char	**envp;
+	int		executing_cmd;
 }				t_data;
 
 /* Builtin Commands */

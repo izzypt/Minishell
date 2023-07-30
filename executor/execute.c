@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/07/30 20:43:11 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/30 23:20:58 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	execute_input(t_list *node, char **envp)
 		execute_builtin(node);
 	else
 	{
+		get_data()->executing_cmd = 1;
 		pid1 = fork();
 		if (pid1 == 0)
 		{
@@ -34,10 +35,8 @@ void	execute_input(t_list *node, char **envp)
 			execve(node->path, node->token, envp);
 			exit(0);
 		}
-		else
-			signal(SIGINT, SIG_IGN);
 		waitpid(pid1, NULL, 0);
-		signal(SIGINT, handle_sigint);
+		get_data()->executing_cmd = 0;
 	}
 }
 
