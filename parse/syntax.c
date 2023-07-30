@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 16:48:09 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/30 13:21:02 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,42 @@ int	check_following_red(char **token, int i)
 	return (0);
 }
 
-int	check_syntax(char	**token)
+int	check_unclosed_quotes(char *input)
 {
 	int	i;
 
+	i = 0;
+	while (input[i])
+	{
+		if (input[i] == 39)
+		{
+			i++;
+			while(input[i] != 39 && input[i])
+				i++;
+			if (!input[i])
+				ft_printf("Expected closing '''\n");
+		}
+		if (input[i] == '"')
+		{
+			i++;
+			while(input[i] != '"' && input[i])
+				i++;
+			if (!input[i])
+				ft_printf("Expected closing '\"'\n");
+		}
+		if (input[i] == '\0')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_syntax(char **token, char *input)
+{
+	int	i;
+
+	if (check_unclosed_quotes(input))
+		return (1);
 	if (ft_strncmp(token[0], "|", 1) == 0)
 	{
 		ft_printf("syntax error, unexpected token: '|'\n");
