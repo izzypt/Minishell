@@ -9,36 +9,10 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] Ctrl + C -> Double prompt
 - [] . -> memory leaks
 - [] .. -> memory leaks
-- [] set new PATH-Variable
-- [] export: memory leaks
+- [X] set new PATH-Variable
+- [X] export: memory leaks
 - [] heredoc
 - [] unclosed quotes
-
-## Checks
-[X] Simao:cd is not working
-
-[X] Simao: exit is no working
-
-[] set exit status
-
-[x] check is valid command
-
-[X] Simao: echo without arguments sens deadly signal
-
-[] after control-c in blocking command -> 2 new lines
-
-[x] quotes: leaks
-
-[X] export env var
-
-[X] unset
-
-[] heredoc update fds
-
-[x] echo $USER -> fill_env parse/var_expansion.c:77 -> memory issue
-
-[]
-
 
 ## TODO :
 - Make sure Makefile doesnt have wildcards.
