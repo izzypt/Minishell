@@ -9,8 +9,8 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] Ctrl + C -> Double prompt
 - [] . -> memory leaks
 - [] .. -> memory leaks
-- [] set new PATH-Variable
-- [] export: memory leaks
+- [X] set new PATH-Variable
+- [X] export: memory leaks
 - [] heredoc
 - [] unclosed quotes
 
