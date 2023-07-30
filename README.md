@@ -226,8 +226,6 @@ Here's a brief description of each allowed function for the current project :
 
 42. `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`: Functions for working with terminal capabilities in a termcap or terminfo database.
 
-Certainly! Let's provide a comprehensive description of each of these functions:
-
 1. `tcsetattr`:
    - Description: `tcsetattr` is a C library function that sets terminal attributes, controlling various aspects of the terminal behavior.
    - Purpose: This function is used to modify the terminal settings, such as input modes, output modes, and control characters, based on the parameters provided in a `termios` structure.
