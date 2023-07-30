@@ -3,7 +3,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 ## Current Fails
 
-- [] exit status (save in file?)
+- [] exit status (save in file? Only if necessary to perserve status code between sessions)
 - [] exit status execution
 - [X] Ctrl + \ -> should quit after we wrote some stuff
 - [X] Ctrl + C -> Double prompt
