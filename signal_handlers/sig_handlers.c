@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/07/31 18:48:04 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:13:02 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	handle_sigquit(int sig)
 	{
 		get_data()->exit = 127 + sig;
 		printf("Quit (core dumped)\n");
-		exit(0);
+		free_parse();
+		cmd_exit();
 	}
 	else
 	{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
+#    By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/06/26 21:17:03 by esali            ###   ########.fr        #
+#    Updated: 2023/07/31 19:04:25 by smagalha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME =		minishell
 
 SRCS =		minishell.c parse/*.c commands/*.c signal_handlers/*.c utils/*.c executor/*.c \
 
-CFLAGS =	-Wall -Wextra -Werror -fsanitize=address
+CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address
 RM =		rm
 
 LIBFT =		libft/
