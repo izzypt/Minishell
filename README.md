@@ -23,6 +23,19 @@ $> echo $HOME$fdsgs$home
 $> echo $HOME$fdsgs$HOME
 /nfs/homes/smagalha$HOME 
 ```
+- [] HEREDOC should expand env variables with or without quotes (all quotes). Example:
+
+```
+$> echo $TERM_PROGRAM
+vscode 
+$> cat << EOF
+>$TERM_PROGRAM
+>outra linha
+>EOF
+$TERM_PROGRAM
+outra linha
+$> 
+```
 
 - echo "$USER" | grep $USER
 
