@@ -13,7 +13,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] export: memory leaks
 - [] heredoc
 - [X] unclosed quotes
-- [] (Optional?) Following example should expand both env variables (both $HOME and $PATH).
+- [] (Optional? Edge case mentioned to me) Following example should expand both env variables (both $HOME and $PATH).
 
 ```
 $> echo $HOME$fdsgs$PATH
@@ -23,7 +23,7 @@ $> echo $HOME$fdsgs$home
 $> echo $HOME$fdsgs$HOME
 /nfs/homes/smagalha$HOME 
 ```
-- [] (Optional?) HEREDOC should expand env variables with or without quotes (all quotes). Example:
+- [] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
 
 ```
 $> echo $TERM_PROGRAM
