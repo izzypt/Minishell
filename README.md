@@ -16,7 +16,6 @@ This project is about creating a simple shell. We will learn a lot about process
     ==492086==    by 0x10957F: main (minishell.c:27)
     ```
 
-- [] exit status (save in file? Only if necessary to perserve status code between sessions)
 - [X] exit status execution
 - [X] Ctrl + \ -> should quit after we wrote some stuff
 - [X] Ctrl + C -> Double prompt
