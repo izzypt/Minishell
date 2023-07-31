@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/07/30 13:21:02 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 21:53:54 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,8 @@ int	check_unclosed_quotes(char *input)
 	i = 0;
 	while (input[i])
 	{
-		if (input[i] == 39)
-		{
-			i++;
-			while(input[i] != 39 && input[i])
-				i++;
-			if (!input[i])
-				ft_printf("Expected closing '''\n");
-		}
-		if (input[i] == '"')
-		{
-			i++;
-			while(input[i] != '"' && input[i])
-				i++;
-			if (!input[i])
-				ft_printf("Expected closing '\"'\n");
-		}
+		i = check_quote(input, 39, i);
+		i = check_quote(input, '"', i);
 		if (input[i] == '\0')
 			return (1);
 		i++;

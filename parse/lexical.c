@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 14:17:45 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 21:55:28 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,17 @@ int	check_lexical(void)
 		list = list->next;
 	}
 	return (0);
+}
+
+int	check_quote(char *input, char c, int i)
+{
+	if (input[i] == c)
+	{
+		i++;
+		while (input[i] != c && input[i])
+			i++;
+		if (!input[i])
+			ft_printf("Expected closing '%c'\n", c);
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 20:21:22 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 22:03:27 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	parse(char *input)
 	char	**token;
 	int		i;
 	int		len;
+	t_data	*data;
 
 	token = split_token(input);
 	if (!token)
@@ -87,13 +88,13 @@ int	parse(char *input)
 		new_list_token(i, len, token);
 		i = i + len;
 	}
-	get_data()->exit = check_syntax(token, input);
+	data = get_data();
+	data->exit = check_syntax(token, input);
 	free_keys(token);
-	if (get_data()->exit != 0)
+	if (data->exit != 0)
 	{
 		free_parse();
 		return (0);
 	}
-	//print_lists();
 	return (1);
 }
