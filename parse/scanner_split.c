@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 18:42:00 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 20:19:18 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	get_token_length(char *input)
 	{
 		if (input[i] == '"')
 		{
-			ft_printf("inside quotes: i: %i\n", i);
 			i++;
 			while (input[i] != '"' && input[i])
 				i++;
@@ -52,7 +51,8 @@ int	get_token_length(char *input)
 			while (input[i] != 39 && input[i])
 				i++;
 		}
-		i++;
+		if (input[i])
+			i++;
 	}
 	return (i);
 }
@@ -99,10 +99,10 @@ char	*modify_token(char *input)
 	{
 		if (str[c[0]] == 39)
 			str = remove_quotes(str, c, 39);
-		if (str[c[0]] == '$')
-			str = manage_env(str, c);
 		if (str[c[0]] == '"')
 			str = manage_double_quotes(str, c);
+		if (str[c[0]] == '$')
+			str = manage_env(str, c);
 		c[0]++;
 	}
 	free(c);

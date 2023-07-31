@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 17:55:16 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 20:16:54 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ char	*manage_env(char *str, int *c)
 		c[1] = c[1] + len_diff;
 		if (len_diff > 0)
 			c[0] = c[0] + len_diff;
+		else if (len_diff < 0)
+			c[0] = c[0] - 1;
 	}
 	free(str);
 	return (ret);
