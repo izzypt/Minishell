@@ -3,7 +3,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 ## Current Fails
 
-- [] Memory Leak on token when killing the shell in the middle of a process.
+- [X] Memory Leak on token when killing the shell in the middle of a process.
   - You can replicate when using: ```Ctrl-\``` in a blocking command like cat. Example:
 
     ```
@@ -16,7 +16,6 @@ This project is about creating a simple shell. We will learn a lot about process
     ==492086==    by 0x10957F: main (minishell.c:27)
     ```
 
-- [] exit status (save in file? Only if necessary to perserve status code between sessions)
 - [X] exit status execution
 - [X] Ctrl + \ -> should quit after we wrote some stuff
 - [X] Ctrl + C -> Double prompt
@@ -26,16 +25,6 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] export: memory leaks
 - [] heredoc
 - [X] unclosed quotes
-- [] (Optional? Edge case mentioned to me) Following example should expand both env variables (both $HOME and $PATH).
-
-```
-$> echo $HOME$fdsgs$PATH
-/nfs/homes/smagalha$PATH
-$> echo $HOME$fdsgs$home
-/nfs/homes/smagalha$home
-$> echo $HOME$fdsgs$HOME
-/nfs/homes/smagalha$HOME
-```
 - [] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
 
 ```
