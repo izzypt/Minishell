@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 15:15:16 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/31 20:20:35 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_data
 	char	*input;
 	char	**envp;
 	int		executing_cmd;
+	int		pid;
 }				t_data;
 
 /* Builtin Commands */

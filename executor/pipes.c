@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/07/31 19:24:07 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/31 20:21:19 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	output_from_pipe(t_list *node)
 */
 void	write_to_pipe(t_list *node)
 {
-	int			pid;
-
 	if (check_redirection(node->prev) == 5)
 		return ;
 	if (check_redirection(node->prev) == 1)
@@ -58,8 +56,8 @@ void	write_to_pipe(t_list *node)
 	}
 	pipe(get_pipe()->fd);
 	get_data()->executing_cmd = 1;
-	pid = fork();
-	if (pid == 0)
+	get_data()->pid = fork();
+	if (get_data()->pid == 0)
 	{
 		close(get_pipe()->fd[0]);
 		dup2(get_pipe()->fd[1], STDOUT_FILENO);
@@ -70,7 +68,7 @@ void	write_to_pipe(t_list *node)
 			execve(node->path, node->token, NULL);
 		exit(0);
 	}
-	waitpid(pid, NULL, 0);
+	waitpid(get_data()->pid, NULL, 0);
 	get_data()->executing_cmd = 0;
 }
 
