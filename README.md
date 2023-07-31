@@ -18,14 +18,14 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - [] exit status (save in file? Only if necessary to perserve status code between sessions)
 - [] exit status execution
-- [X] Ctrl + \ -> should quit after we wrote some stuff
-- [X] Ctrl + C -> Double prompt
-- [X] . -> memory leaks
-- [X] .. -> memory leaks
-- [X] set new PATH-Variable
-- [X] export: memory leaks
+- <span style="color:green">[X]</span> Ctrl + \ -> should quit after we wrote some stuff
+- <span style="color:green">[X]</span> Ctrl + C -> Double prompt
+- <span style="color:green">[X]</span> . -> memory leaks
+- <span style="color:green">[X]</span> .. -> memory leaks
+- <span style="color:green">[X]</span> set new PATH-Variable
+- <span style="color:green">[X]</span> export: memory leaks
 - [] heredoc
-- [X] unclosed quotes
+- <span style="color:green">[X]</span> unclosed quotes
 - [] (Optional? Edge case mentioned to me) Following example should expand both env variables (both $HOME and $PATH).
 
 ```
