@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/07/30 13:29:10 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 18:46:19 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	new_list_token(int i, int len, char **token)
 }
 
 /* retruns length of token variable for next list element */
-int	get_len(int i, char	**token)
+int	get_len(int i, char	**t
+			i++;oken)
 {
 	int	save_i;
 
@@ -94,5 +95,6 @@ int	parse(char *input)
 		free_parse();
 		return (0);
 	}
+	//print_lists();
 	return (1);
 }
