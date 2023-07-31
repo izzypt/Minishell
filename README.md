@@ -7,12 +7,14 @@ This project is about creating a simple shell. We will learn a lot about process
 - [] exit status execution
 - [X] Ctrl + \ -> should quit after we wrote some stuff
 - [X] Ctrl + C -> Double prompt
-- [] . -> memory leaks
-- [] .. -> memory leaks
+- [X] . -> memory leaks
+- [X] .. -> memory leaks
 - [X] set new PATH-Variable
 - [X] export: memory leaks
 - [] heredoc
-- [] unclosed quotes
+- [X] unclosed quotes
+
+- echo "$USER" | grep $USER
 
 ## TODO :
 - Make sure Makefile doesnt have wildcards.
@@ -31,7 +33,7 @@ This project is about creating a simple shell. We will learn a lot about process
        command > output.txt
        ```
        - This command runs `command` and writes its output to the file `output.txt`.
-       - If the file doesn't exist, it will be created. If it exists, it will be overwritten.
+       -echo "$USER" | grep $USER If the file doesn't exist, it will be created. If it exists, it will be overwritten.
 
     - 2 Append Output (STDOUT) Redirection (`>>`):
       - The `>>` operator is used to append the standard output of a command to the end of a file. For example:
