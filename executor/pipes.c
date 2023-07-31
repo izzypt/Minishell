@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/27 14:17:25 by simao            ###   ########.fr       */
+/*   Updated: 2023/07/31 19:24:07 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	output_from_pipe(t_list *node)
 {
 	int	pid;
 
+	get_data()->executing_cmd = 1;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -35,6 +36,7 @@ void	output_from_pipe(t_list *node)
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
 	waitpid(pid, NULL, 0);
+	get_data()->executing_cmd = 0;
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
@@ -55,6 +57,7 @@ void	write_to_pipe(t_list *node)
 		close(get_pipe()->fd[0]);
 	}
 	pipe(get_pipe()->fd);
+	get_data()->executing_cmd = 1;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -68,6 +71,7 @@ void	write_to_pipe(t_list *node)
 		exit(0);
 	}
 	waitpid(pid, NULL, 0);
+	get_data()->executing_cmd = 0;
 }
 
 /*
@@ -140,6 +144,7 @@ void	input_from_fd(t_list *node)
 	int		in;
 
 	in = open(node->next->next->token[0], O_RDONLY, 0644);
+	get_data()->executing_cmd = 1;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -149,6 +154,7 @@ void	input_from_fd(t_list *node)
 	}
 	close(in);
 	waitpid(pid, NULL, 0);
+	get_data()->executing_cmd = 0;
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 	dup2(get_pipe()->stdout, STDOUT_FILENO);
 }
