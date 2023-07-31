@@ -3,7 +3,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 ## Current Fails
 
-- [] Memory Leak on token when killing the shell in the middle of a process.
+- [X] Memory Leak on token when killing the shell in the middle of a process.
   - You can replicate when using: ```Ctrl-\``` in a blocking command like cat. Example:
 
     ```
