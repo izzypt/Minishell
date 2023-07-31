@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/07/29 19:23:14 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 15:16:12 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	command_chain(t_list *node)
 	curr = node;
 	while (curr != NULL)
 	{
-		//ft_printf("command chain: %s\n", curr->token[0]);
 		if (check_redirection(curr->prev) == 1 && !curr->next)
 			output_from_pipe(curr);
 		else if (check_redirection(curr->next) == 1)

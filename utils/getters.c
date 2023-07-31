@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:15:14 by simao             #+#    #+#             */
-/*   Updated: 2023/06/24 14:42:01 by esali            ###   ########.fr       */
+/*   Updated: 2023/07/31 15:15:47 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_data	*get_data(void)
 	return (&data_node);
 }
 
-t_heredoc *get_hdoc()
+t_heredoc	*get_hdoc(void)
 {
 	static t_heredoc	h_data;
 

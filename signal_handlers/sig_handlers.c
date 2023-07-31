@@ -6,12 +6,11 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/07/31 00:20:57 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:12:22 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 
 void	handle_sigint(int sig)
 {
