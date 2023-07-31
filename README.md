@@ -17,7 +17,7 @@ This project is about creating a simple shell. We will learn a lot about process
     ```
 
 - [] exit status (save in file? Only if necessary to perserve status code between sessions)
-- [] exit status execution
+- [X] exit status execution
 - :heavy_check_mark: Ctrl + \ -> should quit after we wrote some stuff
 - :heavy_check_mark: Ctrl + C -> Double prompt
 - :heavy_check_mark: . -> memory leaks
