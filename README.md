@@ -13,6 +13,16 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] export: memory leaks
 - [] heredoc
 - [X] unclosed quotes
+- [ ] Following example should expand both env variables (both $HOME and $PATH).
+
+```
+$> echo $HOME$fdsgs$PATH
+/nfs/homes/smagalha$PATH 
+$> echo $HOME$fdsgs$home
+/nfs/homes/smagalha$home 
+$> echo $HOME$fdsgs$HOME
+/nfs/homes/smagalha$HOME 
+```
 
 - echo "$USER" | grep $USER
 
