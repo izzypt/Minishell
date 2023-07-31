@@ -5,7 +5,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - [] Memory Leak on token when killing the shell in the middle of a process.
   - You can replicate when using: ```Ctrl-\``` in a blocking command like cat. Example:
-    
+
     ```
     ==492086== 4 bytes in 1 blocks are still reachable in loss record 3 of 72
     ==492086==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
@@ -30,27 +30,27 @@ This project is about creating a simple shell. We will learn a lot about process
 
 ```
 $> echo $HOME$fdsgs$PATH
-/nfs/homes/smagalha$PATH 
+/nfs/homes/smagalha$PATH
 $> echo $HOME$fdsgs$home
-/nfs/homes/smagalha$home 
+/nfs/homes/smagalha$home
 $> echo $HOME$fdsgs$HOME
-/nfs/homes/smagalha$HOME 
+/nfs/homes/smagalha$HOME
 ```
 - [] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
 
 ```
 $> echo $TERM_PROGRAM
-vscode 
+vscode
 $> cat << EOF
 >$TERM_PROGRAM
 >outra linha
 >EOF
 $TERM_PROGRAM
 outra linha
-$> 
+$>
 ```
 
-- echo "$USER" | grep $USER
+- [X] echo "$USER" | grep $USER
 
 ## TODO :
 - Make sure Makefile doesnt have wildcards.
