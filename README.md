@@ -18,14 +18,14 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - [] exit status (save in file? Only if necessary to perserve status code between sessions)
 - [X] exit status execution
-- :heavy_check_mark: Ctrl + \ -> should quit after we wrote some stuff
-- :heavy_check_mark: Ctrl + C -> Double prompt
-- :heavy_check_mark: . -> memory leaks
-- :heavy_check_mark: .. -> memory leaks
-- :heavy_check_mark: set new PATH-Variable
-- :heavy_check_mark: export: memory leaks
+- [X] Ctrl + \ -> should quit after we wrote some stuff
+- [X] Ctrl + C -> Double prompt
+- [X] . -> memory leaks
+- [X] .. -> memory leaks
+- [X] set new PATH-Variable
+- [X] export: memory leaks
 - [] heredoc
-- :heavy_check_mark: unclosed quotes
+- [X] unclosed quotes
 - [] (Optional? Edge case mentioned to me) Following example should expand both env variables (both $HOME and $PATH).
 
 ```
