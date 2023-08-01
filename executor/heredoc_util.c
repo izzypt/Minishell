@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:44:58 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 13:46:38 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 17:20:57 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	heredoc_to_fd(t_list *cur)
 	int	status;
 
 	outfile = open(cur->next->next->next->token[0], \
-	O_WRONLY | O_CREAT, 0644);
+	O_WRONLY | O_TRUNC, 0644);
 	pid = fork();
 	if (pid == 0)
 	{

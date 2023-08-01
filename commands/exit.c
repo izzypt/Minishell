@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 13:58:21 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:44:04 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	cmd_exit(int number)
 	t_env	*lst;
 	t_env	*tmp;
 
-	printf("RUnning exit command on process: %d.\n", getpid());
+	ft_printf("Running exit command on process: %d.\n", getpid());
 	lst = get_env();
 	lst = lst->nxt;
 	if (get_data()->envp)

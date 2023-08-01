@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:32:22 by simao             #+#    #+#             */
-/*   Updated: 2023/06/18 19:12:31 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:44:17 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	cmd_pwd(void)
 	char	cwd[1024];
 
 	if (getcwd(cwd, sizeof(cwd)) != NULL)
-		printf("%s\n", cwd);
+		ft_printf("%s\n", cwd);
 	else
 		perror("getcwd() error");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/06/27 10:21:33 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/01 17:47:42 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 // R_OK: Verifica se o arquivo pode ser lido.
 // W_OK: Verifica se o arquivo pode ser escrito.
 // X_OK: Verifica se o arquivo pode ser executado.
-// F_OK: Verifica se o arquivo existe. 
+// F_OK: Verifica se o arquivo existe.
 
 /*
-- chdir() takes a string arg of the path of the dir you want to change to. 
-- If the directory change is successful, chdir returns 0. 
+- chdir() takes a string arg of the path of the dir you want to change to.
+- If the directory change is successful, chdir returns 0.
 - Update "PWD" and "OLDPWD" env variables once it sucessfully changed dir.
 */
 void	cmd_cd(char **path)
