@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 17:27:36 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 21:28:55 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	output_from_pipe(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
-		exit(0);
+		exit(errno);
 	}
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
@@ -66,7 +66,7 @@ void	write_to_pipe(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
-		exit(0);
+		exit(errno);
 	}
 	waitpid(get_data()->pid, &status, 0);
 	if (WIFEXITED(status))
@@ -98,7 +98,7 @@ void	write_to_fd(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
-		exit(0);
+		exit(errno);
 	}
 	close(outfile);
 	waitpid(pid, &status, 0);
@@ -125,7 +125,7 @@ void	append_to_fd(t_list *node)
 	{
 		dup2(out, STDOUT_FILENO);
 		execve(node->path, node->token, NULL);
-		exit(0);
+		exit(errno);
 	}
 	close(out);
 	if (WIFEXITED(status))
@@ -146,7 +146,7 @@ void	input_from_fd(t_list *node)
 	{
 		dup2(in, STDIN_FILENO);
 		execve(node->path, node->token, NULL);
-		exit(0);
+		exit(errno);
 	}
 	close(in);
 	if (WIFEXITED(status))

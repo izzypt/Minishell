@@ -1,11 +1,16 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
+
 # ToDO
-[] remove comment heredoc
-[] norminette issue
-[] remove wildcards Makefile
-[] remove .md files (README and todo.md)
+
+[] memory leaks valgrind: /bin
+[] exit status of /bin (directory) -> maybe set manually
+
+[x] remove comment heredoc
+[x] norminette issue
+[x] remove wildcards Makefile
+[x] remove .md files (README and todo.md)
 
 ## Current Fails
 
