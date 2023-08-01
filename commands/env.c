@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 17:43:44 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 19:26:53 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	free_keys(char **keys)
 	int	j;
 
 	j = 0;
+	if (!*keys || !keys[0])
+		return ;
 	while (keys[j])
 	{
 		free(keys[j]);

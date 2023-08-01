@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 18:09:18 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:27:00 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	cmd_exit(int number)
 	{
 		tmp = lst->nxt;
 		free(lst->key);
-		free(lst->value);
+		if (lst->value)
+			free(lst->value);
 		free(lst);
 		lst = tmp;
 	}
