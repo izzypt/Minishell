@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/01 12:16:40 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:02:49 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ void	execute_builtin(t_list *node)
 	else if (!ft_strncmp(node->token[0], "pwd", 3))
 		cmd_pwd();
 	else if (!ft_strncmp(node->token[0], "exit", 4))
-		cmd_exit();
+	{
+		if (node->token[1])
+			cmd_exit(ft_atoi(node->token[1]));
+		cmd_exit(get_data()->exit);
+	}
 }
 
 /*

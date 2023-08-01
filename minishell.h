@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 13:48:31 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 14:09:26 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		cmd_echo(char **line);
 void		cmd_env(void);
 void		cmd_export(char **variable);
 void		cmd_unset(char **variable);
-void		cmd_exit(void);
+void		cmd_exit(int number);
 
 /* Parsing */
 

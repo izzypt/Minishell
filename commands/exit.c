@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/07/29 18:16:39 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 13:58:21 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* Should release all allocated resources before exiting */
-void	cmd_exit(void)
+void	cmd_exit(int number)
 {
 	t_env	*lst;
 	t_env	*tmp;
@@ -31,5 +31,5 @@ void	cmd_exit(void)
 		free(lst);
 		lst = tmp;
 	}
-	exit(0);
+	exit(number);
 }

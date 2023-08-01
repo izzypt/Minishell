@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 09:19:41 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:10:20 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_user_input(void)
 	input = readline("$> ");
 	if (input == NULL)
 	{
-		cmd_exit();
+		cmd_exit(get_data()->exit);
 		return ;
 	}
 	if (ft_strlen(input) == 0)

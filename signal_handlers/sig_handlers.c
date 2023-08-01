@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handlers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/07/31 21:57:18 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 14:09:52 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	handle_sigquit(int sig)
 		get_data()->exit = 127 + sig;
 		printf("Quit (core dumped)\n");
 		free_parse();
-		cmd_exit();
+		cmd_exit(get_data()->exit);
 	}
 	else
 	{
