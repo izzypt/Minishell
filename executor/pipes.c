@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/07/31 20:21:19 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:14:04 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	output_from_pipe(t_list *node)
 {
 	int	pid;
+	int	status;
 
 	get_data()->executing_cmd = 1;
 	pid = fork();
@@ -35,7 +36,9 @@ void	output_from_pipe(t_list *node)
 	}
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
-	waitpid(pid, NULL, 0);
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		get_data()->exit = WEXITSTATUS(status);
 	get_data()->executing_cmd = 0;
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
@@ -46,14 +49,11 @@ void	output_from_pipe(t_list *node)
 */
 void	write_to_pipe(t_list *node)
 {
+	int	status;
+
 	if (check_redirection(node->prev) == 5)
 		return ;
-	if (check_redirection(node->prev) == 1)
-	{
-		close(get_pipe()->fd[1]);
-		dup2(get_pipe()->fd[0], STDIN_FILENO);
-		close(get_pipe()->fd[0]);
-	}
+	redirect_stdin_to_pipe(node);
 	pipe(get_pipe()->fd);
 	get_data()->executing_cmd = 1;
 	get_data()->pid = fork();
@@ -68,7 +68,9 @@ void	write_to_pipe(t_list *node)
 			execve(node->path, node->token, NULL);
 		exit(0);
 	}
-	waitpid(get_data()->pid, NULL, 0);
+	waitpid(get_data()->pid, &status, 0);
+	if (WIFEXITED(status))
+		get_data()->exit = WEXITSTATUS(status);
 	get_data()->executing_cmd = 0;
 }
 
@@ -84,14 +86,10 @@ void	write_to_fd(t_list *node)
 {
 	int		pid;
 	int		outfile;
+	int		status;
 
 	outfile = open(node->next->next->token[0], O_WRONLY | O_CREAT, 0644);
-	if (check_redirection(node->prev) == 1)
-	{
-		close(get_pipe()->fd[1]);
-		dup2(get_pipe()->fd[0], STDIN_FILENO);
-		close(get_pipe()->fd[0]);
-	}
+	redirect_stdin_to_pipe(node);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -103,7 +101,9 @@ void	write_to_fd(t_list *node)
 		exit(0);
 	}
 	close(outfile);
-	waitpid(pid, NULL, 0);
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 	dup2(get_pipe()->stdout, STDOUT_FILENO);
 }
@@ -116,14 +116,10 @@ void	append_to_fd(t_list *node)
 {
 	int		pid;
 	int		out;
+	int		status;
 
 	out = open(node->next->next->token[0], O_CREAT | O_APPEND | O_WRONLY, 0644);
-	if (check_redirection(node->prev) == 1)
-	{
-		close(get_pipe()->fd[1]);
-		dup2(get_pipe()->fd[0], STDIN_FILENO);
-		close(get_pipe()->fd[0]);
-	}
+	redirect_stdin_to_pipe(node);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -132,7 +128,8 @@ void	append_to_fd(t_list *node)
 		exit(0);
 	}
 	close(out);
-	waitpid(pid, NULL, 0);
+	if (WIFEXITED(status))
+		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
@@ -140,6 +137,7 @@ void	input_from_fd(t_list *node)
 {
 	int		pid;
 	int		in;
+	int		status;
 
 	in = open(node->next->next->token[0], O_RDONLY, 0644);
 	get_data()->executing_cmd = 1;
@@ -151,7 +149,8 @@ void	input_from_fd(t_list *node)
 		exit(0);
 	}
 	close(in);
-	waitpid(pid, NULL, 0);
+	if (WIFEXITED(status))
+		get_data()->exit = WEXITSTATUS(status);
 	get_data()->executing_cmd = 0;
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 	dup2(get_pipe()->stdout, STDOUT_FILENO);

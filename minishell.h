@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 11:29:51 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:14:37 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,5 +144,6 @@ char		**list_to_array(void);
 /* Utils */
 int			is_builtin(t_list *node);
 int			replace_env_var(char *key, char *value);
+void		redirect_stdin_to_pipe(t_list *node);
 
 #endif

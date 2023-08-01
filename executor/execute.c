@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/01 11:20:15 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:16:40 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	execute_input(t_list *node, char **envp)
 			if (!access(node->token[0], X_OK))
 				node->path = node->token[0];
 			execve(node->path, node->token, envp);
-			printf("Error number is: %d", errno);
 			exit(6);
 		}
 		waitpid(pid1, &status, 0);

@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 11:37:48 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 11:58:19 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	write_to_command(t_list *cur)
 {
 	int	pid;
 	int	in;
+	int	status;
 
 	pid = fork();
 	if (pid == 0)
@@ -34,7 +35,9 @@ void	write_to_command(t_list *cur)
 		close(in);
 		exit(0);
 	}
-	waitpid(pid, NULL, 0);
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 	unlink(cur->next->token[0]);
 }
