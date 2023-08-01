@@ -6,14 +6,20 @@
 #    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/07/31 21:37:22 by esali            ###   ########.fr        #
+#    Updated: 2023/08/01 09:16:51 by esali            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME =		minishell
 
-SRCS =		minishell.c parse/*.c commands/*.c signal_handlers/*.c utils/*.c executor/*.c \
+SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
+			parse/scanner_split.c parse/scanner.c parse/syntax.c parse/var_expansion.c \
+			commands/cd.c commands/echo.c commands/env.c commands/exit.c commands/export.c \
+			commands/pwd.c commands/unset.c signal_handlers/sig_handlers.c utils/data.c \
+			utils/free_parse.c utils/ft_join.c utils/getters.c utils/list_functions.c \
+			utils/list_to_array.c utils/replace_env_var.c executor/execute.c executor/heredoc.c \
+			executor/pipes.c executor/redirections.c
 
 CFLAGS =	-Wall -Wextra -Werror -fsanitize=address -g
 RM =		rm

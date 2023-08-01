@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 22:21:16 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 09:02:50 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ char	*get_next_prompt(void)
 	return (input);
 }
 
+	/*
+	if (cur->next->next != NULL)
+	{
+		//if (check_redirection(cur->next->next) == 1)
+	}
+	else
+	*/
 void	write_to_command(t_list *cur)
 {
 	int	pid;
@@ -30,12 +37,7 @@ void	write_to_command(t_list *cur)
 	{
 		in = open(cur->next->token[0], O_RDONLY, 0644);
 		dup2(in, STDIN_FILENO);
-		if (cur->next->next != NULL)
-		{
-			//if (check_redirection(cur->next->next) == 1)
-		}
-		else
-			execve(cur->prev->path, cur->prev->token, NULL);
+		execve(cur->prev->path, cur->prev->token, NULL);
 		close(in);
 		exit(0);
 	}

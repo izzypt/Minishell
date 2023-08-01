@@ -1,6 +1,12 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
+# ToDO
+[] remove comment heredoc
+[] norminette issue
+[] remove wildcards Makefile
+[] remove .md files (README and todo.md)
+
 ## Current Fails
 
 - [X] Memory Leak on token when killing the shell in the middle of a process.
