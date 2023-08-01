@@ -31,7 +31,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] export: memory leaks
 - [] heredoc
 - [X] unclosed quotes
-- [] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
+- [X] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
 
 ```
 $> echo $TERM_PROGRAM

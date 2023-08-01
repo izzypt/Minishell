@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 14:23:44 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 15:45:23 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	check_options(char **token)
 	return (0);
 }
 
-/* checks for . .. and / and if command is valid and checks options for build ins */
 int	check_lexical(void)
 {
 	t_list	*list;
@@ -87,7 +86,7 @@ int	check_lexical(void)
 		else
 			check = check_options(list->token);
 		if (check)
-				return (check);
+			return (check);
 		while (list->next != NULL && !is_pipe(list->token[0]))
 			list = list->next;
 		list = list->next;

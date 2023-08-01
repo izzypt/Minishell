@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
+#    By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/08/01 14:28:54 by esali            ###   ########.fr        #
+#    Updated: 2023/08/01 14:45:58 by smagalha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			executor/heredoc_util.c executor/pipes.c executor/redirections.c utils/symbols.c \
 			utils/duplicates_std.c
 
-CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS =	-Wall -Wextra -Werror -fsanitize=address -g
 RM =		rm
 
 LIBFT =		libft/
