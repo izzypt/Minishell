@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 18:27:00 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 20:48:01 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	cmd_exit(int number)
 		free(lst);
 		lst = tmp;
 	}
+	free_parse()
 	exit(number);
 }
