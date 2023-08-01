@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/07/31 15:16:12 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:02:24 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	command_chain(t_list *node)
 		else if (check_redirection(curr->next) == 5)
 		{
 			heredoc(curr->next);
-			curr = curr->next->next;
+			if (curr->next->next->next != NULL)
+				curr = curr->next->next->next;
 		}
 		curr = curr->next;
 	}

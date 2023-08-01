@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 12:14:37 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:48:31 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,14 @@ void		output_from_pipe(t_list *node);
 void		write_to_fd(t_list *node);
 void		append_to_fd(t_list *node);
 void		input_from_fd(t_list *node);
+
+/* Heredocs */
+
 void		heredoc(t_list *cur);
+void		heredoc_to_pipe(t_list *cur);
+void		write_to_command(t_list *cur);
+void		heredoc_to_fd(t_list *cur);
+void		heredoc_to_append(t_list *cur);
 
 /* Struct Getters */
 

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 12:19:27 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 13:46:32 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,6 @@ char	*get_next_prompt(void)
 
 	input = readline(">");
 	return (input);
-}
-
-void	write_to_command(t_list *cur)
-{
-	int	pid;
-	int	in;
-	int	status;
-
-	pid = fork();
-	if (pid == 0)
-	{
-		in = open(cur->next->token[0], O_RDONLY, 0644);
-		dup2(in, STDIN_FILENO);
-		execve(cur->prev->path, cur->prev->token, NULL);
-		close(in);
-		exit(0);
-	}
-	waitpid(pid, &status, 0);
-	if (WIFEXITED(status))
-		get_data()->exit = WEXITSTATUS(status);
-	dup2(get_pipe()->stdin, STDIN_FILENO);
-	unlink(cur->next->token[0]);
 }
 
 char	*check_env(char	*line)
@@ -60,6 +38,18 @@ char	*check_env(char	*line)
 	free(c);
 	free(line);
 	return (str);
+}
+
+void	exec_heredoc(t_list *cur)
+{
+	if (!cur->next->next)
+		write_to_command(cur);
+	if (check_redirection(cur->next->next) == 1)
+		heredoc_to_pipe(cur);
+	if (check_redirection(cur->next->next) == 2)
+		heredoc_to_fd(cur);
+	if (check_redirection(cur->next->next) == 4)
+		heredoc_to_append(cur);
 }
 
 void	heredoc(t_list *cur)
@@ -85,5 +75,4 @@ void	heredoc(t_list *cur)
 	}
 	free(new_line);
 	close(hdoc->fd);
-	write_to_command(cur);
 }
