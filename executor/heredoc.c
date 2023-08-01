@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 13:46:32 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 17:26:40 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	heredoc(t_list *cur)
 		new_line = get_next_prompt();
 	}
 	free(new_line);
+	exec_heredoc(cur);
 	close(hdoc->fd);
 }

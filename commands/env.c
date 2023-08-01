@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/07/29 17:45:43 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 17:43:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ void	cmd_env(void)
 	env = env->nxt;
 	if (env == NULL)
 	{
-		printf("No environment variables found.\n");
+		ft_printf("No environment variables found.\n");
 		return ;
 	}
 	while (env)
 	{
-		printf("%s=%s\n", env->key, env->value);
+		ft_printf("%s=%s\n", env->key, env->value);
 		env = env->nxt;
 	}
 }

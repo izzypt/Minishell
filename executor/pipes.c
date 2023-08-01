@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 12:14:04 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:27:36 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	write_to_fd(t_list *node)
 	int		outfile;
 	int		status;
 
-	outfile = open(node->next->next->token[0], O_WRONLY | O_CREAT, 0644);
+	outfile = open(node->next->next->token[0], O_WRONLY | O_TRUNC, 0644);
 	redirect_stdin_to_pipe(node);
 	pid = fork();
 	if (pid == 0)
