@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   symbols.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:27:25 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/01 11:44:20 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:58:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ int	is_input(char *token)
 
 int	is_pipe(char *token)
 {
-	if (ft_strncmp(token, "|", 1) == 0)
+	int	len;
+
+	if (ft_strlen(token) > 1)
+		len = ft_strlen(token);
+	else
+		len = 1;
+	if (ft_strncmp(token, "|", len) == 0)
 		return (1);
 	return (0);
 }

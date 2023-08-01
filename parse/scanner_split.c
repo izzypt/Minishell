@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 10:26:26 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 20:19:18 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 16:16:45 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,25 +85,28 @@ checks if next element has env variable and removes quotes
 returns next token element
 count[0] : i
 count[1] : len
+count[2] : flag
 */
 char	*modify_token(char *input)
 {
 	int		*c;
 	char	*str;
 
-	c = (int *)malloc(sizeof(int) * 3);
+	c = (int *)malloc(sizeof(int) * 4);
 	c[0] = 0;
 	c[1] = ft_strlen(input);
 	str = ft_strdup(input);
 	while (c[0] < c[1])
 	{
+		c[2] = 0;
 		if (str[c[0]] == 39)
 			str = remove_quotes(str, c, 39);
 		if (str[c[0]] == '"')
 			str = manage_double_quotes(str, c);
 		if (str[c[0]] == '$')
 			str = manage_env(str, c);
-		c[0]++;
+		if (c[2] == 0)
+			c[0]++;
 	}
 	free(c);
 	free(input);

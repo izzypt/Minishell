@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:51:02 by esali             #+#    #+#             */
-/*   Updated: 2023/07/29 12:33:58 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 16:39:58 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	*remove_quotes(char *str, int *count, char c)
 		{
 			ret = remove_char(ret, count[0]);
 			count[1]--;
+			count[2] = 2;
 		}
 	}
 	free(str);
@@ -75,6 +76,7 @@ char	*manage_double_quotes(char *str, int *c)
 	{
 		ret = remove_char(ret, c[0]);
 		c[1]--;
+		c[2] = 1;
 	}
 	free(str);
 	return (ret);
