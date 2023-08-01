@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 19:30:42 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 20:18:10 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ t_env	*duplicate_list(t_env	*src)
 
 void	print_sorted_env(t_env	*sorted_temp)
 {
-	while (sorted_temp)
+	t_env	*tmp;
+
+	tmp = sorted_temp;
+	while (tmp)
 	{
-		if (sorted_temp->value)
-			printf("declare -x %s=%s\n", sorted_temp->key, sorted_temp->value);
+		if (tmp->value)
+			printf("declare -x %s=%s\n", tmp->key, tmp->value);
 		else
-			printf("declare -x %s\n", sorted_temp->key);
-		sorted_temp = sorted_temp->nxt;
+			printf("declare -x %s\n", tmp->key);
+		tmp = tmp->nxt;
 	}
 }
 
@@ -62,38 +65,15 @@ void	sort_alphabetically(void)
 {
 	t_env	*env;
 	t_env	*sorted_env;
-	t_env	*next;
-	t_env	*temp;
 	t_env	*duplicate_env;
-	t_env	*sorted_temp;
 
 	env = get_env()->nxt;
 	duplicate_env = duplicate_list(env);
 	sorted_env = NULL;
 	if (duplicate_env == NULL)
 		print_env_error();
-	while (duplicate_env)
-	{
-		next = duplicate_env->nxt;
-        if (sorted_env == NULL || ft_strncmp(duplicate_env->key, sorted_env->key, ft_strlen(sorted_env->key)) < 0)
-		{
-			duplicate_env->nxt = sorted_env;
-			sorted_env = duplicate_env;
-		}
-		else
-		{
-			temp = sorted_env;
-			while (temp->nxt != NULL && ft_strncmp(duplicate_env->key, temp->nxt->key, ft_strlen(sorted_env->key)) >= 0)
-			{
-				temp = temp->nxt;
-			}
-			duplicate_env->nxt = temp->nxt;
-			temp->nxt = duplicate_env;
-		}
-		duplicate_env = next;
-	}
-	sorted_temp = sorted_env;
-	print_sorted_env(sorted_temp);
+	sorted_env = sort_loop(duplicate_env, sorted_env);
+	print_sorted_env(sorted_env);
 	release_sorted_env(sorted_env);
 }
 
@@ -122,10 +102,7 @@ void	cmd_export(char **variable)
 	lst->nxt = malloc(sizeof(t_env));
 	lst = lst->nxt;
 	lst->key = ft_strdup(key_value[0]);
-	if (key_value[1] == NULL)
-		lst->value = NULL;
-	else
-		lst->value = ft_strdup(key_value[1]);
+	assign_value(key_value[1], lst);
 	lst->nxt = NULL;
 	free_keys(key_value);
 }
