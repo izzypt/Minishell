@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 09:02:50 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 11:37:48 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ char	*get_next_prompt(void)
 	return (input);
 }
 
-	/*
-	if (cur->next->next != NULL)
-	{
-		//if (check_redirection(cur->next->next) == 1)
-	}
-	else
-	*/
 void	write_to_command(t_list *cur)
 {
 	int	pid;

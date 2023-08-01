@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 09:19:27 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 11:29:51 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <signal.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <errno.h>
 
 /* Custom Libraries */
 
@@ -65,6 +66,7 @@ typedef struct s_data
 	char	**envp;
 	int		executing_cmd;
 	int		pid;
+	int		log_fd;
 }				t_data;
 
 /* Builtin Commands */

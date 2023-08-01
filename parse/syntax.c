@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 21:53:54 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 11:29:12 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	is_pipe(char *token)
-{
-	if (ft_strncmp(token, "|", 1) == 0)
-		return (1);
-	return (0);
-}
 
 // checks if token is redirection
 int	is_red(char *token)

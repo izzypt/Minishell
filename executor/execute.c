@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/07/30 23:20:58 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 11:20:15 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	execute_input(t_list *node, char **envp)
 {
 	int		pid1;
+	int		status;
 
 	if (ft_lstsize(node) > 1)
 		command_chain(node);
@@ -33,9 +34,12 @@ void	execute_input(t_list *node, char **envp)
 			if (!access(node->token[0], X_OK))
 				node->path = node->token[0];
 			execve(node->path, node->token, envp);
-			exit(0);
+			printf("Error number is: %d", errno);
+			exit(6);
 		}
-		waitpid(pid1, NULL, 0);
+		waitpid(pid1, &status, 0);
+		if (WIFEXITED(status))
+			get_data()->exit = WEXITSTATUS(status);
 		get_data()->executing_cmd = 0;
 	}
 }
