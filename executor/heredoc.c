@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 11:58:19 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:19:27 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,26 @@ void	write_to_command(t_list *cur)
 	unlink(cur->next->token[0]);
 }
 
+char	*check_env(char	*line)
+{
+	int		*c;
+	char	*str;
+
+	c = (int *)malloc(sizeof(int) * 3);
+	c[0] = 0;
+	c[1] = ft_strlen(line);
+	str = ft_strdup(line);
+	while (c[0] < c[1])
+	{
+		if (str[c[0]] == '$')
+			str = manage_env(str, c);
+		c[0]++;
+	}
+	free(c);
+	free(line);
+	return (str);
+}
+
 void	heredoc(t_list *cur)
 {
 	char		*new_line;
@@ -57,6 +77,7 @@ void	heredoc(t_list *cur)
 		len = ft_strlen(new_line);
 	while (ft_strncmp(cur->next->token[0], new_line, len) != 0)
 	{
+		new_line = check_env(new_line);
 		write(hdoc->fd, new_line, ft_strlen(new_line));
 		write(hdoc->fd, "\n", 1);
 		free(new_line);
