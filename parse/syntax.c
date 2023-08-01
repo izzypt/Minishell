@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 11:29:12 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:27:58 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	check_unclosed_quotes(char *input)
 int	check_syntax(char **token, char *input)
 {
 	int	i;
+	int	check;
 
 	if (check_unclosed_quotes(input))
 		return (1);
@@ -65,8 +66,9 @@ int	check_syntax(char **token, char *input)
 	i = 0;
 	while (token[i + 1])
 	{
-		if (check_following_red(token, i) != 0)
-			return (check_following_red(token, i));
+		check = check_following_red(token, i);
+		if (check != 0)
+			return (check);
 		i++;
 	}
 	if (is_special_char(token[i]))

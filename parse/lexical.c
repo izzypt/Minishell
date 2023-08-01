@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/07/31 21:55:28 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 14:23:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ int	is_built_in(char *token)
 		return (0);
 }
 
+int	check_options(char **token)
+{
+	if (token[1] == NULL)
+		return (0);
+	else if (!ft_strncmp(token[0], "echo", 4) && !ft_strncmp(token[1], "-n", 2))
+		return (0);
+	else if (token[1][0] == '-')
+	{
+		ft_printf("%s: %s: invalid option\n", token[0], token[1]);
+		return (2);
+	}
+	return (0);
+}
+
+/* checks for . .. and / and if command is valid and checks options for build ins */
 int	check_lexical(void)
 {
 	t_list	*list;
@@ -68,9 +83,11 @@ int	check_lexical(void)
 				return (127);
 			}
 			check = check_is_special_char(list->token[0]);
-			if (check)
-				return (check);
 		}
+		else
+			check = check_options(list->token);
+		if (check)
+				return (check);
 		while (list->next != NULL && !is_pipe(list->token[0]))
 			list = list->next;
 		list = list->next;
