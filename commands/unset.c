@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:50 by simao             #+#    #+#             */
-/*   Updated: 2023/06/20 17:23:06 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/01 16:53:33 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	cmd_unset(char **variable)
 	t_env	*tmp;
 
 	lst = get_env();
+	if (!variable[1])
+		return ;
 	while (lst != NULL)
 	{
 		if (lst->nxt == NULL)

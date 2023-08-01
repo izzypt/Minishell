@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/06/21 17:50:47 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:51:17 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	cmd_export(char **variable)
 	t_env	*lst;
 
 	lst = get_env();
-	if (!ft_strchr(variable[1], '='))
+	if (!variable[1] || !ft_strchr(variable[1], '='))
 		return ;
 	key_value = ft_split(variable[1], '=');
 	if (replace_env_var(key_value[0], key_value[1]))
@@ -35,3 +35,8 @@ void	cmd_export(char **variable)
 	lst->nxt = NULL;
 	free_keys(key_value);
 }
+
+/*void print_env_alphabetically()
+{
+	
+}*/
