@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 18:07:22 by smagalha         ###   ########.fr       */
+/*   Created: 2023/08/01 17:59:56 by smagalha          #+#    #+#             */
+/*   Updated: 2023/08/01 18:07:00 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* Should release all allocated resources before exiting */
-void	cmd_exit(int number)
+void	print_env_error(void)
 {
-	t_env	*lst;
-	t_env	*tmp;
-
-	printf("exit on process: %d.\n", getpid());
-	lst = get_env();
-	lst = lst->nxt;
-	if (get_data()->envp)
-		free_keys(get_data()->envp);
-	while (lst != NULL)
-	{
-		tmp = lst->nxt;
-		free(lst->key);
-		free(lst->value);
-		free(lst);
-		lst = tmp;
-	}
-	exit(number);
+	printf("No environment variables found.\n");
+	return ;
 }
