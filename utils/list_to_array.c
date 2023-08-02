@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_to_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:17:44 by smagalha          #+#    #+#             */
-/*   Updated: 2023/06/26 22:04:02 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/02 13:34:16 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*join_pair(char *key, const char *value)
 
 	i = 0;
 	j = 0;
+	if (!value || !key)
+		return (NULL);
 	pair = malloc(sizeof(char) * (ft_strlen(key) + ft_strlen(value)) + 2);
 	while (key[i] != '\0')
 	{
@@ -68,7 +70,8 @@ char	**list_to_array(void)
 	strings = malloc(sizeof(char *) *(lst_len + 1));
 	while (i < lst_len)
 	{
-		strings[i] = join_pair(curr->key, curr->value);
+		if (curr->value && curr->key)
+			strings[i] = join_pair(curr->key, curr->value);
 		curr = curr->nxt;
 		i++;
 	}

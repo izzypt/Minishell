@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 19:26:53 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/02 16:22:38 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,21 @@ void	free_keys(char **keys)
 }
 
 /*
+- Set the key and the value of each environment variable.
+*/
+void	set_env_key_value_pair(char **keys, t_env *lst)
+{
+	if (keys[0] != NULL)
+		lst->key = ft_strdup(keys[0]);
+	else
+		lst->key = NULL;
+	if (keys[1] != NULL)
+		lst->value = ft_strdup(keys[1]);
+	else
+		lst->value = NULL;
+}
+
+/*
 - Creates a new node for each variable in env.
 - Each node holds the key and the value of a env variable.
 */
@@ -60,8 +75,7 @@ void	create_env(char **env)
 	while (env[i])
 	{
 		keys = ft_split(env[i], '=');
-		lst->key = ft_strdup(keys[0]);
-		lst->value = ft_strdup(keys[1]);
+		set_env_key_value_pair(keys, lst);
 		free_keys(keys);
 		if (env[i + 1] != NULL)
 		{
