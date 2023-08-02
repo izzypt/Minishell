@@ -32,6 +32,6 @@ void	cmd_exit(int number)
 		free(lst);
 		lst = tmp;
 	}
-	free_parse()
+	free_parse();
 	exit(number);
 }

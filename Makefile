@@ -22,7 +22,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			executor/heredoc_util.c executor/pipes.c executor/redirections.c utils/symbols.c \
 			utils/duplicates_std.c utils/error_handling.c utils/export_utils.c
 
-CFLAGS =	-Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
 RM =		rm
 
 LIBFT =		libft/
