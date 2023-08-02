@@ -4,16 +4,8 @@ This project is about creating a simple shell. We will learn a lot about process
 
 # ToDO
 
-[] memory leaks valgrind: /bin
-[] exit status of /bin (directory) -> maybe set manually
-
-[x] remove comment heredoc
-[x] norminette issue
-[x] remove wildcards Makefile
-[x] remove .md files (README and todo.md)
-
-## Current Fails
-
+- [] memory leaks valgrind: /bin
+- [] exit status of /bin (directory) -> maybe set manually
 - [X] Memory Leak on token when killing the shell in the middle of a process.
   - You can replicate when using: ```Ctrl-\``` in a blocking command like cat. Example:
 
@@ -28,28 +20,11 @@ This project is about creating a simple shell. We will learn a lot about process
     ```
 
 - [X] exit status execution
-- [X] Ctrl + \ -> should quit after we wrote some stuff
-- [X] Ctrl + C -> Double prompt
 - [X] . -> memory leaks
 - [X] .. -> memory leaks
-- [X] set new PATH-Variable
-- [X] export: memory leaks
 - [] heredoc
 - [X] unclosed quotes
 - [X] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
-
-```
-$> echo $TERM_PROGRAM
-vscode
-$> cat << EOF
->$TERM_PROGRAM
->outra linha
->EOF
-$TERM_PROGRAM
-outra linha
-$>
-```
-
 - [X] echo "$USER" | grep $USER
 
 ## TODO :
