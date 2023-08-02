@@ -22,7 +22,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] exit status execution
 - [X] . -> memory leaks
 - [X] .. -> memory leaks
-- [] heredoc
+- [X] heredoc
 - [X] unclosed quotes
 - [X] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
 - [X] echo "$USER" | grep $USER
