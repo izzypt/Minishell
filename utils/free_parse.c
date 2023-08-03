@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:45:41 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/03 19:27:12 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/03 20:43:28 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_parse(void)
 	{
 		tmp = node->next;
 		free_2d_array(node->token, len);
+		free(node->path);
 		free(node);
 		node = tmp;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 18:40:55 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/03 21:06:27 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	cmd_exit(int number)
 		free(lst);
 		lst = tmp;
 	}
-	//free_parse();
+	free_parse();
 	exit(number);
 }
 

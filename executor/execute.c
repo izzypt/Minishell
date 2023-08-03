@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/03 18:51:21 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/03 21:23:36 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	execute_input(t_list *node, char **envp)
 		if (pid1 == 0)
 		{
 			if (!access(node->token[0], X_OK))
-				node->path = node->token[0];
+				node->path = ft_strdup(node->token[0]);
 			execve(node->path, node->token, envp);
 			free_keys(get_data()->envp);
 			free_env();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 14:21:15 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/03 21:25:04 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ void	write_to_fd(t_list *node)
 	int		outfile;
 	int		status;
 
-	outfile = open(node->next->next->token[0], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	outfile = open(node->next->next->token[0], \
+	O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	redirect_stdin_to_pipe(node);
 	pid = fork();
 	if (pid == 0)
@@ -98,6 +99,9 @@ void	write_to_fd(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		free_keys(get_data()->envp);
+		free_env();
+		free_parse();
 		exit(errno);
 	}
 	close(outfile);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
+#    By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/08/01 19:53:59 by esali            ###   ########.fr        #
+#    Updated: 2023/08/03 20:37:13 by smagalha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			utils/duplicates_std.c utils/error_handling.c utils/export_utils.c
 
 CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
+
 RM =		rm
 
 LIBFT =		libft/
@@ -42,5 +43,8 @@ clean:
 fclean:
 			cd $(LIBFT) && make fclean && cd ..
 			$(RM) $(NAME)
+
+valgrind_supp: all
+				valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=readline.supp ./$(NAME)
 
 re: 		fclean all
