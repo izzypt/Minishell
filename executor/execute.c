@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/03 21:23:36 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/03 23:18:19 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void	execute_input(t_list *node, char **envp)
 			if (!access(node->token[0], X_OK))
 				node->path = ft_strdup(node->token[0]);
 			execve(node->path, node->token, envp);
-			free_keys(get_data()->envp);
-			free_env();
-			free_parse();
-			exit(errno);
+			cmd_exit(errno);
 		}
 		waitpid(pid1, &status, 0);
 		if (WIFEXITED(status))

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+         #
+#    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/08/03 20:37:13 by smagalha         ###   ########.fr        #
+#    Updated: 2023/08/03 23:15:19 by simao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			utils/free_parse.c utils/ft_join.c utils/getters.c utils/list_functions.c \
 			utils/list_to_array.c utils/replace_env_var.c executor/execute.c executor/heredoc.c \
 			executor/heredoc_util.c executor/pipes.c executor/redirections.c utils/symbols.c \
-			utils/duplicates_std.c utils/error_handling.c utils/export_utils.c
+			utils/duplicates_std.c utils/error_handling.c utils/export_utils.c utils/fd_helpers.c \
+			executor/command_chain.c
 
 CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
 

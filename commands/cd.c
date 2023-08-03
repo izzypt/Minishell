@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 17:47:42 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/03 23:36:39 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@
 */
 void	cmd_cd(char **path)
 {
-	char	cwd[1024];
 	char	*parsed_path;
-	char	*oldpwd;
 
 	parsed_path = ft_strdup(path[1]);
-	oldpwd = ft_strdup(getcwd(cwd, sizeof(cwd)));
 	if (chdir(parsed_path) != 0)
 	{
 		if (access(parsed_path, F_OK) == -1)
@@ -38,11 +35,6 @@ void	cmd_cd(char **path)
 			write(2, "minishell: cd: permission denied\n", 34);
 		else
 			write(2, "minishell: cd: not a directory\n", 32);
-	}
-	else
-	{
-		replace_env_var("OLDPWD", oldpwd);
-		replace_env_var("PWD", ft_strdup(getcwd(cwd, sizeof(cwd))));
 	}
 	free(parsed_path);
 }

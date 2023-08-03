@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/03 21:50:27 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:56:45 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,6 @@ void		redirect_stdin_to_pipe(t_list *node);
 void		redirect_stdout_to_pipe(void);
 void		print_env_error(void);
 void		free_env(void);
+int			open_file(t_list *node);
 
 #endif
