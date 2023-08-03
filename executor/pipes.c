@@ -6,7 +6,7 @@
 /*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 21:25:04 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:11:43 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ void	output_from_pipe(t_list *node)
 	pid = fork();
 	if (pid == 0)
 	{
-		close(get_pipe()->fd[1]);
-		dup2(get_pipe()->fd[0], STDIN_FILENO);
-		close(get_pipe()->fd[0]);
+		redirect_stdin_to_pipe(node);
 		if (is_builtin(node))
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		free_keys(get_data()->envp);
+		free_env();
+		free_parse();
 		exit(errno);
 	}
 	close(get_pipe()->fd[1]);
@@ -59,13 +60,14 @@ void	write_to_pipe(t_list *node)
 	get_data()->pid = fork();
 	if (get_data()->pid == 0)
 	{
-		close(get_pipe()->fd[0]);
-		dup2(get_pipe()->fd[1], STDOUT_FILENO);
-		close(get_pipe()->fd[1]);
+		redirect_stdout_to_pipe();
 		if (is_builtin(node))
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		free_keys(get_data()->envp);
+		free_env();
+		free_parse();
 		exit(errno);
 	}
 	waitpid(get_data()->pid, &status, 0);
@@ -129,6 +131,9 @@ void	append_to_fd(t_list *node)
 	{
 		dup2(out, STDOUT_FILENO);
 		execve(node->path, node->token, NULL);
+		free_keys(get_data()->envp);
+		free_env();
+		free_parse();
 		exit(errno);
 	}
 	close(out);
@@ -150,6 +155,9 @@ void	input_from_fd(t_list *node)
 	{
 		dup2(in, STDIN_FILENO);
 		execve(node->path, node->token, NULL);
+		free_keys(get_data()->envp);
+		free_env();
+		free_parse();
 		exit(errno);
 	}
 	close(in);
