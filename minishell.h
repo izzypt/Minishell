@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 20:16:45 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/03 19:13:09 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_list
 	char			*path;
 	struct s_list	*next;
 	struct s_list	*prev;
+	int				tokens_len;
 }				t_list;
 
 typedef struct s_env
@@ -155,5 +156,6 @@ int			is_builtin(t_list *node);
 int			replace_env_var(char *key, char *value);
 void		redirect_stdin_to_pipe(t_list *node);
 void		print_env_error(void);
+void		free_env(void);
 
 #endif

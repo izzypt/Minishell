@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/08/02 16:22:38 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/03 18:57:49 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ void	free_keys(char **keys)
 	int	j;
 
 	j = 0;
-	if (!*keys || !keys[0])
-		return ;
 	while (keys[j])
 	{
-		free(keys[j]);
+		if (keys[j])
+			free(keys[j]);
 		j++;
 	}
 	free(keys);
