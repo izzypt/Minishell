@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:17:44 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/02 13:34:16 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/03 13:48:32 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,13 @@ char	**list_to_array(void)
 	i = 0;
 	curr = get_env()->nxt;
 	lst_len = ft_envsize(curr);
-	strings = malloc(sizeof(char *) *(lst_len + 1));
+	strings = ft_calloc(sizeof(char *) *(lst_len + 1), lst_len + 1);
 	while (i < lst_len)
 	{
 		if (curr->value && curr->key)
 			strings[i] = join_pair(curr->key, curr->value);
+		else
+			strings[i] = ft_calloc(1, 1);
 		curr = curr->nxt;
 		i++;
 	}
