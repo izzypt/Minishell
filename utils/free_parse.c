@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:45:41 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/03 20:43:28 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:05:57 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	free_parse(void)
 	int		len;
 
 	node = list_heads()->next;
-	len = list_heads()->tokens_len;
+	len = ft_lstsize(node);
+	printf("list size is %d\n", len);
 	while (node != NULL)
 	{
 		tmp = node->next;
