@@ -6,13 +6,13 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:45:41 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/04 20:35:53 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/04 20:45:05 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	free_2d_array(char **array, int rows)
+/*void	free_2d_array(char **array, int rows)
 {
 	int	i;
 
@@ -39,17 +39,14 @@ void	free_2d_array(char **array, int rows)
 		i++;
 	}
 	free(array);
-}
+}*/
 
 void	free_parse(void)
 {
 	t_list	*node;
 	t_list	*tmp;
-	int		len;
 
 	node = list_heads()->next;
-	len = ft_lstsize(node);
-	printf("list size is %d\n", len);
 	while (node != NULL)
 	{
 		tmp = node->next;
