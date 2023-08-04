@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/04 20:23:27 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/04 22:48:17 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	write_to_fd(t_list *node)
 	if (pid == 0)
 	{
 		dup2(outfile, STDOUT_FILENO);
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 		cmd_exit(errno);
 	}
 	close(outfile);
@@ -59,7 +62,10 @@ void	append_to_fd(t_list *node)
 	if (pid == 0)
 	{
 		dup2(out, STDOUT_FILENO);
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 		cmd_exit(errno);
 	}
 	close(out);
@@ -80,7 +86,10 @@ void	input_from_fd(t_list *node)
 	if (pid == 0)
 	{
 		dup2(in, STDIN_FILENO);
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 		cmd_exit(errno);
 	}
 	close(in);

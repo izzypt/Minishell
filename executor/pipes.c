@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/04 20:23:55 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/04 22:46:38 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	output_from_pipe(t_list *node)
 	if (pid == 0)
 	{
 		redirect_stdin_to_pipe(node);
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 		cmd_exit(errno);
 	}
 	close(get_pipe()->fd[1]);
@@ -55,7 +58,10 @@ void	write_to_pipe(t_list *node)
 	if (get_data()->pid == 0)
 	{
 		redirect_stdout_to_pipe();
-		execve(node->path, node->token, NULL);
+		if (is_builtin(node))
+			execute_builtin(node);
+		else
+			execve(node->path, node->token, NULL);
 		cmd_exit(errno);
 	}
 	waitpid(get_data()->pid, &status, 0);
