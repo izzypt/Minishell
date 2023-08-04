@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:45:41 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/04 12:05:57 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/04 20:35:53 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ void	free_2d_array(char **array, int rows)
 	i = 0;
 	if (array == NULL)
 		return ;
+	while (i < rows)
+	{
+		if (array[i] != NULL)
+		{
+			ft_printf("token: %s\n", array[i]);
+			array[i] = NULL;
+		}
+		i++;
+	}
+	i = 0;
 	while (i < rows)
 	{
 		if (array[i] != NULL)
@@ -43,7 +53,7 @@ void	free_parse(void)
 	while (node != NULL)
 	{
 		tmp = node->next;
-		free_2d_array(node->token, len);
+		free_keys(node->token);
 		free(node->path);
 		free(node);
 		node = tmp;

@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/04 00:24:07 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/04 20:23:55 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	output_from_pipe(t_list *node)
 	{
 		redirect_stdin_to_pipe(node);
 		execve(node->path, node->token, NULL);
-		free_keys(get_data()->envp);
-		free_env();
-		free_parse();
-		exit(errno);
+		cmd_exit(errno);
 	}
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
@@ -59,10 +56,7 @@ void	write_to_pipe(t_list *node)
 	{
 		redirect_stdout_to_pipe();
 		execve(node->path, node->token, NULL);
-		free_keys(get_data()->envp);
-		free_env();
-		free_parse();
-		exit(errno);
+		cmd_exit(errno);
 	}
 	waitpid(get_data()->pid, &status, 0);
 	if (WIFEXITED(status))

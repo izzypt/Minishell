@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/04 00:22:04 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/04 20:23:27 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ void	write_to_fd(t_list *node)
 	{
 		dup2(outfile, STDOUT_FILENO);
 		execve(node->path, node->token, NULL);
-		free_keys(get_data()->envp);
-		free_env();
-		free_parse();
-		exit(errno);
+		cmd_exit(errno);
 	}
 	close(outfile);
 	waitpid(pid, &status, 0);
@@ -63,10 +60,7 @@ void	append_to_fd(t_list *node)
 	{
 		dup2(out, STDOUT_FILENO);
 		execve(node->path, node->token, NULL);
-		free_keys(get_data()->envp);
-		free_env();
-		free_parse();
-		exit(errno);
+		cmd_exit(errno);
 	}
 	close(out);
 	if (WIFEXITED(status))
@@ -87,10 +81,7 @@ void	input_from_fd(t_list *node)
 	{
 		dup2(in, STDIN_FILENO);
 		execve(node->path, node->token, NULL);
-		free_keys(get_data()->envp);
-		free_env();
-		free_parse();
-		exit(errno);
+		cmd_exit(errno);
 	}
 	close(in);
 	if (WIFEXITED(status))
