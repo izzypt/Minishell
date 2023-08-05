@@ -1,35 +1,6 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
-
-# ToDO
-
-- [] memory leaks valgrind: /bin
-- [] exit status of /bin (directory) -> maybe set manually
-- [X] Memory Leak on token when killing the shell in the middle of a process.
-  - You can replicate when using: ```Ctrl-\``` in a blocking command like cat. Example:
-
-    ```
-    ==492086== 4 bytes in 1 blocks are still reachable in loss record 3 of 72
-    ==492086==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-    ==492086==    by 0x10CE9A: ft_strdup (in /nfs/homes/smagalha/Desktop/Minishell/minishell)
-    ==492086==    by 0x109D93: new_list_token (scanner.c:29)
-    ==492086==    by 0x109F66: parse (scanner.c:87)
-    ==492086==    by 0x109CAD: get_user_input (read.c:28)
-    ==492086==    by 0x10957F: main (minishell.c:27)
-    ```
-
-- [X] exit status execution
-- [X] . -> memory leaks
-- [X] .. -> memory leaks
-- [X] heredoc
-- [X] unclosed quotes
-- [X] (Optional? Edge case mentioned to me) HEREDOC should expand env variables with or without quotes (all quotes). Example:
-- [X] echo "$USER" | grep $USER
-
-## TODO :
-- Make sure Makefile doesnt have wildcards.
-
 ## Key concepts
 
 ### Redirections
