@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/08/05 16:32:08 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/05 17:12:32 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	check_lexical(void)
 	list = list_heads()->next;
 	while (list != NULL)
 	{
-		if (!is_built_in(list->token[0]))
+		if (!is_built_in(list->token[0]) && !is_red(list->token[0]))
 		{
-			if (list->path == NULL && access(list->token[0], X_OK) == -1)
+			if (list->path == NULL && access(list->token[0], X_OK) == -1 )
 			{
 				ft_printf("Command '%s' not found\n", list->token[0]);
 				return (127);
