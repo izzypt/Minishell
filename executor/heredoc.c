@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 17:26:40 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/05 17:32:27 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,15 @@ void	heredoc(t_list *cur)
 	hdoc = get_hdoc();
 	hdoc->fd = open(cur->next->token[0], O_APPEND | O_RDWR | O_CREAT, 0644);
 	new_line = get_next_prompt();
+	if (new_line == NULL)
+	{
+		ft_printf("warning: here-doc delimiter missing\n");
+		return ;
+	}
 	if (ft_strlen(cur->next->token[0]) > ft_strlen(new_line))
 		len = ft_strlen(cur->next->token[0]);
 	else
-		len = ft_strlen(new_line);
+	len = ft_strlen(new_line);
 	while (ft_strncmp(cur->next->token[0], new_line, len) != 0)
 	{
 		new_line = check_env(new_line);
