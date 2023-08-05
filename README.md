@@ -1,6 +1,24 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
+# TODO
+
+- [] exit with argument, that is not numeric should give error
+- [] exit with any argument prints exit
+- [] cat << EEOF segfault Ctrl-D
+- [] '< input cat' should work
+- [] command chain:
+	- [] cat < input > out
+	- [] cat < input | grep test
+	- [] ls > file1 > file2 > file3 -> recreates every file and only outputs to last file (file3)
+	- [] ls >> file1 >> file2 >> file3 -> does not overwrite file1 and file2, but only appends ls to file3
+- [] echo < out "something" -> change token order
+- [] echo -nnnn3n
+- [] print options for echo
+- [] remove space when echo -n
+- [] echo $"PWD"
+- [] set exit status in cd (permission)
+
 ## Key concepts
 
 ### Redirections
