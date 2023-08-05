@@ -3,8 +3,8 @@ This project is about creating a simple shell. We will learn a lot about process
 
 # TODO
 
-- [] exit with argument, that is not numeric should give error
-- [] exit with any argument prints exit
+- [X] exit with argument, that is not numeric should give error
+- [X] exit with any argument prints exit
 - [X] cat << EEOF segfault Ctrl-D
 - [] command chain:
 	- [] cat < input > out
