@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/05 03:22:05 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/05 13:19:39 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	free_env(void)
 
 	lst = get_env();
 	lst = lst->nxt;
-
 	while (lst != NULL)
 	{
 		tmp = lst->nxt;
