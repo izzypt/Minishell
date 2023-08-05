@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/05 17:17:47 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/05 18:19:04 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char		*remove_quotes(char *str, int *count, char c);
 int			check_quote(char *input, char c, int i);
 char		*manage_env(char *str, int *count);
 char		*manage_double_quotes(char *str, int *c);
+void		change_order(void);
 int			is_pipe(char *token);
 char		*ft_join(char *a, char *b);
 int			check_syntax(char **token, char *input);

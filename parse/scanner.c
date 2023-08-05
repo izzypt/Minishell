@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/08/03 19:14:02 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/05 19:24:56 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	parse(char *input)
 		new_list_token(i, len, token);
 		i = i + len;
 	}
+	//change_order();
+	//print_lists();
 	data = get_data();
 	data->exit = check_syntax(token, input);
 	free_keys(token);
