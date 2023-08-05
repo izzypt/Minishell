@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/05 03:19:52 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/05 14:05:25 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	input_from_fd(t_list *node)
 	int		in;
 	int		status;
 
+	status = 0;
 	in = open(node->next->next->token[0], O_RDONLY, 0644);
 	get_data()->executing_cmd = 1;
 	pid = fork();
@@ -94,6 +95,7 @@ void	input_from_fd(t_list *node)
 		cmd_exit(errno);
 	}
 	close(in);
+	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	get_data()->executing_cmd = 0;
