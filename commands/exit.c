@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 23:19:35 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/05 03:22:05 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	cmd_exit(int number)
 	t_env	*lst;
 	t_env	*tmp;
 
-	printf("exit on process: %d.\n", getpid());
 	lst = get_env();
 	lst = lst->nxt;
 	if (get_data()->envp)

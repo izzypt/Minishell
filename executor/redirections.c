@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/04 22:48:17 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/05 03:19:52 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	append_to_fd(t_list *node)
 	int		out;
 	int		status;
 
+	status = 0;
 	out = open(node->next->next->token[0], O_CREAT | O_APPEND | O_WRONLY, 0644);
 	redirect_stdin_to_pipe(node);
 	pid = fork();
