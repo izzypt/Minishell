@@ -15,7 +15,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [] echo < out "something" -> change token order
 - [X] echo -nnnn3n
 - [X] print options for echo
-- [] remove space when echo -n
+- [X] remove space when echo -n
 - [] echo $"PWD"
 - [] set exit status in cd (permission)
 
