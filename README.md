@@ -5,19 +5,22 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - [] exit with argument, that is not numeric should give error
 - [] exit with any argument prints exit
-- [] cat << EEOF segfault Ctrl-D
-- [] '< input cat' should work
+- [X] cat << EEOF segfault Ctrl-D
 - [] command chain:
 	- [] cat < input > out
+	- [] redirections (>, >>, <, <<) as first token
 	- [] cat < input | grep test
 	- [] ls > file1 > file2 > file3 -> recreates every file and only outputs to last file (file3)
 	- [] ls >> file1 >> file2 >> file3 -> does not overwrite file1 and file2, but only appends ls to file3
 - [] echo < out "something" -> change token order
 - [X] echo -nnnn3n
 - [X] print options for echo
-- [] remove space when echo -n
+- [X] remove space when echo -n
 - [] echo $"PWD"
 - [] set exit status in cd (permission)
+- [] check permission for file before executing
+- [] set exit status for cd (in case directorz does not have permission)\
+
 
 ## Key concepts
 
