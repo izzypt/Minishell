@@ -13,8 +13,8 @@ This project is about creating a simple shell. We will learn a lot about process
 	- [] ls > file1 > file2 > file3 -> recreates every file and only outputs to last file (file3)
 	- [] ls >> file1 >> file2 >> file3 -> does not overwrite file1 and file2, but only appends ls to file3
 - [] echo < out "something" -> change token order
-- [] echo -nnnn3n
-- [] print options for echo
+- [X] echo -nnnn3n
+- [X] print options for echo
 - [] remove space when echo -n
 - [] echo $"PWD"
 - [] set exit status in cd (permission)

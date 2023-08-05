@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 15:45:23 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/05 16:32:08 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_options(char **token)
 {
 	if (token[1] == NULL)
 		return (0);
-	else if (!ft_strncmp(token[0], "echo", 4) && !ft_strncmp(token[1], "-n", 2))
+	else if (!ft_strncmp(token[0], "echo", 4))
 		return (0);
 	else if (token[1][0] == '-')
 	{
