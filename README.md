@@ -8,7 +8,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] cat << EEOF segfault Ctrl-D
 - [ ] remove rl_clear_visible_line(). Find another way to clean the line.
 - [] command chain:
-	- [] cat < input > out
+	- [X] cat < input > out
 	- [] redirections (>, >>, <, <<) as first token
 	- [X] cat < input | grep test
  	- [X] cat < file1 < file2 < file3 -> outputs only the contents of file3 
