@@ -6,7 +6,7 @@
 #    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/08/05 18:18:35 by esali            ###   ########.fr        #
+#    Updated: 2023/08/06 11:51:36 by esali            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			utils/duplicates_std.c utils/error_handling.c utils/export_utils.c utils/fd_helpers.c \
 			executor/command_chain.c parse/change_order.c
 
-CFLAGS =	-Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
 
 RM =		rm
 

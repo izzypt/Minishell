@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:15:14 by simao             #+#    #+#             */
-/*   Updated: 2023/07/31 15:15:47 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/06 11:47:09 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_list	*list_heads(void)
 	static t_list	list;
 
 	list.prev = NULL;
+	list.is_head = 1;
 	return (&list);
 }
 

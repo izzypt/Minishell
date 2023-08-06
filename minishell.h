@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/05 18:19:04 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/06 11:47:01 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_list
 	char			*path;
 	struct s_list	*next;
 	struct s_list	*prev;
-	int				tokens_len;
+	int				is_head;
 }				t_list;
 
 typedef struct s_env
@@ -155,6 +155,7 @@ char		**list_to_array(void);
 
 /* Utils */
 int			is_builtin(t_list *node);
+int			is_built_in(char *token);
 int			replace_env_var(char *key, char *value);
 void		redirect_stdin_to_pipe(t_list *node);
 void		redirect_stdout_to_pipe(void);

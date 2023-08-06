@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:14:32 by esali             #+#    #+#             */
-/*   Updated: 2023/06/21 15:04:35 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/06 12:02:17 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*ft_lstnew(char **token, char *path, t_list *lst_old)
 	new_ele->next = NULL;
 	new_ele->token = token;
 	new_ele->path = path;
+	new_ele->is_head = 0;
 	new_ele->prev = lst_old;
 	return (new_ele);
 }
