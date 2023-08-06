@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 14:59:34 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/06 11:20:59 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 // checks if token is redirection
 int	is_red(char *token)
 {
+	if (!token)
+		return (0);
 	if (is_special_char(token) && !is_pipe(token))
 		return (1);
 	return (0);

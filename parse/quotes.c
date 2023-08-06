@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:51:02 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 16:39:58 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/05 13:13:23 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,19 @@ char	*remove_char(char *token, int pos)
 
 	if (pos == 0)
 	{
-		substr = ft_substr(token, 1, ft_strlen(token));
+		substr = ft_substr(token, 1, ft_strlen(token) - 1);
 		free(token);
 		return (substr);
 	}
-	tmp1 = ft_substr(token, 0, pos);
-	tmp2 = ft_substr(token, pos + 1, ft_strlen(token));
-	substr = ft_strjoin(tmp1, tmp2);
-	free(tmp1);
-	free(tmp2);
+	substr = ft_substr(token, 0, pos);
+	if (pos != (int)(ft_strlen(token) - 1))
+	{
+		tmp2 = ft_substr(token, pos + 1, ft_strlen(token) - 1);
+		tmp1 = substr;
+		substr = ft_strjoin(tmp1, tmp2);
+		free(tmp1);
+		free(tmp2);
+	}
 	free(token);
 	return (substr);
 }

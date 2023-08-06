@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 15:45:23 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/06 12:10:25 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,48 @@ int	check_is_special_char(char *token)
 	return (0);
 }
 
+int	check_options(char **token)
+{
+	if (token[1] == NULL)
+		return (0);
+	else if (!ft_strncmp(token[0], "echo", 4))
+		return (0);
+	else if (token[1][0] == '-')
+	{
+		ft_printf("%s: %s: invalid option\n", token[0], token[1]);
+		return (2);
+	}
+	return (0);
+}
+
+int	check_lexical(void)
+{
+	t_list	*list;
+	int		check;
+
+	list = list_heads()->next;
+	while (list != NULL)
+	{
+		if (!is_built_in(list->token[0]) && !is_red(list->token[0]))
+		{
+			if (list->path == NULL && access(list->token[0], X_OK) == -1)
+			{
+				ft_printf("Command '%s' not found\n", list->token[0]);
+				return (127);
+			}
+			check = check_is_special_char(list->token[0]);
+		}
+		else
+			check = check_options(list->token);
+		if (check)
+			return (check);
+		while (list->next != NULL && !is_pipe(list->token[0]))
+			list = list->next;
+		list = list->next;
+	}
+	return (0);
+}
+
 int	is_built_in(char *token)
 {
 	if (!ft_strncmp(token, "cd", 2))
@@ -50,48 +92,6 @@ int	is_built_in(char *token)
 		return (1);
 	else
 		return (0);
-}
-
-int	check_options(char **token)
-{
-	if (token[1] == NULL)
-		return (0);
-	else if (!ft_strncmp(token[0], "echo", 4) && !ft_strncmp(token[1], "-n", 2))
-		return (0);
-	else if (token[1][0] == '-')
-	{
-		ft_printf("%s: %s: invalid option\n", token[0], token[1]);
-		return (2);
-	}
-	return (0);
-}
-
-int	check_lexical(void)
-{
-	t_list	*list;
-	int		check;
-
-	list = list_heads()->next;
-	while (list != NULL)
-	{
-		if (!is_built_in(list->token[0]))
-		{
-			if (list->path == NULL && access(list->token[0], X_OK) == -1)
-			{
-				ft_printf("Command '%s' not found\n", list->token[0]);
-				return (127);
-			}
-			check = check_is_special_char(list->token[0]);
-		}
-		else
-			check = check_options(list->token);
-		if (check)
-			return (check);
-		while (list->next != NULL && !is_pipe(list->token[0]))
-			list = list->next;
-		list = list->next;
-	}
-	return (0);
 }
 
 int	check_quote(char *input, char c, int i)

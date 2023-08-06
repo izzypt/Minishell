@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/03 23:18:19 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/05 13:16:15 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	execute_input(t_list *node, char **envp)
 			if (!access(node->token[0], X_OK))
 				node->path = ft_strdup(node->token[0]);
 			execve(node->path, node->token, envp);
+			if (errno == 13)
+				cmd_exit(126);
 			cmd_exit(errno);
 		}
 		waitpid(pid1, &status, 0);

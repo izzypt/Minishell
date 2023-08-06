@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/08/03 19:14:02 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/06 12:15:52 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	new_list_token(int i, int len, char **token)
 	t_list	*lst_old;
 
 	new_token = (char **)malloc(sizeof(char *) * (len + 1));
-	list_heads()->tokens_len = len + 1;
 	if (!new_token)
 		return ;
 	j = 0;
@@ -89,6 +88,7 @@ int	parse(char *input)
 		new_list_token(i, len, token);
 		i = i + len;
 	}
+	change_order();
 	data = get_data();
 	data->exit = check_syntax(token, input);
 	free_keys(token);
