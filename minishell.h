@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/06 11:47:01 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/06 15:31:31 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int			is_red(char *token);
 void		execute_input(t_list *node, char **envp);
 void		execute_builtin(t_list *node);
 void		command_chain(t_list *node);
+void		exec_input(t_list *node, int in_fd);
 
 /* Pipes and Redirections */
 
@@ -137,6 +138,7 @@ t_heredoc	*get_hdoc(void);
 
 void		free_keys(char **keys);
 void		free_parse(void);
+void		free_list(t_list *list);
 
 /* Signal Handlers */
 

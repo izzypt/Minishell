@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/06 12:27:12 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:32:33 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	input_to_terminal(t_list *node, int in_fd)
 			execve(node->path, node->token, NULL);
 		cmd_exit(errno);
 	}
+	waitpid(pid, &status, 0);
 	close(in_fd);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
@@ -129,6 +130,40 @@ void	input_to_pipe(t_list *node)
 	dup2(get_pipe()->stdin, STDIN_FILENO);
 }
 
+/*
+- If multiple input are in sequence, search for the last input of the chain.
+- Should remove and release the ignored inputs.
+- Example: 
+  - If list is : 
+  - "cmd < file1 < file2 < file3" => 
+  - "cmd < file1"
+*/
+void	input_to_input(t_list *cmd_node, int fd)
+{
+	t_list	*input_sign;
+	t_list	*tmp;
+
+	input_sign = cmd_node->next;
+	tmp = cmd_node->next;
+	while (check_redirection(input_sign) == 3)
+	{
+		if (check_redirection(input_sign->next->next) == 3)
+			input_sign = input_sign->next->next;
+		else
+			break ;
+	}
+	cmd_node->next = input_sign;
+	input_sign = input_sign->prev;
+	close(fd);
+	/*printf("input sign next: %s\n", input_sign->next->token[0]);
+	printf("input sign : %s\n", input_sign->token[0]);
+	printf("input sign next next: %s\n", input_sign->next->next->token[0]);*/
+	fd = open(input_sign->next->next->token[0], O_RDONLY, 0644);
+	input_sign->next = NULL;
+	free_list(tmp);
+	//print_lists();
+	exec_input(cmd_node, fd);
+}
 
 void	exec_input(t_list *node, int in_fd)
 {
@@ -137,8 +172,10 @@ void	exec_input(t_list *node, int in_fd)
 	if (check_redirection(node->next->next->next) == 1)
 		input_to_pipe(node);
 	/*if (check_redirection(node->next->next->next) == 2)
-		input_to_fd(node);
-	if (check_redirection(node->next->next->next) == 4)
+		input_to_input(node);*/
+	if (check_redirection(node->next->next->next) == 3)
+		input_to_input(node, in_fd);
+	/*if (check_redirection(node->next->next->next) == 4)
 		heredoc_to_append(node);*/
 }
 
@@ -150,5 +187,4 @@ void	input_from_fd(t_list *node)
 	in = open(node->next->next->token[0], O_RDONLY, 0644);
 	get_data()->executing_cmd = 1;
 	exec_input(node, in);
-
 }
