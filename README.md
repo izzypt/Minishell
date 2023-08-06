@@ -6,6 +6,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] exit with argument, that is not numeric should give error
 - [X] exit with any argument prints exit
 - [X] cat << EEOF segfault Ctrl-D
+- [ ] remove rl_clear_visible_line(). Find another way to clean the line.
 - [] command chain:
 	- [] cat < input > out
 	- [] redirections (>, >>, <, <<) as first token
