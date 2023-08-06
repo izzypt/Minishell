@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/04 22:46:38 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/06 12:16:14 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	write_to_pipe(t_list *node)
 	int	status;
 
 	if (check_redirection(node->prev) == 5)
+		return ;
+	if (check_redirection(node->prev) == 3)
 		return ;
 	redirect_stdin_to_pipe(node);
 	pipe(get_pipe()->fd);

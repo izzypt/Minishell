@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_chain.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 23:21:38 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/06 12:17:06 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	command_chain(t_list *node)
 		}
 		curr = curr->next;
 	}
-	//free_parse();
 }
 
 /*
