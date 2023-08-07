@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:23:28 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 15:19:49 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 15:45:22 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,14 +126,14 @@ void	input_to_input(t_list *cmd_node, int fd)
 	exec_input(cmd_node, file);
 }
 
-/*void	input_to_append(t_list *cmd_node, int fd)
+void	input_to_append(t_list *cmd_node, int in_fd)
 {
 	int	pid;
 	int	outfile;
 	int	status;
 
-	outfile = open(node->next->next->next->next->token[0], \
-	O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	outfile = open(cmd_node->next->next->next->next->token[0], \
+	O_APPEND | O_RDWR | O_CREAT, 0644);
 	if (outfile == -1)
 		perror("Error opening outfile");
 	pid = fork();
@@ -141,7 +141,7 @@ void	input_to_input(t_list *cmd_node, int fd)
 	{
 		dup2(outfile, STDOUT_FILENO);
 		dup2(in_fd, STDIN_FILENO);
-		execve(node->path, node->token, NULL);
+		execve(cmd_node->path, cmd_node->token, NULL);
 		exit(errno);
 	}
 	waitpid(pid, &status, 0);
@@ -149,7 +149,7 @@ void	input_to_input(t_list *cmd_node, int fd)
 		get_data()->exit = WEXITSTATUS(status);
 	close(in_fd);
 	close(outfile);
-}*/
+}
 
 void	exec_input(t_list *node, int in_fd)
 {
@@ -161,8 +161,8 @@ void	exec_input(t_list *node, int in_fd)
 		input_to_fd(node, in_fd);
 	if (check_redirection(node->next->next->next) == 3)
 		input_to_input(node, in_fd);
-	/*if (check_redirection(node->next->next->next) == 4)
-		heredoc_to_append(node);*/
+	if (check_redirection(node->next->next->next) == 4)
+		input_to_append(node, in_fd);
 }
 
 void	input_from_fd(t_list *node)
