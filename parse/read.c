@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:19:55 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 16:46:46 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 17:21:49 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_user_input(void)
 	input = readline("$> ");
 	if (input == NULL)
 	{
-		cmd_exit(ft_itoa(get_data()->exit), 0);
+		cmd_exit(ft_itoa(get_data()->exit), 1);
 		return ;
 	}
 	if (ft_strlen(input) == 0)

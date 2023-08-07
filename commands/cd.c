@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 23:36:39 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 17:11:14 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,20 @@ void	cmd_cd(char **path)
 	if (chdir(parsed_path) != 0)
 	{
 		if (access(parsed_path, F_OK) == -1)
+		{
 			write(2, "minishell: cd: no such file or directory\n", 42);
+			get_data()->exit = 1;
+		}
 		else if (access(parsed_path, R_OK | W_OK | X_OK) == -1)
+		{
 			write(2, "minishell: cd: permission denied\n", 34);
+			get_data()->exit = 1;
+		}
 		else
+		{
 			write(2, "minishell: cd: not a directory\n", 32);
+			get_data()->exit = 1;
+		}
 	}
 	free(parsed_path);
 }

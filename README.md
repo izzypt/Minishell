@@ -5,14 +5,14 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - [X] exit with argument, that is not numeric should give error
 - [X] exit with any argument prints exit
-- [] CTRL-D prints exit in terminal
+- [X] CTRL-D should print exit in terminal
 - [X] cat << EEOF segfault Ctrl-D
 - [ ] remove rl_clear_visible_line(). Find another way to clean the line.
 - [] command chain:
 	- [X] cat < input > out
 	- [] redirections (>, >>, <, <<) as first token
 	- [X] cat < input | grep test
- 	- [X] cat < file1 < file2 < file3 -> outputs only the contents of file3
+	- [X] cat < file1 < file2 < file3 -> outputs only the contents of file3
 	- [] ls > file1 > file2 > file3 -> recreates every file and only outputs to last file (file3)
 	- [] ls >> file1 >> file2 >> file3 -> does not overwrite file1 and file2, but only appends ls to file3
 - [X] echo < out "something" -> change token order
@@ -20,7 +20,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] print options for echo
 - [X] remove space when echo -n
 - [X] echo $"PWD"
-- [] set exit status in cd (permission)
+- [X] set exit status in cd (permission)
 - [X] check permission for file before executing
 
 
