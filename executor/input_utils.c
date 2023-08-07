@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   input_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 13:23:28 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 16:57:49 by esali            ###   ########.fr       */
+/*   Created: 2023/08/07 16:01:24 by simao             #+#    #+#             */
+/*   Updated: 2023/08/07 16:06:53 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 /*
 - Takes whatever it was given with the "<" and outputs to the original stdout.
 */
@@ -31,7 +30,7 @@ void	input_to_terminal(t_list *node, int in_fd)
 		else
 			execve(node->path, node->token, NULL);
 		close(in_fd);
-		cmd_exit(ft_itoa(errno), 0);
+		cmd_exit(errno);
 	}
 	waitpid(pid, &status, 0);
 	close(in_fd);
@@ -96,9 +95,9 @@ void	input_to_pipe(t_list *node)
 /*
 - If multiple input are in sequence, search for the last input of the chain.
 - Should remove and release the ignored inputs.
-- Example:
-  - If list is :
-  - "cmd < file1 < file2 < file3" =>
+- Example: 
+  - If list is : 
+  - "cmd < file1 < file2 < file3" => 
   - "cmd < file1"
 - NOT APPLICABLE to output "<". Those should open the file and cannot be freed.
 */
@@ -149,28 +148,4 @@ void	input_to_append(t_list *cmd_node, int in_fd)
 		get_data()->exit = WEXITSTATUS(status);
 	close(in_fd);
 	close(outfile);
-}
-
-void	exec_input(t_list *node, int in_fd)
-{
-	if (!node->next->next->next)
-		input_to_terminal(node, in_fd);
-	if (check_redirection(node->next->next->next) == 1)
-		input_to_pipe(node);
-	if (check_redirection(node->next->next->next) == 2)
-		input_to_fd(node, in_fd);
-	if (check_redirection(node->next->next->next) == 3)
-		input_to_input(node, in_fd);
-	if (check_redirection(node->next->next->next) == 4)
-		input_to_append(node, in_fd);
-}
-
-void	input_from_fd(t_list *node)
-{
-	int	in;
-
-	in = open(node->next->next->token[0], O_RDONLY, 0644);
-	printf("Opened fd is %d\n", in);
-	get_data()->executing_cmd = 1;
-	exec_input(node, in);
 }

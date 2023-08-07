@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/07 16:44:52 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:56:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int			check_quote(char *input, char c, int i);
 char		*manage_env(char *str, int *count);
 char		*manage_double_quotes(char *str, int *c);
 void		change_order(void);
-void		add_first_token();
+void		add_first_token(void);
 int			is_pipe(char *token);
 char		*ft_join(char *a, char *b);
 int			check_syntax(char **token, char *input);
@@ -125,6 +125,7 @@ void		input_to_terminal(t_list *node, int in_fd);
 void		input_to_fd(t_list *node, int in_fd);
 void		input_to_pipe(t_list *node);
 void		input_to_input(t_list *cmd_node, int fd);
+void		input_to_append(t_list *cmd_node, int in_fd);
 
 /* Heredocs */
 
