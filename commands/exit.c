@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 16:51:18 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 17:41:02 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	cmd_exit(char *exit_nr, int is_cmd)
 		ft_printf("exit\n");
 	if (has_alpha(exit_nr))
 		ft_printf("exit: %s: numeric argument required\n", exit_nr);
+	free(exit_nr);
 	free_parse();
 	exit(number);
 }
