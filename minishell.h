@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/06 15:31:31 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 13:34:24 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,13 @@ void		output_from_pipe(t_list *node);
 void		write_to_fd(t_list *node);
 void		append_to_fd(t_list *node);
 void		input_from_fd(t_list *node);
+
+/* Input Redirection */
+void		exec_input(t_list *node, int in_fd);
+void		input_to_terminal(t_list *node, int in_fd);
+void		input_to_fd(t_list *node, int in_fd);
+void		input_to_pipe(t_list *node);
+void		input_to_input(t_list *cmd_node, int fd);
 
 /* Heredocs */
 

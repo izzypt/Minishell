@@ -6,7 +6,7 @@
 #    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/08/07 00:37:39 by simao            ###   ########.fr        #
+#    Updated: 2023/08/07 13:31:59 by simao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			utils/list_to_array.c utils/replace_env_var.c executor/execute.c executor/heredoc.c \
 			executor/heredoc_util.c executor/pipes.c executor/redirections.c utils/symbols.c \
 			utils/duplicates_std.c utils/error_handling.c utils/export_utils.c utils/fd_helpers.c \
-			executor/command_chain.c parse/change_order.c
+			executor/command_chain.c parse/change_order.c executor/input.c \
 
 CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
 
