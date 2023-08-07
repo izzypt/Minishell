@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 14:46:58 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:46:37 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	write_to_fd(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
-		cmd_exit(errno);
+		cmd_exit(ft_itoa(errno), 0);
 	}
 	close(outfile);
 	waitpid(pid, &status, 0);
@@ -68,7 +68,7 @@ void	append_to_fd(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
-		cmd_exit(errno);
+		cmd_exit(ft_itoa(errno), 0);
 	}
 	close(out);
 	if (WIFEXITED(status))

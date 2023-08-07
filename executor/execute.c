@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/05 13:16:15 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:45:48 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	execute_input(t_list *node, char **envp)
 				node->path = ft_strdup(node->token[0]);
 			execve(node->path, node->token, envp);
 			if (errno == 13)
-				cmd_exit(126);
-			cmd_exit(errno);
+				cmd_exit("126", 0);
+			cmd_exit(ft_itoa(errno), 0);
 		}
 		waitpid(pid1, &status, 0);
 		if (WIFEXITED(status))
@@ -66,8 +66,8 @@ void	execute_builtin(t_list *node)
 	else if (!ft_strncmp(node->token[0], "exit", 4))
 	{
 		if (node->token[1])
-			cmd_exit(ft_atoi(node->token[1]));
-		cmd_exit(get_data()->exit);
+			cmd_exit(node->token[1], 1);
+		cmd_exit(ft_itoa(get_data()->exit), 1);
 	}
 }
 

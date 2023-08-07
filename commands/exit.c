@@ -6,31 +6,42 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/05 13:19:39 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:51:18 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* Should release all allocated resources before exiting */
-void	cmd_exit(int number)
+int	has_alpha(const char *s)
 {
-	t_env	*lst;
-	t_env	*tmp;
+	int	i;
 
-	lst = get_env();
-	lst = lst->nxt;
+	i = 0;
+	while (s[i])
+	{
+		if (ft_isdigit(s[i]) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+/* Should release all allocated resources before exiting */
+void	cmd_exit(char *exit_nr, int is_cmd)
+{
+	int		number;
+
+	if (has_alpha(exit_nr))
+		number = 2;
+	else
+		number = ft_atoi(exit_nr);
 	if (get_data()->envp)
 		free_keys(get_data()->envp);
-	while (lst != NULL)
-	{
-		tmp = lst->nxt;
-		free(lst->key);
-		if (lst->value)
-			free(lst->value);
-		free(lst);
-		lst = tmp;
-	}
+	free_env();
+	if (is_cmd)
+		ft_printf("exit\n");
+	if (has_alpha(exit_nr))
+		ft_printf("exit: %s: numeric argument required\n", exit_nr);
 	free_parse();
 	exit(number);
 }

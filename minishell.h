@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/07 15:17:01 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:44:52 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		cmd_echo(char **line);
 void		cmd_env(void);
 void		cmd_export(char **variable);
 void		cmd_unset(char **variable);
-void		cmd_exit(int number);
+void		cmd_exit(char *number, int is_cmd);
 t_env		*sort_loop(t_env	*dup_env, t_env *sorted_env);
 void		assign_value(char *key_value, t_env *lst);
 

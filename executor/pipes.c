@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/06 12:16:14 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/07 16:46:27 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	output_from_pipe(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
-		cmd_exit(errno);
+		cmd_exit(ft_itoa(errno), 0);
 	}
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
@@ -64,7 +64,7 @@ void	write_to_pipe(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
-		cmd_exit(errno);
+		cmd_exit(ft_itoa(errno), 0);
 	}
 	waitpid(get_data()->pid, &status, 0);
 	if (WIFEXITED(status))

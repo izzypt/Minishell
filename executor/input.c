@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:23:28 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 15:45:22 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:46:17 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	input_to_terminal(t_list *node, int in_fd)
 		else
 			execve(node->path, node->token, NULL);
 		close(in_fd);
-		cmd_exit(errno);
+		cmd_exit(ft_itoa(errno), 0);
 	}
 	waitpid(pid, &status, 0);
 	close(in_fd);
@@ -96,9 +96,9 @@ void	input_to_pipe(t_list *node)
 /*
 - If multiple input are in sequence, search for the last input of the chain.
 - Should remove and release the ignored inputs.
-- Example: 
-  - If list is : 
-  - "cmd < file1 < file2 < file3" => 
+- Example:
+  - If list is :
+  - "cmd < file1 < file2 < file3" =>
   - "cmd < file1"
 - NOT APPLICABLE to output "<". Those should open the file and cannot be freed.
 */
