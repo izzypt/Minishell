@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/06 15:31:31 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 15:07:25 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int			check_quote(char *input, char c, int i);
 char		*manage_env(char *str, int *count);
 char		*manage_double_quotes(char *str, int *c);
 void		change_order(void);
+void		add_first_token();
 int			is_pipe(char *token);
 char		*ft_join(char *a, char *b);
 int			check_syntax(char **token, char *input);
