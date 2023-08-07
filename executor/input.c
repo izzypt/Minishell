@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:23:28 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 15:17:21 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 15:19:49 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	input_to_input(t_list *cmd_node, int fd)
 	exec_input(cmd_node, file);
 }
 
-void	input_to_append(t_list *cmd_node, int fd)
+/*void	input_to_append(t_list *cmd_node, int fd)
 {
 	int	pid;
 	int	outfile;
@@ -149,7 +149,7 @@ void	input_to_append(t_list *cmd_node, int fd)
 		get_data()->exit = WEXITSTATUS(status);
 	close(in_fd);
 	close(outfile);
-}
+}*/
 
 void	exec_input(t_list *node, int in_fd)
 {
