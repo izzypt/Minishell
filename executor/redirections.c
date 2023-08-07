@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/06 20:32:33 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 01:36:43 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	input_to_terminal(t_list *node, int in_fd)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		close(in_fd);
 		cmd_exit(errno);
 	}
 	waitpid(pid, &status, 0);
@@ -137,14 +138,16 @@ void	input_to_pipe(t_list *node)
   - If list is : 
   - "cmd < file1 < file2 < file3" => 
   - "cmd < file1"
+- NOT APPLICABLE to output "<". Those should open the file and cannot be freed.
 */
 void	input_to_input(t_list *cmd_node, int fd)
 {
 	t_list	*input_sign;
-	t_list	*tmp;
+	t_list	*first_ocorrence;
+	int		file;
 
 	input_sign = cmd_node->next;
-	tmp = cmd_node->next;
+	first_ocorrence = cmd_node->next;
 	while (check_redirection(input_sign) == 3)
 	{
 		if (check_redirection(input_sign->next->next) == 3)
@@ -153,16 +156,12 @@ void	input_to_input(t_list *cmd_node, int fd)
 			break ;
 	}
 	cmd_node->next = input_sign;
-	input_sign = input_sign->prev;
+	input_sign->prev->next = NULL;
+	input_sign->prev = cmd_node->next;
 	close(fd);
-	/*printf("input sign next: %s\n", input_sign->next->token[0]);
-	printf("input sign : %s\n", input_sign->token[0]);
-	printf("input sign next next: %s\n", input_sign->next->next->token[0]);*/
-	fd = open(input_sign->next->next->token[0], O_RDONLY, 0644);
-	input_sign->next = NULL;
-	free_list(tmp);
-	//print_lists();
-	exec_input(cmd_node, fd);
+	file = open(input_sign->next->token[0], O_RDONLY, 0644);
+	free_list(first_ocorrence);
+	exec_input(cmd_node, file);
 }
 
 void	exec_input(t_list *node, int in_fd)
