@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 15:01:04 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 19:40:23 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,14 @@ void	command_chain(t_list *node)
 		else if (check_redirection(curr->next) == 1)
 			write_to_pipe(curr);
 		else if (check_redirection(curr->next) == 2)
+		{
 			write_to_fd(curr);
+			if (check_redirection(curr->next->next->next) == 2 \
+			|| check_redirection(curr->next->next) == 2)
+				curr = curr->next;
+			while (check_redirection(curr->next->next) == 2)
+				curr = curr->next->next;
+		}
 		else if (check_redirection(curr->next) == 3)
 		{
 			input_from_fd(curr);

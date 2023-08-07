@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 16:46:37 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 19:21:42 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,33 @@
   - execute the command
 - At the end we reset the stdouput of the main process.
 */
+/*printf("current node: %s and %s\n", node->path, node->token[0]);
+printf("node next: %s and %s\n", node->next->path, node->next->token[0]);
+printf("node next: %s and %s\n", node->next->path, node->next->token[0]);
+printf("node next: %s and %s\n", node->next->path, node->next->token[0]);*/
 void	write_to_fd(t_list *node)
 {
 	int		pid;
 	int		outfile;
 	int		status;
+	t_list	*tmp;
 
-	outfile = open_file(node);
 	redirect_stdin_to_pipe(node);
-	printf("node path: %s and %s\n", node->path, node->token[0]);
+	if (node->next->next->next)
+		tmp = node->next->next->next;
+	while (tmp && check_redirection(tmp) == 2)
+	{
+		printf("Opening file %s\n", tmp->prev->token[0]);
+		outfile = open_file(tmp->prev);
+		close(outfile);
+		printf("Closing file %s\n", tmp->prev->token[0]);
+		if (tmp->next->next)
+			tmp = tmp->next->next;
+		else
+			break ;
+	}
+	printf("The outfile is %s\n", tmp->next->token[0]);
+	outfile = open_file(tmp->next);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -39,8 +57,8 @@ void	write_to_fd(t_list *node)
 			execve(node->path, node->token, NULL);
 		cmd_exit(ft_itoa(errno), 0);
 	}
-	close(outfile);
 	waitpid(pid, &status, 0);
+	close(outfile);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
