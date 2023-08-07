@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:23:28 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 14:44:26 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 15:17:21 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,10 @@ void	input_to_fd(t_list *node, int in_fd)
 	int	outfile;
 	int	status;
 
-	printf("Input fd is %d\n", in_fd);
-	printf("Node value: %s and %s\n", node->path, node->token[0]);
-	printf("Infile: %s\n", node->next->next->token[0]);
-	printf("Outfile: %s\n", node->next->next->next->next->token[0]);
 	outfile = open(node->next->next->next->next->token[0], \
 	O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (outfile == -1)
 		perror("Error opening outfile");
-	printf("Outfile fd: %d\n", outfile);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -129,6 +124,31 @@ void	input_to_input(t_list *cmd_node, int fd)
 	file = open(input_sign->next->token[0], O_RDONLY, 0644);
 	free_list(first_ocorrence);
 	exec_input(cmd_node, file);
+}
+
+void	input_to_append(t_list *cmd_node, int fd)
+{
+	int	pid;
+	int	outfile;
+	int	status;
+
+	outfile = open(node->next->next->next->next->token[0], \
+	O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	if (outfile == -1)
+		perror("Error opening outfile");
+	pid = fork();
+	if (pid == 0)
+	{
+		dup2(outfile, STDOUT_FILENO);
+		dup2(in_fd, STDIN_FILENO);
+		execve(node->path, node->token, NULL);
+		exit(errno);
+	}
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		get_data()->exit = WEXITSTATUS(status);
+	close(in_fd);
+	close(outfile);
 }
 
 void	exec_input(t_list *node, int in_fd)

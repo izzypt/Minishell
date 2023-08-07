@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 14:52:23 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 15:01:04 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	command_chain(t_list *node)
 	curr = node;
 	while (curr != NULL)
 	{
-		//printf("current node in command chain: %s and %s\n", curr->path, curr->token[0]);
 		if (check_redirection(curr->prev) == 1 && !curr->next)
 			output_from_pipe(curr);
 		else if (check_redirection(curr->next) == 1)
@@ -52,7 +51,6 @@ void	command_chain(t_list *node)
 		}
 		curr = curr->next;
 	}
-	//free_parse();
 }
 
 /*
