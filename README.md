@@ -7,7 +7,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [X] exit with any argument prints exit
 - [X] CTRL-D should print exit in terminal
 - [X] cat << EEOF segfault Ctrl-D
-- [ ] remove rl_clear_visible_line(). Find another way to clean the line.
+- [X] remove rl_clear_visible_line(). Find another way to clean the line.
 - [] command chain:
 	- [X] cat < input > out
 	- [] redirections (>, >>, <, <<) as first token

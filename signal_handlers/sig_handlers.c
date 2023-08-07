@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 16:46:53 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:48:38 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,22 @@ void	handle_sigint(int sig)
 	if (get_data()->executing_cmd)
 	{
 		get_data()->exit = 127 + sig;
-		printf("\n");
+		ft_printf("\n");
 	}
 	else
 	{
 		get_data()->exit = 127 + sig;
-		printf("\n");
-		rl_clear_visible_line();
+		ft_printf("\n");
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 	}
 }
 
-	/*char	*input_buffer;
-
-	input_buffer = rl_line_buffer;
-	if (input_buffer && *input_buffer)
-	{
-		get_data()->exit = 127 + sig;
-		exit(0);
-	}*/
+/*
+\033[2K: ANSI excape sequence -> clears current line
+\r: ANSI carriage return -> moves curser to beginning of the line
+*/
 void	handle_sigquit(int sig)
 {
 	if (get_data()->executing_cmd)
@@ -49,7 +44,9 @@ void	handle_sigquit(int sig)
 	else
 	{
 		get_data()->exit = 127 + sig;
-		rl_clear_visible_line();
+		ft_printf("\033[2K");
+		ft_printf("\r");
+		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 	}
