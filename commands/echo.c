@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:40:25 by simao             #+#    #+#             */
-/*   Updated: 2023/08/05 16:42:08 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/07 15:24:08 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	cmd_echo(char **line)
 	if (!line[1])
 		return ;
 	i = check_option(line[1]);
+	if (line[i] == NULL)
+		ft_printf("");
+	else
+	{
 	while (line[i + 1])
 	{
 		ft_printf("%s ", line[i]);
@@ -44,4 +48,5 @@ void	cmd_echo(char **line)
 	ft_printf("%s", line[i]);
 	if (check_option(line[1]) == 1)
 		ft_printf("\n");
+	}
 }
