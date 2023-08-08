@@ -3,13 +3,23 @@ This project is about creating a simple shell. We will learn a lot about process
 
 # TODO
 
+- [] Ctrl-C
+- [] Ctrl + \
+- [] Ctrl+\ in minishell lvl is quitting
+- [] export 1hello (number in first place mot allowd)
+- [] export A =hello (cannot have space)
+- [] several Heredocs
+- [] export several objects
+- [] decrease exit nr with 255 (limit long max int)
 - [] SEGFAULTS:
+	- [] Redirections
 	- [X] 'cd'
 	- [X] cd '../../../../../.../../../../..'
 	- [] 'export n' -> 'export n'
 	- [] 'export n' -> 'export n =something'
 	- [X] './'
 	- [X] unset HOME
+	- [] '< Makefile < minishell.c cat > out > out2'
 - [X] env something | grep HOME
 - [] cd: change OLDPWD and PWD
 - [X] CTRL+\ -> should not clear line
