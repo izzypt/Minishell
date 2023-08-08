@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 11:50:47 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:37:16 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	write_to_fd(t_list *node)
 	redirect_stdin_to_pipe(node);
 	if (node->next->next->next)
 		tmp = node->next->next->next;
-	while (tmp && check_redirection(tmp) == 2)
+	while (tmp && (check_redirection(tmp) == 2 || check_redirection(tmp) == 4))
 	{
 		outfile = open_file(tmp->prev);
 		close(outfile);
