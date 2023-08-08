@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 17:11:14 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 10:36:07 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,8 @@
 // X_OK: Verifica se o arquivo pode ser executado.
 // F_OK: Verifica se o arquivo existe.
 
-/*
-- chdir() takes a string arg of the path of the dir you want to change to.
-- If the directory change is successful, chdir returns 0.
-- Update "PWD" and "OLDPWD" env variables once it sucessfully changed dir.
-*/
-void	cmd_cd(char **path)
+void ft_chdir(char *parsed_path)
 {
-	char	*parsed_path;
-
-	parsed_path = ft_strdup(path[1]);
 	if (chdir(parsed_path) != 0)
 	{
 		if (access(parsed_path, F_OK) == -1)
@@ -45,5 +37,29 @@ void	cmd_cd(char **path)
 			get_data()->exit = 1;
 		}
 	}
+}
+
+/*
+- chdir() takes a string arg of the path of the dir you want to change to.
+- If the directory change is successful, chdir returns 0.
+- Update "PWD" and "OLDPWD" env variables once it sucessfully changed dir.
+*/
+void	cmd_cd(char **path)
+{
+	char	*parsed_path;
+
+	if (path[1])
+		parsed_path = ft_strdup(path[1]);
+	else
+	{
+		parsed_path = ft_getenv("HOME");
+		if (!parsed_path)
+		{
+			ft_printf("cd: HOME not set");
+			get_data()->exit = 1;
+			return ;
+		}
+	}
+	ft_chdir(parsed_path);
 	free(parsed_path);
 }
