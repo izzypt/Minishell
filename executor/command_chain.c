@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_chain.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 19:40:23 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 11:22:51 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	command_chain(t_list *node)
 			if (curr->next->next->next != NULL)
 				curr = curr->next->next->next;
 		}
+		//if (get_data()->exit)
+		//	return ;
 		curr = curr->next;
 	}
 }

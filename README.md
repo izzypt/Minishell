@@ -8,8 +8,8 @@ This project is about creating a simple shell. We will learn a lot about process
 	- [X] cd '../../../../../.../../../../..'
 	- [] 'export n' -> 'export n'
 	- [] 'export n' -> 'export n =something'
-	- [] './'
-	- [] unset HOME
+	- [X] './'
+	- [X] unset HOME
 - [] env something | grep HOME
 - [] cd: change OLDPWD and PWD
 - [X] CTRL+\ -> should not clear line
