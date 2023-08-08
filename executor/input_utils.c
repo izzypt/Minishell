@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 16:01:24 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 16:59:40 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 11:28:47 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	input_to_pipe(t_list *node)
 
 /*
 - If multiple input are in sequence, search for the last input of the chain.
-- Should remove and release the ignored inputs.
+- Should remove and release the ignored inputs if they are valid files.
 - Example:
   - If list is :
   - "cmd < file1 < file2 < file3" =>
@@ -111,6 +111,11 @@ void	input_to_input(t_list *cmd_node, int fd)
 	first_ocorrence = cmd_node->next;
 	while (check_redirection(input_sign) == 3)
 	{
+		if (access(input_sign->next->token[0], R_OK) == -1)
+		{
+			ft_printf("%s: no such file or dir.\n", input_sign->next->token[0]);
+			return ;
+		}
 		if (check_redirection(input_sign->next->next) == 3)
 			input_sign = input_sign->next->next;
 		else
@@ -131,6 +136,7 @@ void	input_to_append(t_list *cmd_node, int in_fd)
 	int	outfile;
 	int	status;
 
+	status = 0;
 	outfile = open(cmd_node->next->next->next->next->token[0], \
 	O_APPEND | O_RDWR | O_CREAT, 0644);
 	if (outfile == -1)
