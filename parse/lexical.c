@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/08/06 12:10:25 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 11:12:15 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 int	check_is_special_char(char *token)
 {
-	if (!ft_strncmp(token, "..", 2))
+	if (!ft_strncmp(token, "..\0", 3))
 	{
 		ft_printf("Command '%s' not found\n", token);
 		return (127);
 	}
 	else if (!ft_strncmp(token, "/\0", 2))
 	{
-		ft_printf("'/' is a directory\n");
+		ft_printf("'/' Is a directory\n");
 		return (126);
 	}
 	else if (!ft_strncmp(token, ".\0", 2))
 	{
-		ft_printf("error: '.'\n");
+		ft_printf("Error: '.'\n");
 		return (127);
+	}
+	else if (!ft_strncmp(token, "./\0", 3))
+	{
+		ft_printf("'./' Is a directory\n");
+		return (126);
 	}
 	return (0);
 }
