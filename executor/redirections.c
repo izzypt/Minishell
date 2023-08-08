@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 19:21:42 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 11:50:47 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@
   - execute the command
 - At the end we reset the stdouput of the main process.
 */
-/*printf("current node: %s and %s\n", node->path, node->token[0]);
-printf("node next: %s and %s\n", node->next->path, node->next->token[0]);
-printf("node next: %s and %s\n", node->next->path, node->next->token[0]);
-printf("node next: %s and %s\n", node->next->path, node->next->token[0]);*/
 void	write_to_fd(t_list *node)
 {
 	int		pid;
@@ -31,22 +27,23 @@ void	write_to_fd(t_list *node)
 	int		status;
 	t_list	*tmp;
 
+	tmp = NULL;
 	redirect_stdin_to_pipe(node);
 	if (node->next->next->next)
 		tmp = node->next->next->next;
 	while (tmp && check_redirection(tmp) == 2)
 	{
-		printf("Opening file %s\n", tmp->prev->token[0]);
 		outfile = open_file(tmp->prev);
 		close(outfile);
-		printf("Closing file %s\n", tmp->prev->token[0]);
 		if (tmp->next->next)
 			tmp = tmp->next->next;
 		else
 			break ;
 	}
-	printf("The outfile is %s\n", tmp->next->token[0]);
-	outfile = open_file(tmp->next);
+	if (tmp)
+		outfile = open_file(tmp->next);
+	else
+		outfile = open_file(node->next->next);
 	pid = fork();
 	if (pid == 0)
 	{

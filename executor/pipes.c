@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 16:46:27 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 12:09:43 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ void	output_from_pipe(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		close(get_pipe()->fd[1]);
+		close(get_pipe()->fd[0]);
 		cmd_exit(ft_itoa(errno), 0);
 	}
+	waitpid(pid, &status, 0);
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
-	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	get_data()->executing_cmd = 0;
