@@ -1,34 +1,245 @@
-==786161== Memcheck, a memory error detector
-==786161== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==786161== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==786161== Command: ./minishell
-==786161== Parent PID: 785963
-==786161== 
-==786653== 
-==786653== HEAP SUMMARY:
-==786653==     in use at exit: 204,987 bytes in 234 blocks
-==786653==   total heap usage: 2,223 allocs, 1,989 frees, 457,029 bytes allocated
-==786653== 
-==786653== LEAK SUMMARY:
-==786653==    definitely lost: 0 bytes in 0 blocks
-==786653==    indirectly lost: 0 bytes in 0 blocks
-==786653==      possibly lost: 0 bytes in 0 blocks
-==786653==    still reachable: 0 bytes in 0 blocks
-==786653==         suppressed: 204,987 bytes in 234 blocks
-==786653== 
-==786653== For lists of detected and suppressed errors, rerun with: -s
-==786653== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==786161== 
-==786161== HEAP SUMMARY:
-==786161==     in use at exit: 205,092 bytes in 242 blocks
-==786161==   total heap usage: 2,487 allocs, 2,245 frees, 461,198 bytes allocated
-==786161== 
-==786161== LEAK SUMMARY:
-==786161==    definitely lost: 0 bytes in 0 blocks
-==786161==    indirectly lost: 0 bytes in 0 blocks
-==786161==      possibly lost: 0 bytes in 0 blocks
-==786161==    still reachable: 0 bytes in 0 blocks
-==786161==         suppressed: 205,092 bytes in 242 blocks
-==786161== 
-==786161== For lists of detected and suppressed errors, rerun with: -s
-==786161== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==652067== Memcheck, a memory error detector
+==652067== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==652067== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==652067== Command: ./minishell
+==652067== Parent PID: 652066
+==652067== 
+==652067== Conditional jump or move depends on uninitialised value(s)
+==652067==    at 0x10D0FF: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Conditional jump or move depends on uninitialised value(s)
+==652067==    at 0x10D8AF: check_redirection (command_chain.c:71)
+==652067==    by 0x10D10C: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D8B5: check_redirection (command_chain.c:71)
+==652067==    by 0x10D10C: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D8CB: check_redirection (command_chain.c:73)
+==652067==    by 0x10D10C: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D8F7: check_redirection (command_chain.c:75)
+==652067==    by 0x10D10C: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D923: check_redirection (command_chain.c:77)
+==652067==    by 0x10D10C: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D94C: check_redirection (command_chain.c:79)
+==652067==    by 0x10D10C: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D975: check_redirection (command_chain.c:81)
+==652067==    by 0x10D10C: write_to_fd (redirections.c:37)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D11D: write_to_fd (redirections.c:48)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D01A: write_to_fd (redirections.c:28)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D121: write_to_fd (redirections.c:48)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Uninitialised value was created by a stack allocation
+==652067==    at 0x10D6B5: command_chain (command_chain.c:26)
+==652067== 
+==652067== Use of uninitialised value of size 8
+==652067==    at 0x10D124: write_to_fd (redirections.c:48)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== Invalid read of size 8
+==652067==    at 0x10D124: write_to_fd (redirections.c:48)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  Address 0x61203e is not stack'd, malloc'd or (recently) free'd
+==652067== 
+==652067== 
+==652067== Process terminating with default action of signal 11 (SIGSEGV)
+==652067==  Access not within mapped region at address 0x61203E
+==652067==    at 0x10D124: write_to_fd (redirections.c:48)
+==652067==    by 0x10D74B: command_chain (command_chain.c:38)
+==652067==    by 0x10C174: execute_input (execute.c:25)
+==652067==    by 0x109F06: get_user_input (read.c:30)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067==  If you believe this happened as a result of a stack
+==652067==  overflow in your program's main thread (unlikely but
+==652067==  possible), you can try to increase the size of the
+==652067==  main thread stack using the --main-stacksize= flag.
+==652067==  The main thread stack size used in this run was 8388608.
+==652067== 
+==652067== HEAP SUMMARY:
+==652067==     in use at exit: 243,984 bytes in 492 blocks
+==652067==   total heap usage: 1,098 allocs, 606 frees, 271,939 bytes allocated
+==652067== 
+==652067== 2 bytes in 2 blocks are still reachable in loss record 1 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10F02B: ft_calloc (in /nfs/homes/esali/Documents/minishell2/minishell)
+==652067==    by 0x10C053: list_to_array (list_to_array.c:76)
+==652067==    by 0x1095D6: main (minishell.c:25)
+==652067== 
+==652067== 3 bytes in 1 blocks are still reachable in loss record 2 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10EF87: ft_strdup (in /nfs/homes/esali/Documents/minishell2/minishell)
+==652067==    by 0x10E56C: add_first_token (add_token.c:26)
+==652067==    by 0x10DE27: change_order (change_order.c:127)
+==652067==    by 0x10A601: parse (scanner.c:91)
+==652067==    by 0x109EE5: get_user_input (read.c:28)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== 4 bytes in 2 blocks are still reachable in loss record 6 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10EF87: ft_strdup (in /nfs/homes/esali/Documents/minishell2/minishell)
+==652067==    by 0x10A408: new_list_token (scanner.c:29)
+==652067==    by 0x10A5DA: parse (scanner.c:88)
+==652067==    by 0x109EE5: get_user_input (read.c:28)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== 5 bytes in 1 blocks are still reachable in loss record 7 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10EF87: ft_strdup (in /nfs/homes/esali/Documents/minishell2/minishell)
+==652067==    by 0x10E551: add_first_token (add_token.c:25)
+==652067==    by 0x10DE27: change_order (change_order.c:127)
+==652067==    by 0x10A601: parse (scanner.c:91)
+==652067==    by 0x109EE5: get_user_input (read.c:28)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== 24 bytes in 1 blocks are still reachable in loss record 16 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10B23B: create_env (env.c:72)
+==652067==    by 0x10956C: main (minishell.c:19)
+==652067== 
+==652067== 24 bytes in 1 blocks are still reachable in loss record 17 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10E536: add_first_token (add_token.c:22)
+==652067==    by 0x10DE27: change_order (change_order.c:127)
+==652067==    by 0x10A601: parse (scanner.c:91)
+==652067==    by 0x109EE5: get_user_input (read.c:28)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== 32 bytes in 2 blocks are still reachable in loss record 19 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10A3B6: new_list_token (scanner.c:23)
+==652067==    by 0x10A5DA: parse (scanner.c:88)
+==652067==    by 0x109EE5: get_user_input (read.c:28)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== 40 bytes in 1 blocks are still reachable in loss record 20 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10BD22: ft_lstnew (list_functions.c:19)
+==652067==    by 0x10E5A6: add_first_token (add_token.c:30)
+==652067==    by 0x10DE27: change_order (change_order.c:127)
+==652067==    by 0x10A601: parse (scanner.c:91)
+==652067==    by 0x109EE5: get_user_input (read.c:28)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== 80 bytes in 2 blocks are still reachable in loss record 25 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10BD22: ft_lstnew (list_functions.c:19)
+==652067==    by 0x10A46D: new_list_token (scanner.c:35)
+==652067==    by 0x10A5DA: parse (scanner.c:88)
+==652067==    by 0x109EE5: get_user_input (read.c:28)
+==652067==    by 0x1095DF: main (minishell.c:27)
+==652067== 
+==652067== 852 bytes in 67 blocks are still reachable in loss record 34 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10EF87: ft_strdup (in /nfs/homes/esali/Documents/minishell2/minishell)
+==652067==    by 0x10B1C1: set_env_key_value_pair (env.c:51)
+==652067==    by 0x10B292: create_env (env.c:77)
+==652067==    by 0x10956C: main (minishell.c:19)
+==652067== 
+==652067== 1,467 bytes in 65 blocks are still reachable in loss record 41 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10EF87: ft_strdup (in /nfs/homes/esali/Documents/minishell2/minishell)
+==652067==    by 0x10B1F8: set_env_key_value_pair (env.c:55)
+==652067==    by 0x10B292: create_env (env.c:77)
+==652067==    by 0x10956C: main (minishell.c:19)
+==652067== 
+==652067== 1,584 bytes in 66 blocks are still reachable in loss record 44 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10B2C8: create_env (env.c:81)
+==652067==    by 0x10956C: main (minishell.c:19)
+==652067== 
+==652067== 2,302 bytes in 65 blocks are still reachable in loss record 47 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10BEEE: join_pair (list_to_array.c:38)
+==652067==    by 0x10C02A: list_to_array (list_to_array.c:74)
+==652067==    by 0x1095D6: main (minishell.c:25)
+==652067== 
+==652067== 36,992 bytes in 1 blocks are still reachable in loss record 72 of 72
+==652067==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==652067==    by 0x10F02B: ft_calloc (in /nfs/homes/esali/Documents/minishell2/minishell)
+==652067==    by 0x10BFD8: list_to_array (list_to_array.c:70)
+==652067==    by 0x1095D6: main (minishell.c:25)
+==652067== 
+==652067== LEAK SUMMARY:
+==652067==    definitely lost: 0 bytes in 0 blocks
+==652067==    indirectly lost: 0 bytes in 0 blocks
+==652067==      possibly lost: 0 bytes in 0 blocks
+==652067==    still reachable: 43,411 bytes in 277 blocks
+==652067==         suppressed: 200,573 bytes in 215 blocks
+==652067== 
+==652067== For lists of detected and suppressed errors, rerun with: -s
+==652067== ERROR SUMMARY: 12 errors from 12 contexts (suppressed: 0 from 0)
