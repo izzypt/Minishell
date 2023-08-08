@@ -3,6 +3,17 @@ This project is about creating a simple shell. We will learn a lot about process
 
 # TODO
 
+- [] SEGFAULTS:
+	- [X] 'cd'
+	- [X] cd '../../../../../.../../../../..'
+	- [] 'export n' -> 'export n'
+	- [] 'export n' -> 'export n =something'
+	- [] './'
+	- [] unset HOME
+- [] env something | grep HOME
+- [] cd: change OLDPWD and PWD
+- [X] CTRL+\ -> should not clear line
+- [X] 'env something' should give an error
 - [X] exit with argument, that is not numeric should give error
 - [X] exit with any argument prints exit
 - [X] CTRL-D should print exit in terminal

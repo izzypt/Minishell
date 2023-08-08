@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:35 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 18:57:49 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 10:22:18 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,16 @@ void	create_env(char **env)
 /*
 - Iterate through the list of env variables and prints each one.
 */
-void	cmd_env(void)
+void	cmd_env(char **token)
 {
 	t_env	*env;
 
+	if (token[1])
+	{
+		ft_printf("env: invalid argument '%s' \n", token[1]);
+		get_data()->exit = 2;
+		return ;
+	}
 	env = get_env();
 	env = env->nxt;
 	if (env == NULL)

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/07 16:56:44 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 10:19:56 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_data
 void		cmd_cd(char **path);
 void		cmd_pwd(void);
 void		cmd_echo(char **line);
-void		cmd_env(void);
+void		cmd_env(char **token);
 void		cmd_export(char **variable);
 void		cmd_unset(char **variable);
 void		cmd_exit(char *number, int is_cmd);
