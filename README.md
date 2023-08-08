@@ -5,7 +5,7 @@ This project is about creating a simple shell. We will learn a lot about process
 
 - [] SEGFAULTS:
 	- [X] 'cd'
-	- [] cd '../../../../../.../../../../..'
+	- [X] cd '../../../../../.../../../../..'
 	- [] 'export n' -> 'export n'
 	- [] 'export n' -> 'export n =something'
 	- [] './'

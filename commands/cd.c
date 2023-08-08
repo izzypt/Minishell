@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 10:49:25 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 10:59:59 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	cmd_cd(char **path)
 
 	if (path[1] && path[2])
 	{
-		ft_printf("cd: too many arguments");
+		ft_printf("cd: too many arguments\n");
 		get_data()->exit = 1;
 		return ;
 	}
@@ -58,10 +58,11 @@ void	cmd_cd(char **path)
 		parsed_path = ft_strdup(path[1]);
 	else
 	{
-		parsed_path = ft_getenv("HOME");
-		if (!parsed_path)
+		if (ft_getenv("HOME"))
+			parsed_path = ft_strdup(ft_getenv("HOME"));
+		else
 		{
-			ft_printf("cd: HOME not set");
+			ft_printf("cd: HOME not set\n");
 			get_data()->exit = 1;
 			return ;
 		}
