@@ -10,7 +10,7 @@ This project is about creating a simple shell. We will learn a lot about process
 	- [] 'export n' -> 'export n =something'
 	- [X] './'
 	- [X] unset HOME
-- [] env something | grep HOME
+- [X] env something | grep HOME
 - [] cd: change OLDPWD and PWD
 - [X] CTRL+\ -> should not clear line
 - [X] 'env something' should give an error
