@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 16:01:24 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 11:28:47 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:27:00 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	input_to_input(t_list *cmd_node, int fd)
 		if (access(input_sign->next->token[0], R_OK) == -1)
 		{
 			ft_printf("%s: no such file or dir.\n", input_sign->next->token[0]);
+			get_data()->exit = 1;
 			return ;
 		}
 		if (check_redirection(input_sign->next->next) == 3)
