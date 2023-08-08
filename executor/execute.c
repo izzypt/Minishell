@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/07 17:41:46 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 10:14:41 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	execute_builtin(t_list *node)
 	else if (!ft_strncmp(node->token[0], "unset", 5))
 		cmd_unset(node->token);
 	else if (!ft_strncmp(node->token[0], "env", 3))
-		cmd_env();
+		cmd_env(node->token);
 	else if (!ft_strncmp(node->token[0], "export", 6))
 		cmd_export(node->token);
 	else if (!ft_strncmp(node->token[0], "pwd", 3))

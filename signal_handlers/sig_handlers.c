@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 10:08:58 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 10:16:10 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	handle_sigquit(int sig)
 	else
 	{
 		get_data()->exit = 127 + sig;
-		printf("\b \b");
-		printf("\b \b");
+		ft_printf("\b \b");
+		ft_printf("\b \b");
 	}
 }
