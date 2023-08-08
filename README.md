@@ -3,13 +3,15 @@ This project is about creating a simple shell. We will learn a lot about process
 
 # TODO
 
-- [] Ctrl-C
-- [] Ctrl + \
-- [] Ctrl+\ in minishell lvl is quitting
+- [X] Ctrl-C
+- [X] Ctrl + \
+- [] Ctrl+\ in minishell lvl 2 is quitting
+- [] Ctrl+C in minishell lvl 2 is not printing correctly
 - [] export 1hello (number in first place mot allowd)
 - [] export A =hello (cannot have space)
 - [] several Heredocs
 - [] export several objects
+- [] unset several objects
 - [] decrease exit nr with 255 (limit long max int)
 - [] SEGFAULTS:
 	- [] Redirections

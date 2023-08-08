@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 10:16:10 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:45:25 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	handle_sigquit(int sig)
 	if (get_data()->executing_cmd)
 	{
 		get_data()->exit = 127 + sig;
+		ft_printf("\b \b");
+		ft_printf("\b \b");
 		ft_printf("Quit (core dumped)\n");
 		cmd_exit(ft_itoa(get_data()->exit), 0);
 	}
