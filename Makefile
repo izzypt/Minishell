@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esali <esali@student.42.fr>                +#+  +:+       +#+         #
+#    By: simao <simao@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 17:27:36 by esali             #+#    #+#              #
-#    Updated: 2023/08/07 16:56:32 by esali            ###   ########.fr        #
+#    Updated: 2023/08/07 22:37:18 by simao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			executor/command_chain.c parse/change_order.c executor/input.c executor/input_utils.c  \
 			parse/add_token.c
 
-CFLAGS =	-Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
 
 RM =		rm
 

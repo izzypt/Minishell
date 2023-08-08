@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 11:22:51 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 11:33:26 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	check_redirection(t_list *node)
 		return (2);
 	if (!ft_strncmp(node->token[0], "<", 2))
 		return (3);
-	if (!ft_strncmp(node->token[0], ">>", 2))
+	if (!ft_strncmp(node->token[0], ">>", 3))
 		return (4);
-	if (!ft_strncmp(node->token[0], "<<", 2))
+	if (!ft_strncmp(node->token[0], "<<", 3))
 		return (5);
 	return (0);
 }
