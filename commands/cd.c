@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 10:36:07 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/08 10:49:25 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ void	cmd_cd(char **path)
 {
 	char	*parsed_path;
 
+	if (path[1] && path[2])
+	{
+		ft_printf("cd: too many arguments");
+		get_data()->exit = 1;
+		return ;
+	}
 	if (path[1])
 		parsed_path = ft_strdup(path[1]);
 	else
