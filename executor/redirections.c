@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 18:53:30 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 19:08:18 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	append_to_fd(t_list *node)
 		outfile = open_file(tmp->next);
 	else
 		outfile = open_file(node->next->next);
+	printf("node path : %s\n", node->path);
+	printf("node token : %s\n", node->token[0]);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -99,6 +101,7 @@ void	append_to_fd(t_list *node)
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
+		close(outfile);
 		cmd_exit(ft_itoa(errno), 0);
 	}
 	close(outfile);
