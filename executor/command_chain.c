@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/07 19:40:23 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/07 22:39:40 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	check_redirection(t_list *node)
 		return (2);
 	if (!ft_strncmp(node->token[0], "<", 2))
 		return (3);
-	if (!ft_strncmp(node->token[0], ">>", 2))
+	if (!ft_strncmp(node->token[0], ">>", 3))
 		return (4);
-	if (!ft_strncmp(node->token[0], "<<", 2))
+	if (!ft_strncmp(node->token[0], "<<", 3))
 		return (5);
 	return (0);
 }
