@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 14:17:49 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 18:47:31 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,14 @@ void	command_chain(t_list *node)
 				curr = curr->next->next->next;
 		}
 		else if (check_redirection(curr->next) == 4)
+		{
 			append_to_fd(curr);
+			if (check_redirection(curr->next->next->next) == 4 \
+			|| check_redirection(curr->next->next) == 4)
+				curr = curr->next;
+			while (check_redirection(curr->next->next) == 4)
+				curr = curr->next->next;
+		}
 		else if (check_redirection(curr->next) == 5)
 		{
 			heredoc(curr->next);

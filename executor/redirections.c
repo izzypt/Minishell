@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 14:37:16 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/08 18:53:30 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,39 @@ void	write_to_fd(t_list *node)
 void	append_to_fd(t_list *node)
 {
 	int		pid;
-	int		out;
+	int		outfile;
 	int		status;
+	t_list	*tmp;
 
 	status = 0;
-	out = open(node->next->next->token[0], O_CREAT | O_APPEND | O_WRONLY, 0644);
+	tmp = NULL;
 	redirect_stdin_to_pipe(node);
+	if (node->next->next->next)
+		tmp = node->next->next->next;
+	while (tmp && (check_redirection(tmp) == 2 || check_redirection(tmp) == 4))
+	{
+		outfile = open_file(tmp->prev);
+		close(outfile);
+		if (tmp->next->next)
+			tmp = tmp->next->next;
+		else
+			break ;
+	}
+	if (tmp)
+		outfile = open_file(tmp->next);
+	else
+		outfile = open_file(node->next->next);
 	pid = fork();
 	if (pid == 0)
 	{
-		dup2(out, STDOUT_FILENO);
+		dup2(outfile, STDOUT_FILENO);
 		if (is_builtin(node))
 			execute_builtin(node);
 		else
 			execve(node->path, node->token, NULL);
 		cmd_exit(ft_itoa(errno), 0);
 	}
-	close(out);
+	close(outfile);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
