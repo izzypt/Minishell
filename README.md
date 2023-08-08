@@ -37,7 +37,7 @@ This project is about creating a simple shell. We will learn a lot about process
 	- [X] cat < input | grep test
 	- [X] cat < file1 < file2 < file3 -> outputs only the contents of file3
 	- [X] ls > file1 > file2 > file3 -> recreates every file and only outputs to last file (file3)
-	- [] ls >> file1 >> file2 >> file3 -> does not overwrite file1 and file2, but only appends ls to file3
+	- [x] ls >> file1 >> file2 >> file3 -> does not overwrite file1 and file2, but only appends ls to file3
 - [X] echo < out "something" -> change token order
 - [X] echo -nnnn3n
 - [X] print options for echo
