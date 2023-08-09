@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:17:52 by esali             #+#    #+#             */
-/*   Updated: 2023/08/09 02:25:52 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 02:30:19 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	change_order(void)
 {
 	t_list	*lst;
 
-	lst = list_heads()->next;
+	lst = get_token()->next;
 	while (lst->next != NULL)
 	{
 		if (is_red(lst->token[0]) && lst->next->token[1])
@@ -122,7 +122,7 @@ void	change_order(void)
 		}
 		lst = lst->next;
 	}
-	lst = list_heads()->next;
+	lst = get_token()->next;
 	if (is_red(lst->token[0]))
 		add_first_token();
 }

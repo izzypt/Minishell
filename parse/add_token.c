@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:08:52 by esali             #+#    #+#             */
-/*   Updated: 2023/08/07 15:09:19 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 02:30:13 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	add_first_token(void)
 	token[1] = ft_strdup("-n\0");
 	token[2] = NULL;
 	path = NULL;
-	list_head = list_heads();
+	list_head = get_token();
 	new = ft_lstnew(token, path, list_head);
 	new->next = list_head->next;
 	list_head->next->prev = new;
