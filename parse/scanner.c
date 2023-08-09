@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:09 by esali             #+#    #+#             */
-/*   Updated: 2023/08/08 12:36:08 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 02:26:56 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	new_list_token(int i, int len, char **token)
 	}
 	new_token[j] = NULL;
 	path = valid_cmd_path(new_token[0]);
-	lst_old = ft_lstlast(list_heads());
+	lst_old = ft_lstlast(get_token());
 	lst_old->next = ft_lstnew(new_token, path, lst_old);
 }
 

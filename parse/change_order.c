@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_order.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:17:52 by esali             #+#    #+#             */
-/*   Updated: 2023/08/07 15:09:13 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 02:25:52 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	move_tokens_new_ele(t_list *lst)
 	}
 	lst->next->token = remove_token(lst->next->token);
 	path = valid_cmd_path(token[0]);
-	new = ft_lstnew(token, path, list_heads());
-	list_head = list_heads();
+	new = ft_lstnew(token, path, get_token());
+	list_head = get_token();
 	new->next = list_head->next;
 	list_head->next->prev = new;
 	list_head->next = new;

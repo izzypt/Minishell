@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:45:41 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/07 15:13:40 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 02:27:03 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_parse(void)
 	t_list	*node;
 	t_list	*tmp;
 
-	node = list_heads()->next;
+	node = get_token()->next;
 	while (node != NULL)
 	{
 		tmp = node->next;
@@ -26,7 +26,7 @@ void	free_parse(void)
 		free(node);
 		node = tmp;
 	}
-	list_heads()->next = NULL;
+	get_token()->next = NULL;
 }
 
 /*

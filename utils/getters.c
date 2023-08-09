@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   getters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:15:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/06 11:47:09 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 02:24:07 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* returns head of the linked list that holds the parsed input/tokens */
-t_list	*list_heads(void)
+t_list	*get_token(void)
 {
 	static t_list	list;
 
