@@ -15,6 +15,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 - [] Ctrl+C in minishell lvl 2 is not printing correctly
 - [] export 1hello (number in first place mot allowd)
 - [] export A =hello (cannot have space)
+- [X] export: new elements not sorted in list
 - [] several Heredocs
 - [] export several objects
 - [] unset several objects
@@ -23,8 +24,8 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 	- [] Redirections
 	- [X] 'cd'
 	- [X] cd '../../../../../.../../../../..'
-	- [] 'export n' -> 'export n'
-	- [] 'export n' -> 'export n =something'
+	- [X] 'export n' -> 'export n'
+	- [X] 'export n' -> 'export n =something'
 	- [X] './'
 	- [X] unset HOME
 	- [] '< Makefile < minishell.c cat > out > out2'

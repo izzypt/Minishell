@@ -1,4 +1,4 @@
-# **************************************************************************** #
+  # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -24,7 +24,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			executor/command_chain.c parse/change_order.c executor/input.c executor/input_utils.c  \
 			parse/add_token.c
 
-CFLAGS =	-Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS =	-Wall -Wextra -Werror -fsanitize=address -g
 
 RM =		rm
 

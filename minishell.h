@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/09 02:30:09 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 18:24:43 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ char		*manage_env(char *str, int *count);
 char		*manage_double_quotes(char *str, int *c);
 void		change_order(void);
 void		add_first_token(void);
-int			is_pipe(char *token);
 char		*ft_join(char *a, char *b);
 int			check_syntax(char **token, char *input);
 int			check_lexical(void);
@@ -176,6 +175,12 @@ void		redirect_stdout_to_pipe(void);
 void		print_env_error(void);
 void		free_env(void);
 int			open_file(t_list *node);
+int			is_pipe(char *token);
+int			 its_a_pipe(t_list *node);
+int			its_output(t_list *node);
+int			its_input(t_list *node);
+int			its_append(t_list *node);
+int			its_heredoc(t_list *node);
 
 /* File Handling */
 
