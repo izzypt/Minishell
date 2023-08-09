@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/09 01:35:09 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 02:30:09 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 typedef struct s_pipe
 {
 	int	fd[2];
-	//int redirect_fd[2];
 	int	stdin;
 	int	stdout;
 }				t_pipe;
@@ -140,7 +139,7 @@ void		heredoc_to_append(t_list *cur);
 
 /* Struct Getters */
 
-t_list		*list_heads(void);
+t_list		*get_token(void);
 t_env		*get_env(void);
 t_data		*get_data(void);
 t_pipe		*get_pipe(void);
@@ -159,7 +158,7 @@ void		handle_sigquit(int sig);
 
 /* List */
 
-t_list		*list_heads(void);
+t_list		*get_token(void);
 t_list		*ft_lstnew(char **token, char *path, t_list *lst_old);
 int			ft_lstsize(t_list *lst);
 t_list		*ft_lstlast(t_list *lst);
@@ -168,6 +167,7 @@ char		*ft_getenv(char *key);
 char		**list_to_array(void);
 
 /* Utils */
+
 int			is_builtin(t_list *node);
 int			is_built_in(char *token);
 int			replace_env_var(char *key, char *value);
@@ -178,6 +178,7 @@ void		free_env(void);
 int			open_file(t_list *node);
 
 /* File Handling */
+
 void		reset_original_std(void);
 
 #endif
