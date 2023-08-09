@@ -1,6 +1,12 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
+Articles that say pipes block if there is nothing to read:
+
+https://www.idc-online.com/technical_references/pdfs/information_technology/How_Linux_pipes_work_under_the_hood.pdf
+
+http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
+
 # TODO
 
 - [X] Ctrl-C
