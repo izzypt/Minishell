@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 12:18:14 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:33:54 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 /*
 - Handles the ">" symbol and its logic in the command chain.
 - To use with command chain function.
+- write_to_fd handles multiple outputs/appends chain.
+- Returns the last output in case of multiple in a row to the command chain.
 */
 t_list	*handle_output(t_list *curr)
 {

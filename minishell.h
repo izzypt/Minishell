@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/09 02:30:09 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 11:56:49 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,14 @@ int			open_file(t_list *node);
 /* File Handling */
 
 void		reset_original_std(void);
+
+/* Symbols */
+
+int			its_output(t_list *node);
+int			its_input(t_list *node);
+int			its_a_pipe(t_list *node);
+int			its_append(t_list *node);
+int			its_heredoc(t_list *node);
+
 
 #endif
