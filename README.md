@@ -1,6 +1,12 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
+Articles that say pipes block if there is nothing to read:
+
+https://www.idc-online.com/technical_references/pdfs/information_technology/How_Linux_pipes_work_under_the_hood.pdf
+
+http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
+
 # TODO
 
 - [X] Ctrl-C
@@ -9,6 +15,7 @@ This project is about creating a simple shell. We will learn a lot about process
 - [] Ctrl+C in minishell lvl 2 is not printing correctly
 - [] export 1hello (number in first place mot allowd)
 - [] export A =hello (cannot have space)
+- [X] export: new elements not sorted in list
 - [] several Heredocs
 - [] export several objects
 - [] unset several objects
@@ -17,8 +24,8 @@ This project is about creating a simple shell. We will learn a lot about process
 	- [] Redirections
 	- [X] 'cd'
 	- [X] cd '../../../../../.../../../../..'
-	- [] 'export n' -> 'export n'
-	- [] 'export n' -> 'export n =something'
+	- [X] 'export n' -> 'export n'
+	- [X] 'export n' -> 'export n =something'
 	- [X] './'
 	- [X] unset HOME
 	- [] '< Makefile < minishell.c cat > out > out2'

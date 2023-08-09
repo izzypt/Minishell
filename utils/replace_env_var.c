@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env_var.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:06:27 by simao             #+#    #+#             */
-/*   Updated: 2023/08/03 23:35:44 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 20:23:29 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,23 @@
 int	replace_env_var(char *key, char *value)
 {
 	t_env	*curr;
+	int		len;
 
 	curr = get_env();
 	curr = curr->nxt;
 	while (curr != NULL)
 	{
-		if (!ft_strncmp(curr->key, key, strlen(curr->key)))
+		if (ft_strlen(curr->key) > ft_strlen(key))
+			len = ft_strlen(curr->key);
+		else
+			len = ft_strlen(key);
+		if (!ft_strncmp(curr->key, key, len))
 		{
-			free(curr->value);
-			curr->value = ft_strdup(value);
+			if (curr->value)
+				free(curr->value);
+			curr->value = NULL;
+			if (value)
+				curr->value = ft_strdup(value);
 			return (1);
 		}
 		curr = curr->nxt;
