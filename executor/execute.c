@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/08 10:14:41 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 01:45:53 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+/*
+- Check if the given node is a built-in function or not.
+- Executes accordingly.
+*/
+void	execute_command(t_list *node)
+{
+	if (is_builtin(node))
+		execute_builtin(node);
+	else
+		execve(node->path, node->token, NULL);
+}
 
 /*
 - Will execute the comand if there is only 1 command in the list.
