@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 12:09:43 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 01:52:34 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,12 @@ void	output_from_pipe(t_list *node)
 	if (pid == 0)
 	{
 		redirect_stdin_to_pipe(node);
-		if (is_builtin(node))
-			execute_builtin(node);
-		else
-			execve(node->path, node->token, NULL);
-		close(get_pipe()->fd[1]);
-		close(get_pipe()->fd[0]);
+		execute_command(node);
 		cmd_exit(ft_itoa(errno), 0);
 	}
-	waitpid(pid, &status, 0);
 	close(get_pipe()->fd[1]);
 	close(get_pipe()->fd[0]);
+	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	get_data()->executing_cmd = 0;
@@ -62,10 +57,7 @@ void	write_to_pipe(t_list *node)
 	if (get_data()->pid == 0)
 	{
 		redirect_stdout_to_pipe();
-		if (is_builtin(node))
-			execute_builtin(node);
-		else
-			execve(node->path, node->token, NULL);
+		execute_command(node);
 		cmd_exit(ft_itoa(errno), 0);
 	}
 	waitpid(get_data()->pid, &status, 0);
