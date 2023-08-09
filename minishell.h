@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/08 13:27:28 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 01:35:09 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void		execute_input(t_list *node, char **envp);
 void		execute_builtin(t_list *node);
 void		command_chain(t_list *node);
 void		exec_input(t_list *node, int in_fd);
+void		execute_command(t_list *node);
 
 /* Pipes and Redirections */
 
@@ -121,6 +122,7 @@ void		append_to_fd(t_list *node);
 void		input_from_fd(t_list *node);
 
 /* Input Redirection */
+
 void		exec_input(t_list *node, int in_fd);
 void		input_to_terminal(t_list *node, int in_fd);
 void		input_to_fd(t_list *node, int in_fd);
@@ -174,5 +176,8 @@ void		redirect_stdout_to_pipe(void);
 void		print_env_error(void);
 void		free_env(void);
 int			open_file(t_list *node);
+
+/* File Handling */
+void		reset_original_std(void);
 
 #endif
