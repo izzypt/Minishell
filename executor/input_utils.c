@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 16:01:24 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 14:27:00 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:16:04 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	input_to_input(t_list *cmd_node, int fd)
 
 	input_sign = cmd_node->next;
 	first_ocorrence = cmd_node->next;
-	while (check_redirection(input_sign) == 3)
+	while (its_input(input_sign))
 	{
 		if (access(input_sign->next->token[0], R_OK) == -1)
 		{
@@ -117,7 +117,7 @@ void	input_to_input(t_list *cmd_node, int fd)
 			get_data()->exit = 1;
 			return ;
 		}
-		if (check_redirection(input_sign->next->next) == 3)
+		if (its_input(input_sign->next->next))
 			input_sign = input_sign->next->next;
 		else
 			break ;

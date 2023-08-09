@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 01:54:15 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:18:14 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 t_list	*handle_output(t_list *curr)
 {
 	write_to_fd(curr);
-	if (check_redirection(curr->next->next->next) == 2 \
-	|| check_redirection(curr->next->next) == 2)
+	if (its_output(curr->next->next->next) || its_output(curr->next->next))
 		curr = curr->next;
-	while (check_redirection(curr->next->next) == 2)
+	while (its_output(curr->next->next))
 		curr = curr->next->next;
 	return (curr);
 }
@@ -46,10 +45,9 @@ t_list	*handle_input(t_list *curr)
 t_list	*handle_append(t_list *curr)
 {
 	append_to_fd(curr);
-	if (check_redirection(curr->next->next->next) == 4 \
-	|| check_redirection(curr->next->next) == 4)
+	if (its_append(curr->next->next->next) || its_append(curr->next->next))
 		curr = curr->next;
-	while (check_redirection(curr->next->next) == 4)
+	while (its_append(curr->next->next))
 		curr = curr->next->next;
 	return (curr);
 }
@@ -83,17 +81,17 @@ void	command_chain(t_list *node)
 	curr = node;
 	while (curr != NULL)
 	{
-		if (check_redirection(curr->prev) == 1 && !curr->next)
+		if (its_a_pipe(curr->prev) && !curr->next)
 			output_from_pipe(curr);
-		else if (check_redirection(curr->next) == 1)
+		else if (its_a_pipe(curr->next))
 			write_to_pipe(curr);
-		else if (check_redirection(curr->next) == 2)
+		else if (its_output(curr->next))
 			curr = handle_output(curr);
-		else if (check_redirection(curr->next) == 3)
+		else if (its_input(curr->next))
 			curr = handle_input(curr);
-		else if (check_redirection(curr->next) == 4)
+		else if (its_append(curr->next))
 			curr = handle_append(curr);
-		else if (check_redirection(curr->next) == 5)
+		else if (its_heredoc(curr->next))
 			curr = handle_heredoc(curr);
 		if (get_data()->exit)
 			return ;

@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/05 17:32:27 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:10:15 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	exec_heredoc(t_list *cur)
 {
 	if (!cur->next->next)
 		write_to_command(cur);
-	if (check_redirection(cur->next->next) == 1)
+	if (its_a_pipe(cur->next->next))
 		heredoc_to_pipe(cur);
-	if (check_redirection(cur->next->next) == 2)
+	if (its_output(cur->next->next))
 		heredoc_to_fd(cur);
-	if (check_redirection(cur->next->next) == 4)
+	if (its_append(cur->next->next))
 		heredoc_to_append(cur);
 }
 

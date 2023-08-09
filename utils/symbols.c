@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   symbols.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:27:25 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/01 14:58:44 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/09 11:58:24 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	is_output(char *token)
+int	its_output(t_list *node)
 {
-	if (ft_strncmp(token, ">", 1) == 0)
+	if (!ft_strncmp(node->token[0], ">", 2))
 		return (1);
 	return (0);
 }
 
-int	is_input(char *token)
+int	its_input(t_list *node)
 {
-	if (ft_strncmp(token, "<", 1) == 0)
+	if (!ft_strncmp(node->token[0], "<", 2))
 		return (1);
 	return (0);
 }
@@ -39,16 +39,23 @@ int	is_pipe(char *token)
 	return (0);
 }
 
-int	is_append(char *token)
+int	its_a_pipe(t_list *node)
 {
-	if (ft_strncmp(token, ">>", 1) == 0)
+	if (!ft_strncmp(node->token[0], "|", 2))
 		return (1);
 	return (0);
 }
 
-int	is_heredoc(char *token)
+int	its_append(t_list *node)
 {
-	if (ft_strncmp(token, "<<", 1) == 0)
+	if (!ft_strncmp(node->token[0], ">>", 3))
+		return (1);
+	return (0);
+}
+
+int	its_heredoc(t_list *node)
+{
+	if (!ft_strncmp(node->token[0], "<<", 3))
 		return (1);
 	return (0);
 }

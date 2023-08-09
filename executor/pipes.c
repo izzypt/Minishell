@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:59:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 01:52:34 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:20:28 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	write_to_pipe(t_list *node)
 {
 	int	status;
 
-	if (check_redirection(node->prev) == 5)
+	if (its_heredoc(node->prev))
 		return ;
-	if (check_redirection(node->prev) == 3)
+	if (its_input(node->prev))
 		return ;
 	redirect_stdin_to_pipe(node);
 	pipe(get_pipe()->fd);

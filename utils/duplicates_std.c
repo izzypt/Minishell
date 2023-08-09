@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 12:02:44 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/09 01:47:39 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:17:04 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	redirect_stdin_to_pipe(t_list *node)
 {
-	if (check_redirection(node->prev) == 1)
+	if (its_a_pipe(node->prev))
 	{
 		close(get_pipe()->fd[1]);
 		dup2(get_pipe()->fd[0], STDIN_FILENO);

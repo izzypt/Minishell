@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 01:32:13 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 12:13:18 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_list	*check_red_after_ouput(t_list *node)
 	tmp = NULL;
 	if (node->next->next->next)
 		tmp = node->next->next->next;
-	while (tmp && (check_redirection(tmp) == 2 || check_redirection(tmp) == 4))
+	while (tmp && (its_output(tmp) || its_append(tmp)))
 	{
 		outfile = open_file(tmp->prev);
 		close(outfile);
