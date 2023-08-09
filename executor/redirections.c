@@ -6,32 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 12:13:18 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 23:14:25 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/*
-- Checks if there are redirections.
-- If there are it will return the corresponding code.
-*/
-int	check_redirection(t_list *node)
-{
-	if (!node || !node->token)
-		return (0);
-	if (!ft_strncmp(node->token[0], "|", 2))
-		return (1);
-	if (!ft_strncmp(node->token[0], ">", 2))
-		return (2);
-	if (!ft_strncmp(node->token[0], "<", 2))
-		return (3);
-	if (!ft_strncmp(node->token[0], ">>", 3))
-		return (4);
-	if (!ft_strncmp(node->token[0], "<<", 3))
-		return (5);
-	return (0);
-}
 
 /*
 - Handles multiple ">>" or ">" after the first ">" or ">>".
@@ -44,8 +23,8 @@ t_list	*check_red_after_ouput(t_list *node)
 	int		outfile;
 
 	tmp = NULL;
-	if (node->next->next->next)
-		tmp = node->next->next->next;
+	if (its_output(node->next->next) || its_append(node->next->next))
+		tmp = node->next->next;
 	while (tmp && (its_output(tmp) || its_append(tmp)))
 	{
 		outfile = open_file(tmp->prev);
@@ -56,6 +35,30 @@ t_list	*check_red_after_ouput(t_list *node)
 			break ;
 	}
 	return (tmp);
+}
+
+/*
+- Checks if there are any input redirections after the output ">".
+*/
+int	ouput_to_input(t_list *node)
+{
+	t_list	*tmp;
+	int		infile;
+
+	tmp = NULL;
+	infile = 0;
+	if (node->next->next)
+		tmp = node->next->next;
+	while (tmp && its_input(tmp))
+	{
+		if (tmp->next->next)
+			tmp = tmp->next->next;
+		else
+			break ;
+	}
+	if (tmp != NULL)
+		infile = open(tmp->next->token[0], O_RDONLY, 0644);
+	return (infile);
 }
 
 /*
@@ -71,10 +74,12 @@ void	write_to_fd(t_list *node)
 	int		pid;
 	int		outfile;
 	int		status;
+	int		infile;
 	t_list	*tmp;
 
 	redirect_stdin_to_pipe(node);
-	tmp = check_red_after_ouput(node);
+	tmp = check_red_after_ouput(node->next);
+	infile = ouput_to_input(node->next);
 	if (tmp)
 		outfile = open_file(tmp->next);
 	else
@@ -82,14 +87,17 @@ void	write_to_fd(t_list *node)
 	pid = fork();
 	if (pid == 0)
 	{
+		if (infile)
+			dup2(infile, STDIN_FILENO);
 		dup2(outfile, STDOUT_FILENO);
 		execute_command(node);
 		cmd_exit(ft_itoa(errno), 0);
 	}
 	waitpid(pid, &status, 0);
-	close(outfile);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
+	close(outfile);
+	close(infile);
 	reset_original_std();
 }
 

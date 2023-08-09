@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/09 20:44:54 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/09 21:31:15 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ void		print_env_error(void);
 void		free_env(void);
 int			open_file(t_list *node);
 int			is_pipe(char *token);
-int			 its_a_pipe(t_list *node);
+int			its_a_pipe(t_list *node);
 int			its_output(t_list *node);
 int			its_input(t_list *node);
 int			its_append(t_list *node);
