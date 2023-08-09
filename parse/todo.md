@@ -17,7 +17,9 @@
 
 [] ERROR message [] redirections at end [x] 2 special chars behind each other
 
-[x] free token (scanner_split.c) [x] free list after each readline [x] free paths (paths.c)
+[x] free token (scanner_split.c) 
+[x] free list after each readline 
+[x] free paths (paths.c)
 
 [] echo in the middle ex. cat echo test.txt
 

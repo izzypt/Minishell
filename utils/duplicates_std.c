@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   duplicates_std.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 12:02:44 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/03 21:50:31 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/09 01:47:39 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,10 @@ void	redirect_stdout_to_pipe(void)
 	close(get_pipe()->fd[0]);
 	dup2(get_pipe()->fd[1], STDOUT_FILENO);
 	close(get_pipe()->fd[1]);
+}
+
+void	reset_original_std(void)
+{
+	dup2(get_pipe()->stdin, STDIN_FILENO);
+	dup2(get_pipe()->stdout, STDOUT_FILENO);
 }
