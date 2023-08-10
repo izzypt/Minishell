@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 23:14:25 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/10 12:47:08 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	append_to_fd(t_list *node)
 
 	status = 0;
 	redirect_stdin_to_pipe(node);
-	tmp = check_red_after_ouput(node);
+	tmp = check_red_after_ouput(node->next);
 	if (tmp)
 		outfile = open_file(tmp->next);
 	else
