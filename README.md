@@ -9,15 +9,16 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 
 # TODO
 
+- [] cat | cat | ls
 - [X] Ctrl-C
 - [X] Ctrl + \
 - [] Ctrl+\ in minishell lvl 2 is quitting
 - [] Ctrl+C in minishell lvl 2 is not printing correctly
-- [] export 1hello (number in first place mot allowd)
-- [] export A =hello (cannot have space)
+- [X] export 1hello (number in first place mot allowd)
+- [X] export A =hello (cannot have space)
 - [X] export: new elements not sorted in list
 - [] several Heredocs
-- [] export several objects
+- [X] export several objects
 - [] unset several objects
 - [] decrease exit nr with 255 (limit long max int)
 - [] SEGFAULTS:

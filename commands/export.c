@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 20:18:10 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 19:31:15 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,32 @@ void	sort_alphabetically(void)
 void	cmd_export(char **variable)
 {
 	char	**key_value;
-	t_env	*lst;
+	int		i;
 
-	lst = get_env();
 	if (!variable[1])
 	{
 		sort_alphabetically();
 		return ;
 	}
-	key_value = ft_split(variable[1], '=');
-	if (replace_env_var(key_value[0], key_value[1]))
+	i = 1;
+	while (variable[i])
 	{
+		if (!ft_isalpha(variable[i][0]))
+		{
+			ft_printf("export: %s is not a valid identifier\n", variable[i]);
+			get_data()->exit = 1;
+			i++;
+			continue ;
+		}
+		key_value = ft_split(variable[i], '=');
+		if (replace_env_var(key_value[0], key_value[1]))
+		{
+			free_keys(key_value);
+			i++;
+			continue ;
+		}
+		new_env(key_value);
 		free_keys(key_value);
-		return ;
+		i++;
 	}
-	while (lst->nxt != NULL)
-		lst = lst->nxt;
-	lst->nxt = malloc(sizeof(t_env));
-	lst = lst->nxt;
-	lst->key = ft_strdup(key_value[0]);
-	assign_value(key_value[1], lst);
-	lst->nxt = NULL;
-	free_keys(key_value);
 }
