@@ -30,7 +30,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 	- [X] 'export n' -> 'export n =something'
 	- [X] './'
 	- [X] unset HOME
-	- [] '< Makefile < minishell.c cat > out > out2'
+	- [X] '< Makefile < minishell.c cat > out > out2'
 - [X] env something | grep HOME
 - [] cd: change OLDPWD and PWD
 - [X] CTRL+\ -> should not clear line
