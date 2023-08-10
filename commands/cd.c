@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 22:06:49 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/10 22:32:27 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_chdir(char *parsed_path)
 	char	cwd[1024];
 	char	*oldpwd;
 
-	oldpwd = ft_strdup(getcwd(cwd, sizeof(cwd)));
+	oldpwd = getcwd(cwd, sizeof(cwd));
 	if (chdir(parsed_path) != 0)
 	{
 		if (access(parsed_path, F_OK) == -1)
@@ -44,7 +44,7 @@ void	ft_chdir(char *parsed_path)
 	else
 	{
 		replace_env_var("OLDPWD", oldpwd);
-		replace_env_var("PWD", ft_strdup(getcwd(cwd, sizeof(cwd))));
+		replace_env_var("PWD", getcwd(cwd, sizeof(cwd)));
 	}
 }
 
