@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 12:47:08 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/10 13:10:15 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,14 @@ void	append_to_fd(t_list *node)
 {
 	int		pid;
 	int		outfile;
+	int		infile;
 	int		status;
 	t_list	*tmp;
 
 	status = 0;
 	redirect_stdin_to_pipe(node);
 	tmp = check_red_after_ouput(node->next);
+	infile = ouput_to_input(node->next);
 	if (tmp)
 		outfile = open_file(tmp->next);
 	else
@@ -122,6 +124,8 @@ void	append_to_fd(t_list *node)
 	pid = fork();
 	if (pid == 0)
 	{
+		if (infile)
+			dup2(infile, STDIN_FILENO);
 		dup2(outfile, STDOUT_FILENO);
 		execute_command(node);
 		close(outfile);
