@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
+/*   maxlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 17:59:56 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/10 19:46:42 by esali            ###   ########.fr       */
+/*   Created: 2023/08/10 19:55:27 by esali             #+#    #+#             */
+/*   Updated: 2023/08/10 19:57:47 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	print_env_error(void)
+int	maxlen(char *s1, char *s2)
 {
-	ft_printf("No environment variables found.\n");
-	get_data()->exit = 1;
-	return ;
-}
-
-void	print_export_error(char *msg)
-{
-	ft_printf("export: %s is not a valid identifier\n", msg);
-	get_data()->exit = 1;
+	if (!s1 || !s2)
+		return (0);
+	else if (ft_strlen(s1) > ft_strlen(s2))
+		return (ft_strlen(s1));
+	return (ft_strlen(s2));
 }

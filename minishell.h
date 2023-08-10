@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/09 21:31:15 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/10 21:21:30 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		cmd_export(char **variable);
 void		cmd_unset(char **variable);
 void		cmd_exit(char *number, int is_cmd);
 t_env		*sort_loop(t_env	*dup_env, t_env *sorted_env);
-void		assign_value(char *key_value, t_env *lst);
+void		new_env(char **key_value);
 
 /* Parsing */
 
@@ -181,6 +181,9 @@ int			its_output(t_list *node);
 int			its_input(t_list *node);
 int			its_append(t_list *node);
 int			its_heredoc(t_list *node);
+void		print_export_error(char *msg);
+int			maxlen(char *s1, char *s2);
+
 
 /* File Handling */
 

@@ -9,17 +9,19 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 
 # TODO
 
+- [] cat | cat | ls
+- [X] 'export1', 'unset123123', 'envaaa'
 - [X] Ctrl-C
 - [X] Ctrl + \
 - [] Ctrl+\ in minishell lvl 2 is quitting
 - [] Ctrl+C in minishell lvl 2 is not printing correctly
-- [] export 1hello (number in first place mot allowd)
-- [] export A =hello (cannot have space)
+- [X] export 1hello (number in first place mot allowd)
+- [X] export A =hello (cannot have space)
 - [X] export: new elements not sorted in list
 - [] several Heredocs
-- [] export several objects
-- [] unset several objects
-- [] decrease exit nr with 255 (limit long max int)
+- [X] export several objects
+- [X] unset several objects
+- [X] decrease exit nr with 255 (limit long max int)
 - [] SEGFAULTS:
 	- [] Redirections
 	- [X] 'cd'
@@ -28,7 +30,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 	- [X] 'export n' -> 'export n =something'
 	- [X] './'
 	- [X] unset HOME
-	- [] '< Makefile < minishell.c cat > out > out2'
+	- [X] '< Makefile < minishell.c cat > out > out2'
 - [X] env something | grep HOME
 - [] cd: change OLDPWD and PWD
 - [X] CTRL+\ -> should not clear line

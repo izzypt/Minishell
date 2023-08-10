@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/09 01:45:53 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/10 21:25:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,23 @@ void	execute_input(t_list *node, char **envp)
 */
 void	execute_builtin(t_list *node)
 {
-	if (!ft_strncmp(node->token[0], "cd", 2))
+	if (!ft_strncmp(node->token[0], "cd\0", 3))
 		cmd_cd(node->token);
-	else if (!ft_strncmp(node->token[0], "echo", 4))
+	else if (!ft_strncmp(node->token[0], "echo\0", 5))
 		cmd_echo(node->token);
-	else if (!ft_strncmp(node->token[0], "unset", 5))
+	else if (!ft_strncmp(node->token[0], "unset\0", 6))
 		cmd_unset(node->token);
-	else if (!ft_strncmp(node->token[0], "env", 3))
+	else if (!ft_strncmp(node->token[0], "env\0", 4))
 		cmd_env(node->token);
-	else if (!ft_strncmp(node->token[0], "export", 6))
+	else if (!ft_strncmp(node->token[0], "export\0", 7))
 		cmd_export(node->token);
-	else if (!ft_strncmp(node->token[0], "pwd", 3))
+	else if (!ft_strncmp(node->token[0], "pwd\0", 4))
 		cmd_pwd();
-	else if (!ft_strncmp(node->token[0], "exit", 4))
+	else if (!ft_strncmp(node->token[0], "exit\0", 5))
 	{
-		if (node->token[1])
+		if (node->token[1] && node->token[2])
+			cmd_exit(ft_strdup(node->token[1]), 5);
+		else if (node->token[1])
 			cmd_exit(ft_strdup(node->token[1]), 1);
 		cmd_exit(ft_itoa(get_data()->exit), 1);
 	}

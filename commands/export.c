@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 20:18:10 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 19:49:28 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	release_sorted_env(t_env	*sorted_env)
 	}
 }
 
-void	sort_alphabetically(void)
+int	sort_alphabetically(char **variable)
 {
 	t_env	*env;
 	t_env	*sorted_env;
 	t_env	*duplicate_env;
 
+	if (variable[1])
+		return (0);
 	env = get_env()->nxt;
 	duplicate_env = duplicate_list(env);
 	sorted_env = NULL;
@@ -75,6 +77,7 @@ void	sort_alphabetically(void)
 	sorted_env = sort_loop(duplicate_env, sorted_env);
 	print_sorted_env(sorted_env);
 	release_sorted_env(sorted_env);
+	return (1);
 }
 
 /*
@@ -83,26 +86,27 @@ void	sort_alphabetically(void)
 void	cmd_export(char **variable)
 {
 	char	**key_value;
-	t_env	*lst;
+	int		i;
 
-	lst = get_env();
-	if (!variable[1])
-	{
-		sort_alphabetically();
+	if (sort_alphabetically(variable))
 		return ;
-	}
-	key_value = ft_split(variable[1], '=');
-	if (replace_env_var(key_value[0], key_value[1]))
+	i = 1;
+	while (variable[i])
 	{
-		free_keys(key_value);
-		return ;
+		if (!ft_isalpha(variable[i][0]))
+		{
+			print_export_error(variable[i]);
+			i++;
+			continue ;
+		}
+		key_value = ft_split(variable[i], '=');
+		if (replace_env_var(key_value[0], key_value[1]))
+		{
+			free_keys(key_value);
+			i++;
+			continue ;
+		}
+		new_env(key_value);
+		i++;
 	}
-	while (lst->nxt != NULL)
-		lst = lst->nxt;
-	lst->nxt = malloc(sizeof(t_env));
-	lst = lst->nxt;
-	lst->key = ft_strdup(key_value[0]);
-	assign_value(key_value[1], lst);
-	lst->nxt = NULL;
-	free_keys(key_value);
 }
