@@ -32,7 +32,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 	- [X] unset HOME
 	- [X] '< Makefile < minishell.c cat > out > out2'
 - [X] env something | grep HOME
-- [] cd: change OLDPWD and PWD
+- [X] cd: change OLDPWD and PWD
 - [X] CTRL+\ -> should not clear line
 - [X] 'env something' should give an error
 - [X] exit with argument, that is not numeric should give error
