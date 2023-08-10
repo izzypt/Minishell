@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/08/10 20:25:21 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 20:57:54 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	check_options(char **token)
 {
 	if (token[1] == NULL)
 		return (0);
-	else if (!ft_strncmp(token[0], "echo", 4))
+	else if (!ft_strncmp(token[0], "echo\0", 5) || \
+	!ft_strncmp(token[0], "exit\0", 5))
 		return (0);
 	else if (token[1][0] == '-')
 	{

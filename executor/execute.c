@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/10 20:11:37 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 21:25:44 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void	execute_builtin(t_list *node)
 		cmd_pwd();
 	else if (!ft_strncmp(node->token[0], "exit\0", 5))
 	{
-		if (node->token[1])
+		if (node->token[1] && node->token[2])
+			cmd_exit(ft_strdup(node->token[1]), 5);
+		else if (node->token[1])
 			cmd_exit(ft_strdup(node->token[1]), 1);
 		cmd_exit(ft_itoa(get_data()->exit), 1);
 	}

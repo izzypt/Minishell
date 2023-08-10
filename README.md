@@ -21,7 +21,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 - [] several Heredocs
 - [X] export several objects
 - [X] unset several objects
-- [] decrease exit nr with 255 (limit long max int)
+- [X] decrease exit nr with 255 (limit long max int)
 - [] SEGFAULTS:
 	- [] Redirections
 	- [X] 'cd'
