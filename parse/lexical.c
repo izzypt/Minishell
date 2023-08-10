@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:01:05 by esali             #+#    #+#             */
-/*   Updated: 2023/08/09 02:26:38 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/10 20:25:21 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,19 @@ int	check_lexical(void)
 
 int	is_built_in(char *token)
 {
-	if (!ft_strncmp(token, "cd", 2))
+	if (!ft_strncmp(token, "cd\0", 3))
 		return (1);
-	else if (!ft_strncmp(token, "echo", 4))
+	else if (!ft_strncmp(token, "echo\0", 5))
 		return (1);
-	else if (!ft_strncmp(token, "unset", 5))
+	else if (!ft_strncmp(token, "unset\0", 6))
 		return (1);
-	else if (!ft_strncmp(token, "env", 3))
+	else if (!ft_strncmp(token, "env\0", 4))
 		return (1);
-	else if (!ft_strncmp(token, "export", 6))
+	else if (!ft_strncmp(token, "export\0", 7))
 		return (1);
-	else if (!ft_strncmp(token, "pwd", 3))
+	else if (!ft_strncmp(token, "pwd\0", 4))
 		return (1);
-	else if (!ft_strncmp(token, "exit", 4))
+	else if (!ft_strncmp(token, "exit\0", 5))
 		return (1);
 	else
 		return (0);

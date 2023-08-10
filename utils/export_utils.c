@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 19:44:27 by esali             #+#    #+#             */
-/*   Updated: 2023/08/10 17:41:10 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 19:41:57 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ void	new_env(char **key_value)
 	else
 		lst->value = ft_strdup(key_value[1]);
 	lst->nxt = NULL;
+	free_keys(key_value);
 }

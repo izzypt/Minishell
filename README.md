@@ -10,6 +10,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 # TODO
 
 - [] cat | cat | ls
+- [X] 'export1', 'unset123123', 'envaaa'
 - [X] Ctrl-C
 - [X] Ctrl + \
 - [] Ctrl+\ in minishell lvl 2 is quitting
@@ -19,7 +20,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 - [X] export: new elements not sorted in list
 - [] several Heredocs
 - [X] export several objects
-- [] unset several objects
+- [X] unset several objects
 - [] decrease exit nr with 255 (limit long max int)
 - [] SEGFAULTS:
 	- [] Redirections

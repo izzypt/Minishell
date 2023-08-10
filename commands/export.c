@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 19:31:15 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 19:49:28 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	release_sorted_env(t_env	*sorted_env)
 	}
 }
 
-void	sort_alphabetically(void)
+int	sort_alphabetically(char **variable)
 {
 	t_env	*env;
 	t_env	*sorted_env;
 	t_env	*duplicate_env;
 
+	if (variable[1])
+		return (0);
 	env = get_env()->nxt;
 	duplicate_env = duplicate_list(env);
 	sorted_env = NULL;
@@ -75,6 +77,7 @@ void	sort_alphabetically(void)
 	sorted_env = sort_loop(duplicate_env, sorted_env);
 	print_sorted_env(sorted_env);
 	release_sorted_env(sorted_env);
+	return (1);
 }
 
 /*
@@ -85,18 +88,14 @@ void	cmd_export(char **variable)
 	char	**key_value;
 	int		i;
 
-	if (!variable[1])
-	{
-		sort_alphabetically();
+	if (sort_alphabetically(variable))
 		return ;
-	}
 	i = 1;
 	while (variable[i])
 	{
 		if (!ft_isalpha(variable[i][0]))
 		{
-			ft_printf("export: %s is not a valid identifier\n", variable[i]);
-			get_data()->exit = 1;
+			print_export_error(variable[i]);
 			i++;
 			continue ;
 		}
@@ -108,7 +107,6 @@ void	cmd_export(char **variable)
 			continue ;
 		}
 		new_env(key_value);
-		free_keys(key_value);
 		i++;
 	}
 }

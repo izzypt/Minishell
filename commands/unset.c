@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:50 by simao             #+#    #+#             */
-/*   Updated: 2023/08/01 16:53:33 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/08/10 20:23:38 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,27 @@ void	cmd_unset(char **variable)
 {
 	t_env	*lst;
 	t_env	*tmp;
+	int		i;
 
-	lst = get_env();
 	if (!variable[1])
 		return ;
-	while (lst != NULL)
+	i = 1;
+	while(variable[i])
 	{
-		if (lst->nxt == NULL)
-			break ;
-		if (!ft_strncmp(lst->nxt->key, variable[1], ft_strlen(variable[1])))
+		lst = get_env();
+		while (lst->nxt != NULL)
 		{
-			tmp = lst->nxt;
-			lst->nxt = lst->nxt->nxt;
-			free(tmp->value);
-			free(tmp->key);
-			free(tmp);
-			break ;
+			if (!ft_strncmp(lst->nxt->key, variable[i], \
+			maxlen(variable[i], lst->nxt->key)))
+			{
+				tmp = lst->nxt;
+				lst->nxt = lst->nxt->nxt;
+				free(tmp->value);
+				free(tmp->key);
+				free(tmp);
+			}
+			lst = lst->nxt;
 		}
-		lst = lst->nxt;
+		i++;
 	}
 }

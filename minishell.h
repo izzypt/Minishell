@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/10 17:39:34 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 19:58:36 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,9 @@ int			its_output(t_list *node);
 int			its_input(t_list *node);
 int			its_append(t_list *node);
 int			its_heredoc(t_list *node);
+void		print_export_error(char *msg);
+int			maxlen(char *s1, char *s2);
+
 
 /* File Handling */
 
