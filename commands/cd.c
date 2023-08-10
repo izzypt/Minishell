@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/08 11:26:32 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/10 22:06:49 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 // X_OK: Verifica se o arquivo pode ser executado.
 // F_OK: Verifica se o arquivo existe.
 
-void ft_chdir(char *parsed_path)
+void	ft_chdir(char *parsed_path)
 {
+	char	cwd[1024];
+	char	*oldpwd;
+
+	oldpwd = ft_strdup(getcwd(cwd, sizeof(cwd)));
 	if (chdir(parsed_path) != 0)
 	{
 		if (access(parsed_path, F_OK) == -1)
@@ -36,6 +40,11 @@ void ft_chdir(char *parsed_path)
 			write(2, "minishell: cd: not a directory\n", 32);
 			get_data()->exit = 1;
 		}
+	}
+	else
+	{
+		replace_env_var("OLDPWD", oldpwd);
+		replace_env_var("PWD", ft_strdup(getcwd(cwd, sizeof(cwd))));
 	}
 }
 
