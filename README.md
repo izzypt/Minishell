@@ -9,7 +9,11 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 
 # TODO
 
+- [] norminette
+- [] export zz=hello=zz
 - [] cat | cat | ls
+- [] error message, if command is directory
+- [] SHLVL
 - [X] 'export1', 'unset123123', 'envaaa'
 - [X] Ctrl-C
 - [X] Ctrl + \
@@ -42,7 +46,7 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 - [X] remove rl_clear_visible_line(). Find another way to clean the line.
 - [] command chain:
 	- [X] cat < input > out
-	- [] redirections (>, >>, <, <<) as first token
+	- [X] redirections (>, >>, <, <<) as first token
 	- [X] cat < input | grep test
 	- [X] cat < file1 < file2 < file3 -> outputs only the contents of file3
 	- [X] ls > file1 > file2 > file3 -> recreates every file and only outputs to last file (file3)

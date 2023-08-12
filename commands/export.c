@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 19:49:28 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:08:19 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ void	cmd_export(char **variable)
 			i++;
 			continue ;
 		}
-		new_env(key_value);
+		new_env(key_value[0], key_value[1]);
+		free_keys(key_value);
 		i++;
 	}
 }

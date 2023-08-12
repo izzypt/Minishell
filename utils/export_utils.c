@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 19:44:27 by esali             #+#    #+#             */
-/*   Updated: 2023/08/10 19:41:57 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:08:26 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_env	*sort_loop(t_env	*dup_env, t_env *sorted_env)
 	return (sorted_env);
 }
 
-void	new_env(char **key_value)
+void	new_env(char *key, char *value)
 {
 	t_env	*lst;
 
@@ -49,11 +49,10 @@ void	new_env(char **key_value)
 		lst = lst->nxt;
 	lst->nxt = malloc(sizeof(t_env));
 	lst = lst->nxt;
-	lst->key = ft_strdup(key_value[0]);
-	if (key_value[1] == NULL)
+	lst->key = ft_strdup(key);
+	if (value == NULL)
 		lst->value = NULL;
 	else
-		lst->value = ft_strdup(key_value[1]);
+		lst->value = ft_strdup(value);
 	lst->nxt = NULL;
-	free_keys(key_value);
 }

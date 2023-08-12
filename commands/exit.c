@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 21:29:16 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 15:35:17 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	has_alpha(const char *s)
 	return (0);
 }
 
+/* changes exit number in a way,
+that it is in between 0 and 256*/
 int	calc_exit(int exit)
 {
 	if (exit == 0)

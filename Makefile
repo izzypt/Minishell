@@ -22,7 +22,7 @@ SRCS =		minishell.c parse/lexical.c parse/path.c parse/quotes.c parse/read.c \
 			executor/heredoc_util.c executor/pipes.c executor/redirections.c utils/symbols.c \
 			utils/duplicates_std.c utils/error_handling.c utils/export_utils.c utils/fd_helpers.c \
 			executor/command_chain.c parse/change_order.c executor/input.c executor/input_utils.c  \
-			parse/add_token.c utils/maxlen.c
+			parse/add_token.c utils/maxlen.c utils/shlvl.c
 
 CFLAGS =	-Wall -Wextra -Werror -fsanitize=address -g
 
