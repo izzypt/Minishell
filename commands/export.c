@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 16:08:19 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 17:44:49 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	print_sorted_env(t_env	*sorted_temp)
 	while (tmp)
 	{
 		if (tmp->value)
-			printf("declare -x %s=%s\n", tmp->key, tmp->value);
+			ft_printf("declare -x %s=%s\n", tmp->key, tmp->value);
 		else
-			printf("declare -x %s\n", tmp->key);
+			ft_printf("declare -x %s\n", tmp->key);
 		tmp = tmp->nxt;
 	}
 }

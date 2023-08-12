@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:45:31 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 17:32:54 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 18:43:48 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv, char **env)
 	if (argc != 1 || argv[1] != NULL)
 		return (0);
 	create_env(env);
+	get_data()->executing_cmd = 0;
 	increase_shlvl();
 	get_data()->exit = 0;
 	get_pipe()->stdin = dup(STDIN_FILENO);

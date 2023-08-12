@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 16:49:55 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 18:39:49 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_data
 	int		executing_cmd;
 	int		pid;
 	int		log_fd;
+	int		mini_inception;
 }				t_data;
 
 /* Builtin Commands */
@@ -78,7 +79,7 @@ void		cmd_echo(char **line);
 void		cmd_env(char **token);
 void		cmd_export(char **variable);
 void		cmd_unset(char **variable);
-void		cmd_exit(char *number, int is_cmd);
+void		cmd_exit(char *number, int is_exit);
 t_env		*sort_loop(t_env	*dup_env, t_env *sorted_env);
 void		new_env(char *key, char *value);
 

@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 19:44:27 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 16:08:26 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 17:50:18 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	new_env(char *key, char *value)
 {
 	t_env	*lst;
 
+	ft_printf("new_env\n");
 	lst = get_env();
 	while (lst->nxt != NULL)
 		lst = lst->nxt;

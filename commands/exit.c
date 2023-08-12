@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 16:44:45 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 18:29:08 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ int	calc_exit(int exit)
 }
 
 /* Should release all allocated resources before exiting,
-if is_cmd == 5 -> exit has more than 1 argument*/
-void	cmd_exit(char *exit_nr, int is_cmd)
+if is_cmd == 5 -> exit has more than 1 argument
+is_exit:  */
+void	cmd_exit(char *exit_nr, int is_exit)
 {
 	int		number;
 
@@ -60,11 +61,11 @@ void	cmd_exit(char *exit_nr, int is_cmd)
 	if (get_data()->envp)
 		free_keys(get_data()->envp);
 	free_env();
-	if (is_cmd)
+	if (is_exit)
 		ft_printf("exit\n");
 	if (has_alpha(exit_nr))
 		ft_printf("exit: %s: numeric argument required\n", exit_nr);
-	else if (is_cmd == 5)
+	else if (is_exit == 5)
 	{
 		ft_printf("exit: too many arguments\n");
 		number = 1;
