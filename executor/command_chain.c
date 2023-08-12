@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_chain.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 19:37:24 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 20:24:05 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,11 @@ t_list	*handle_heredoc(t_list *curr)
 {
 	get_hdoc()->command = curr;
 	heredoc(curr->next);
-	if (curr->next->next->next != NULL)
-		curr = curr->next->next->next;
+	curr = curr->next;
+	while (its_heredoc(curr->next->next) || its_output(curr->next->next))
+		curr = curr->next->next;
+	printf("command chain current node after heredoc: %s\n", curr->token[0]);
+	printf("command chain current next node after heredoc: %s\n", curr->next->token[0]);
 	return (curr);
 }
 

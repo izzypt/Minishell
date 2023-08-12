@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 19:46:25 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 20:39:08 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	exec_heredoc(t_list *cur)
 	if (its_a_pipe(cur->next->next))
 		heredoc_to_pipe(cur);
 	if (its_output(cur->next->next))
+	{
+		ft_printf("CAlling heredoc_to_fd\n");
 		heredoc_to_fd(cur);
+	}
 	if (its_append(cur->next->next))
 		heredoc_to_append(cur);
 }
@@ -87,11 +90,15 @@ void	heredoc(t_list *cur)
 	write_heredoc(cur, new_line, hdoc->fd);
 	while (its_heredoc(cur->next->next))
 	{
-		heredoc(cur->next->next);
-		close(hdoc->fd);
-		unlink(cur->next->token[0]);
-		return ;
+		if (its_heredoc(cur->next->next))
+		{
+			heredoc(cur->next->next);
+			close(hdoc->fd);
+			unlink(cur->next->token[0]);
+			return ;
+		}
 	}
 	close(hdoc->fd);
+	ft_printf("execing heredoc with current node: %s\n", cur->token[0]);
 	exec_heredoc(cur);
 }
