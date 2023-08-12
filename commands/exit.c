@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:31 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 15:35:17 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:44:45 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	calc_exit(int exit)
 		return (0);
 	else if (exit < 0)
 	{
-		while(exit < 0)
+		while (exit < 0)
 			exit = exit + 256;
 	}
 	else

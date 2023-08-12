@@ -6,11 +6,24 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 18:04:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/06 11:20:59 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:43:25 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	is_pipe(char *token)
+{
+	int	len;
+
+	if (ft_strlen(token) > 1)
+		len = ft_strlen(token);
+	else
+		len = 1;
+	if (ft_strncmp(token, "|", len) == 0)
+		return (1);
+	return (0);
+}
 
 // checks if token is redirection
 int	is_red(char *token)

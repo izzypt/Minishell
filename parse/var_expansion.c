@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 00:00:40 by esali             #+#    #+#             */
-/*   Updated: 2023/08/07 15:43:56 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:20:35 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,14 @@ char	*change_env(char *input, int i)
 
 /* checks if there is a valid char after $,
 and changes counter to the position after var expansion */
+// && str[c[0] + 1] != '"' -> 117)
 char	*manage_env(char *str, int *c)
 {
 	int		len_diff;
 	char	*ret;
 
 	ret = ft_strdup(str);
-	if (str[c[0] + 1] && str[c[0] + 1] != ' ') // && str[c[0] + 1] != '"')
+	if (str[c[0] + 1] && str[c[0] + 1] != ' ')
 	{
 		len_diff = get_env_len_diff(ret, c[0]);
 		ret = change_env(ret, c[0]);

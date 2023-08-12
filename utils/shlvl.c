@@ -6,12 +6,11 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 15:06:00 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 16:06:05 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:40:56 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 
 int	is_digit(const char *s)
 {
@@ -22,7 +21,7 @@ int	is_digit(const char *s)
 	is_minus = 0;
 	if (s[i] == '-' || s[i] == '+')
 	{
-		if(s[i] == '-')
+		if (s[i] == '-')
 			is_minus = 1;
 		i++;
 	}
@@ -32,7 +31,7 @@ int	is_digit(const char *s)
 			return (0);
 		i++;
 	}
-	if(is_minus)
+	if (is_minus)
 		return (2);
 	return (1);
 }

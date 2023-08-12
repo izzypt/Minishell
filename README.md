@@ -9,6 +9,9 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 
 # TODO
 
+SEGFAULTS:
+- [] Ctrl-D in Heredoc
+
 - [] norminette
 - [] export zz=hello=zz
 - [] cat | cat | ls
@@ -26,8 +29,8 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 - [X] export several objects
 - [X] unset several objects
 - [X] decrease exit nr with 255 (limit long max int)
-- [] SEGFAULTS:
-	- [] Redirections
+- [X] SEGFAULTS:
+	- [X] Redirections
 	- [X] 'cd'
 	- [X] cd '../../../../../.../../../../..'
 	- [X] 'export n' -> 'export n'

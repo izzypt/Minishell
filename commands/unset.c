@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:50 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 20:23:38 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:50:16 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	cmd_unset(char **variable)
 	if (!variable[1])
 		return ;
 	i = 1;
-	while(variable[i])
+	while (variable[i])
 	{
 		lst = get_env();
 		while (lst->nxt != NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:57:39 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 22:32:27 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:48:50 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 // W_OK: Verifica se o arquivo pode ser escrito.
 // X_OK: Verifica se o arquivo pode ser executado.
 // F_OK: Verifica se o arquivo existe.
+
+void	replace_pwd(char *oldpwd)
+{
+	char	cwd[1024];
+
+	replace_env_var("OLDPWD", oldpwd);
+	replace_env_var("PWD", getcwd(cwd, sizeof(cwd)));
+}
 
 void	ft_chdir(char *parsed_path)
 {
@@ -42,10 +50,7 @@ void	ft_chdir(char *parsed_path)
 		}
 	}
 	else
-	{
-		replace_env_var("OLDPWD", oldpwd);
-		replace_env_var("PWD", getcwd(cwd, sizeof(cwd)));
-	}
+		replace_pwd(oldpwd);
 }
 
 /*
