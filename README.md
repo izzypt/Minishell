@@ -20,12 +20,12 @@ SEGFAULTS:
 - [X] 'export1', 'unset123123', 'envaaa'
 - [X] Ctrl-C
 - [X] Ctrl + \
-- [] Ctrl+\ in minishell lvl 2 is quitting
-- [] Ctrl+C in minishell lvl 2 is not printing correctly
+- [X] Ctrl+\ in minishell lvl 2 is quitting
+- [X] Ctrl+C in minishell lvl 2 is not printing correctly
 - [X] export 1hello (number in first place mot allowd)
 - [X] export A =hello (cannot have space)
 - [X] export: new elements not sorted in list
-- [] several Heredocs
+- [X] several Heredocs
 - [X] export several objects
 - [X] unset several objects
 - [X] decrease exit nr with 255 (limit long max int)
