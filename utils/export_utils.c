@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 19:44:27 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 17:50:18 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 20:35:53 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	new_env(char *key, char *value)
 {
 	t_env	*lst;
 
-	ft_printf("new_env\n");
 	lst = get_env();
 	while (lst->nxt != NULL)
 		lst = lst->nxt;
@@ -56,4 +55,39 @@ void	new_env(char *key, char *value)
 	else
 		lst->value = ft_strdup(value);
 	lst->nxt = NULL;
+}
+
+char	*ft_join_str(char *s1, char *s2)
+{
+	char	*ret;
+
+	ret = ft_strjoin(s1, s2);
+	free(s1);
+	return (ret);
+}
+
+char	**split_key_value(char *var)
+{
+	char	**split;
+	char	**ret;
+	int		i;
+
+	split = ft_split(var, '=');
+	if (!split[1] || !split[2])
+		return (split);
+	ret = (char **)malloc(sizeof(char *) * 3);
+	if (!ret)
+		return (NULL);
+	ret[0] = ft_strdup(split[0]);
+	ret[1] = ft_strdup(split[1]);
+	i = 2;
+	while(split[i])
+	{
+		ret[1] = ft_join_str(ret[1], "=");
+		ret[1] = ft_join_str(ret[1], split[i]);
+		i++;
+	}
+	ret[2] = NULL;
+	free_keys(split);
+	return (ret);
 }
