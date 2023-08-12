@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 22:40:12 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 23:55:03 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,13 @@ t_list	*handle_heredoc(t_list *curr)
 	get_hdoc()->command = curr;
 	heredoc(curr->next);
 	curr = curr->next;
-	while (its_heredoc(curr->next->next) || its_output(curr->next->next) || its_input(curr->next->next))
+	while (its_heredoc(curr->next->next) \
+	|| its_output(curr->next->next) \
+	||its_input(curr->next->next))
 		curr = curr->next->next;
-	printf("command chain current node after heredoc: %s\n", curr->token[0]);
-	printf("command chain current next node after heredoc: %s\n", curr->next->token[0]);
+	ft_printf("command chain current node after heredoc: %s\n", curr->token[0]);
+	ft_printf("command chain current next node after heredoc: %s\n", \
+	curr->next->token[0]);
 	return (curr);
 }
 
