@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 19:37:03 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 20:36:30 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_list
 typedef struct s_heredoc
 {
 	int		fd;
-	t_list *command;
+	t_list	*command;
 }				t_heredoc;
 
 typedef struct s_env
@@ -83,6 +83,7 @@ void		cmd_unset(char **variable);
 void		cmd_exit(char *number, int is_exit);
 t_env		*sort_loop(t_env	*dup_env, t_env *sorted_env);
 void		new_env(char *key, char *value);
+char		**split_key_value(char *var);
 
 /* Parsing */
 

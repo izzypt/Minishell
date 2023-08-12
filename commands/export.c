@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:54:51 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 17:44:49 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 20:38:46 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_sorted_env(t_env	*sorted_temp)
 	while (tmp)
 	{
 		if (tmp->value)
-			ft_printf("declare -x %s=%s\n", tmp->key, tmp->value);
+			ft_printf("declare -x %s=\"%s\"\n", tmp->key, tmp->value);
 		else
 			ft_printf("declare -x %s\n", tmp->key);
 		tmp = tmp->nxt;
@@ -99,7 +99,7 @@ void	cmd_export(char **variable)
 			i++;
 			continue ;
 		}
-		key_value = ft_split(variable[i], '=');
+		key_value = split_key_value(variable[i]);
 		if (replace_env_var(key_value[0], key_value[1]))
 		{
 			free_keys(key_value);
