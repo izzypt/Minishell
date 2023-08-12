@@ -13,7 +13,7 @@ SEGFAULTS:
 - [X] Ctrl-D in Heredoc after some lines
 
 - [] norminette
-- [] cat < filethatdoesnotexist
+- [X] cat < filethatdoesnotexist
 - [X] export zz=hello=zz
 - [] cat | cat | ls
 - [] error message, if command is directory
