@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 22:54:29 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 18:48:11 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 19:01:37 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,17 @@ void	handle_sigquit(int sig)
 		ft_printf("\b \b");
 		ft_printf("\b \b");
 	}
+}
+
+void	set_signal_flags(t_list *node)
+{
+	get_data()->executing_cmd = 1;
+	if (!ft_strncmp("./minishell", node->token[0], 12))
+		get_data()->mini_inception = 1;
+}
+
+void	unset_signal_flags(void)
+{
+	get_data()->executing_cmd = 0;
+	get_data()->mini_inception = 0;
 }
