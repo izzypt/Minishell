@@ -14,7 +14,7 @@ SEGFAULTS:
 
 - [] norminette
 - [] cat < filethatdoesnotexist
-- [] export zz=hello=zz
+- [X] export zz=hello=zz
 - [] cat | cat | ls
 - [] error message, if command is directory
 - [X] SHLVL
