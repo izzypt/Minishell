@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:12:01 by simao             #+#    #+#             */
-/*   Updated: 2023/08/10 13:10:15 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/13 00:01:55 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ t_list	*check_red_after_ouput(t_list *node)
 			break ;
 	}
 	return (tmp);
+}
+
+/*
+- Will return the fd of outfile.
+- The file to open will depend on if there is tmp or not.
+- tmp will point to the last redirection if there are multiple.
+*/
+int	choose_file_to_open(t_list *tmp, t_list *node)
+{
+	int		outfile;
+
+	if (tmp)
+		outfile = open_file(tmp->next);
+	else
+		outfile = open_file(node->next->next);
+	return (outfile);
 }
 
 /*
@@ -80,10 +96,7 @@ void	write_to_fd(t_list *node)
 	redirect_stdin_to_pipe(node);
 	tmp = check_red_after_ouput(node->next);
 	infile = ouput_to_input(node->next);
-	if (tmp)
-		outfile = open_file(tmp->next);
-	else
-		outfile = open_file(node->next->next);
+	outfile = choose_file_to_open(tmp, node);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -117,10 +130,7 @@ void	append_to_fd(t_list *node)
 	redirect_stdin_to_pipe(node);
 	tmp = check_red_after_ouput(node->next);
 	infile = ouput_to_input(node->next);
-	if (tmp)
-		outfile = open_file(tmp->next);
-	else
-		outfile = open_file(node->next->next);
+	outfile = choose_file_to_open(tmp, node);
 	pid = fork();
 	if (pid == 0)
 	{
