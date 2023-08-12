@@ -6,11 +6,24 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:44:58 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 23:01:38 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 23:23:08 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	clear_heredocs(void)
+{
+	t_list	*tmp;
+
+	tmp = get_hdoc()->command;
+	while (tmp)
+	{
+		if (its_heredoc(tmp) && !access(tmp->next->token[0], R_OK))
+			unlink(tmp->next->token[0]);
+		tmp = tmp->next;
+	}
+}
 
 void	write_to_command(t_list *cur)
 {
@@ -31,7 +44,7 @@ void	write_to_command(t_list *cur)
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
-	//unlink(cur->next->token[0]);
+	clear_heredocs();
 }
 
 void	heredoc_to_pipe(t_list *cur)
@@ -55,7 +68,7 @@ void	heredoc_to_pipe(t_list *cur)
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
-	unlink(cur->next->token[0]);
+	clear_heredocs();
 }
 
 void	heredoc_to_fd(t_list *cur)
@@ -88,7 +101,7 @@ void	heredoc_to_fd(t_list *cur)
 		get_data()->exit = WEXITSTATUS(status);
 	close(in);
 	close(outfile);
-	//unlink(tmp->next->token[0]);
+	clear_heredocs();
 }
 
 void	heredoc_to_append(t_list *cur)
@@ -114,5 +127,5 @@ void	heredoc_to_append(t_list *cur)
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	close(outfile);
-	unlink(cur->next->token[0]);
+	clear_heredocs();
 }
