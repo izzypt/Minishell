@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 20:39:08 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 23:01:03 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ void	exec_heredoc(t_list *cur)
 	if (its_a_pipe(cur->next->next))
 		heredoc_to_pipe(cur);
 	if (its_output(cur->next->next))
-	{
-		ft_printf("CAlling heredoc_to_fd\n");
 		heredoc_to_fd(cur);
-	}
 	if (its_append(cur->next->next))
 		heredoc_to_append(cur);
 }
@@ -88,7 +85,7 @@ void	heredoc(t_list *cur)
 		return ;
 	}
 	write_heredoc(cur, new_line, hdoc->fd);
-	while (its_heredoc(cur->next->next))
+	while (its_heredoc(cur->next->next) || its_input(cur->next->next))
 	{
 		if (its_heredoc(cur->next->next))
 		{
@@ -96,6 +93,18 @@ void	heredoc(t_list *cur)
 			close(hdoc->fd);
 			unlink(cur->next->token[0]);
 			return ;
+		}
+		else if (its_input(cur->next->next))
+		{
+			if (access(cur->next->next->next->token[0], R_OK) == -1)
+			{
+				write(2, "no such file or dir\n", 42);
+				printf("failed acess to %s\n", cur->next->next->next->token[0]);
+				get_data()->exit = 1;
+				return ;
+			}
+			else
+				cur = cur->next->next;
 		}
 	}
 	close(hdoc->fd);

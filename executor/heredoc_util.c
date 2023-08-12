@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:44:58 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 22:12:16 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 23:01:38 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	write_to_command(t_list *cur)
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
 	dup2(get_pipe()->stdin, STDIN_FILENO);
-	unlink(cur->next->token[0]);
+	//unlink(cur->next->token[0]);
 }
 
 void	heredoc_to_pipe(t_list *cur)
@@ -88,7 +88,7 @@ void	heredoc_to_fd(t_list *cur)
 		get_data()->exit = WEXITSTATUS(status);
 	close(in);
 	close(outfile);
-	unlink(tmp->next->token[0]);
+	//unlink(tmp->next->token[0]);
 }
 
 void	heredoc_to_append(t_list *cur)
