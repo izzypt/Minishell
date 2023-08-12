@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:45:41 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/09 02:27:03 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:57:55 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_list(t_list *list)
 		node = list;
 	while (node != NULL)
 	{
-		printf("releasing %s and %s\n", node->path, node->token[0]);
+		//ft_printf("releasing %s and %s\n", node->path, node->token[0]);
 		tmp = node->next;
 		free_keys(node->token);
 		free(node->path);

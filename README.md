@@ -10,13 +10,13 @@ http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
 # TODO
 
 SEGFAULTS:
-- [] Ctrl-D in Heredoc
+- [X] Ctrl-D in Heredoc after some lines
 
 - [] norminette
 - [] export zz=hello=zz
 - [] cat | cat | ls
 - [] error message, if command is directory
-- [] SHLVL
+- [X] SHLVL
 - [X] 'export1', 'unset123123', 'envaaa'
 - [X] Ctrl-C
 - [X] Ctrl + \

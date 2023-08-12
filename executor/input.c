@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:23:28 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 12:07:38 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 16:58:07 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	input_from_fd(t_list *node)
 	int	in;
 
 	in = open(node->next->next->token[0], O_RDONLY, 0644);
-	printf("Opened fd is %d\n", in);
+	ft_printf("Opened fd is %d\n", in);
 	get_data()->executing_cmd = 1;
 	exec_input(node, in);
 }

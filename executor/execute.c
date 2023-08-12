@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:12:49 by smagalha          #+#    #+#             */
-/*   Updated: 2023/08/10 21:25:44 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 17:12:46 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	execute_input(t_list *node, char **envp)
 		execute_builtin(node);
 	else
 	{
-		get_data()->executing_cmd = 1;
+		get_data()->executing_cmd = 0;
 		pid1 = fork();
 		if (pid1 == 0)
 		{

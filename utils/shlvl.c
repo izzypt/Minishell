@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 15:06:00 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 16:40:56 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 17:22:42 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	increase_shlvl(void)
 	char	*env;
 
 	env = ft_getenv("SHLVL");
+	ft_printf("env: %s", env);
 	if (!env)
 		shlvl = 1;
 	if (is_digit(env) == 0)
