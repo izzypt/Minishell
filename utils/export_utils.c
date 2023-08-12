@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 19:44:27 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 20:35:53 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 22:08:36 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	**split_key_value(char *var)
 	ret[0] = ft_strdup(split[0]);
 	ret[1] = ft_strdup(split[1]);
 	i = 2;
-	while(split[i])
+	while (split[i])
 	{
 		ret[1] = ft_join_str(ret[1], "=");
 		ret[1] = ft_join_str(ret[1], split[i]);
