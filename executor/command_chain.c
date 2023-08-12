@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/12 23:55:03 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/13 00:34:56 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,12 @@ t_list	*handle_heredoc(t_list *curr)
 	|| its_output(curr->next->next) \
 	||its_input(curr->next->next))
 		curr = curr->next->next;
-	ft_printf("command chain current node after heredoc: %s\n", curr->token[0]);
-	ft_printf("command chain current next node after heredoc: %s\n", \
-	curr->next->token[0]);
 	return (curr);
 }
 
 /*
 - Iterates through the list of commands.
 - It will check if the next node is a redirection or a pipe.
-- Each redirection type has a different code :
-- 1 = |
-- 2 = >
-- 3 = <
-- 4 = >>
-- 5 = <<
 */
 void	command_chain(t_list *node)
 {
