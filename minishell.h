@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 18:39:49 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 19:02:23 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,8 @@ void		free_list(t_list *list);
 
 void		handle_sigint(int sig);
 void		handle_sigquit(int sig);
+void		set_signal_flags(t_list *node);
+void		unset_signal_flags(void);
 
 /* List */
 
