@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 19:02:23 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 19:37:03 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ typedef struct s_pipe
 	int	stdout;
 }				t_pipe;
 
-typedef struct s_heredoc
-{
-	int	fd;
-}				t_heredoc;
-
 typedef struct s_list
 {
 	char			**token;
@@ -52,6 +47,12 @@ typedef struct s_list
 	struct s_list	*prev;
 	int				is_head;
 }				t_list;
+
+typedef struct s_heredoc
+{
+	int		fd;
+	t_list *command;
+}				t_heredoc;
 
 typedef struct s_env
 {

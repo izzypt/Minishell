@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_chain.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 23:14:14 by simao             #+#    #+#             */
-/*   Updated: 2023/08/09 12:33:54 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/12 19:37:24 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_list	*handle_append(t_list *curr)
 */
 t_list	*handle_heredoc(t_list *curr)
 {
+	get_hdoc()->command = curr;
 	heredoc(curr->next);
 	if (curr->next->next->next != NULL)
 		curr = curr->next->next->next;

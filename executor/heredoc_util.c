@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:44:58 by esali             #+#    #+#             */
-/*   Updated: 2023/08/01 21:28:23 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 19:35:30 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	write_to_command(t_list *cur)
 	{
 		in = open(cur->next->token[0], O_RDONLY, 0644);
 		dup2(in, STDIN_FILENO);
-		execve(cur->prev->path, cur->prev->token, NULL);
+		execve(get_hdoc()->command->path, get_hdoc()->command->token, NULL);
 		close(in);
 		exit(errno);
 	}
@@ -47,7 +47,7 @@ void	heredoc_to_pipe(t_list *cur)
 		in = open(cur->next->token[0], O_RDONLY, 0644);
 		dup2(in, STDIN_FILENO);
 		dup2(get_pipe()->fd[1], STDOUT_FILENO);
-		execve(cur->prev->path, cur->prev->token, NULL);
+		execve(get_hdoc()->command->path, get_hdoc()->command->token, NULL);
 		close(in);
 		exit(errno);
 	}
@@ -99,7 +99,7 @@ void	heredoc_to_append(t_list *cur)
 		in = open(cur->next->token[0], O_RDONLY, 0644);
 		dup2(in, STDIN_FILENO);
 		dup2(outfile, STDOUT_FILENO);
-		execve(cur->prev->path, cur->prev->token, NULL);
+		execve(get_hdoc()->command->path, get_hdoc()->command->token, NULL);
 		close(in);
 		exit(errno);
 	}

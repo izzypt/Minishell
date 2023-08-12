@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 16:38:11 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/12 19:46:25 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ void	heredoc(t_list *cur)
 		return ;
 	}
 	write_heredoc(cur, new_line, hdoc->fd);
-	exec_heredoc(cur);
+	while (its_heredoc(cur->next->next))
+	{
+		heredoc(cur->next->next);
+		close(hdoc->fd);
+		unlink(cur->next->token[0]);
+		return ;
+	}
 	close(hdoc->fd);
+	exec_heredoc(cur);
 }
