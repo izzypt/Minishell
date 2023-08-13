@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:41:23 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 23:01:03 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/13 00:59:46 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	heredoc(t_list *cur)
 			if (access(cur->next->next->next->token[0], R_OK) == -1)
 			{
 				write(2, "no such file or dir\n", 42);
-				printf("failed acess to %s\n", cur->next->next->next->token[0]);
 				get_data()->exit = 1;
 				return ;
 			}
@@ -108,6 +107,5 @@ void	heredoc(t_list *cur)
 		}
 	}
 	close(hdoc->fd);
-	ft_printf("execing heredoc with current node: %s\n", cur->token[0]);
 	exec_heredoc(cur);
 }
