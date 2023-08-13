@@ -6,7 +6,7 @@
 /*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 20:36:30 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/13 11:17:28 by esali            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,6 @@ int			is_built_in(char *token);
 int			replace_env_var(char *key, char *value);
 void		redirect_stdin_to_pipe(t_list *node);
 void		redirect_stdout_to_pipe(void);
-void		print_env_error(void);
 void		free_env(void);
 int			open_file(t_list *node);
 int			is_pipe(char *token);
@@ -186,9 +185,13 @@ int			its_output(t_list *node);
 int			its_input(t_list *node);
 int			its_append(t_list *node);
 int			its_heredoc(t_list *node);
-void		print_export_error(char *msg);
 int			maxlen(char *s1, char *s2);
 void		increase_shlvl(void);
+
+/* Error Handling*/
+void		print_export_error(char *msg);
+void		print_env_error(void);
+void		print_dir_error(char *dir);
 
 /* File Handling */
 
