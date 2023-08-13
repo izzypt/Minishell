@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esali <esali@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:16:06 by esali             #+#    #+#             */
-/*   Updated: 2023/08/13 12:01:25 by esali            ###   ########.fr       */
+/*   Updated: 2023/08/13 12:23:08 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void		execute_command(t_list *node);
 
 /* Pipes and Redirections */
 
-int			check_redirection(t_list *node);
 void		write_to_pipe(t_list *node);
 void		output_from_pipe(t_list *node);
 void		write_to_fd(t_list *node);
@@ -138,6 +137,7 @@ void		heredoc_to_pipe(t_list *cur);
 void		write_to_command(t_list *cur);
 void		heredoc_to_fd(t_list *cur);
 void		heredoc_to_append(t_list *cur);
+void		clear_heredocs(void);
 
 /* Struct Getters */
 
@@ -180,15 +180,11 @@ void		redirect_stdout_to_pipe(void);
 void		free_env(void);
 int			open_file(t_list *node);
 int			is_pipe(char *token);
-int			its_a_pipe(t_list *node);
-int			its_output(t_list *node);
-int			its_input(t_list *node);
-int			its_append(t_list *node);
-int			its_heredoc(t_list *node);
 int			maxlen(char *s1, char *s2);
 void		increase_shlvl(void);
 
 /* Error Handling*/
+
 void		print_export_error(char *msg);
 void		print_env_error(void);
 void		print_dir_error(char *dir);
