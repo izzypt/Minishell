@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 22:55:45 by simao             #+#    #+#             */
-/*   Updated: 2023/08/13 00:34:26 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/13 12:16:20 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,17 @@ int	open_file(t_list *node)
 		O_CREAT | O_APPEND | O_WRONLY, 0644);
 	}
 	return (file);
+}
+
+void	clear_heredocs(void)
+{
+	t_list	*tmp;
+
+	tmp = get_hdoc()->command;
+	while (tmp)
+	{
+		if (its_heredoc(tmp) && !access(tmp->next->token[0], R_OK))
+			unlink(tmp->next->token[0]);
+		tmp = tmp->next;
+	}
 }
