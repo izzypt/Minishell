@@ -6,24 +6,11 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 13:44:58 by esali             #+#    #+#             */
-/*   Updated: 2023/08/12 23:23:08 by simao            ###   ########.fr       */
+/*   Updated: 2023/08/13 12:15:17 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	clear_heredocs(void)
-{
-	t_list	*tmp;
-
-	tmp = get_hdoc()->command;
-	while (tmp)
-	{
-		if (its_heredoc(tmp) && !access(tmp->next->token[0], R_OK))
-			unlink(tmp->next->token[0]);
-		tmp = tmp->next;
-	}
-}
 
 void	write_to_command(t_list *cur)
 {
@@ -71,6 +58,19 @@ void	heredoc_to_pipe(t_list *cur)
 	clear_heredocs();
 }
 
+t_list	*check_heredoc_outputs(t_list *cur)
+{
+	int		outfile;
+
+	while (its_output(cur->next->next))
+	{
+		cur = cur->next->next;
+		outfile = open(cur->next->token[0], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+		close(outfile);
+	}
+	return (cur);
+}
+
 void	heredoc_to_fd(t_list *cur)
 {
 	int		in;
@@ -80,12 +80,7 @@ void	heredoc_to_fd(t_list *cur)
 	t_list	*tmp;
 
 	tmp = cur;
-	while (its_output(cur->next->next))
-	{
-		cur = cur->next->next;
-		outfile = open(cur->next->token[0], O_WRONLY | O_TRUNC | O_CREAT, 0644);
-		close(outfile);
-	}	
+	cur = check_heredoc_outputs(cur);
 	outfile = open(cur->next->token[0], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	in = open(tmp->next->token[0], O_RDONLY, 0644);
 	pid = fork();
