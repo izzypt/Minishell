@@ -1,69 +1,6 @@
 # Minishell
 This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
 
-Articles that say pipes block if there is nothing to read:
-
-https://www.idc-online.com/technical_references/pdfs/information_technology/How_Linux_pipes_work_under_the_hood.pdf
-
-http://brandonwamboldt.ca/how-linux-pipes-work-under-the-hood-1518/
-
-# TODO
-
-SEGFAULTS:
-- [X] Ctrl-D in Heredoc after some lines
-
-- [] norminette
-- [X] cat < filethatdoesnotexist
-- [X] export zz=hello=zz
-- [] cat | cat | ls
-- [] error message, if command is directory
-- [X] SHLVL
-- [X] 'export1', 'unset123123', 'envaaa'
-- [X] Ctrl-C
-- [X] Ctrl + \
-- [X] Ctrl+\ in minishell lvl 2 is quitting
-- [X] Ctrl+C in minishell lvl 2 is not printing correctly
-- [X] export 1hello (number in first place mot allowd)
-- [X] export A =hello (cannot have space)
-- [X] export: new elements not sorted in list
-- [X] several Heredocs
-- [X] export several objects
-- [X] unset several objects
-- [X] decrease exit nr with 255 (limit long max int)
-- [X] SEGFAULTS:
-	- [X] Redirections
-	- [X] 'cd'
-	- [X] cd '../../../../../.../../../../..'
-	- [X] 'export n' -> 'export n'
-	- [X] 'export n' -> 'export n =something'
-	- [X] './'
-	- [X] unset HOME
-	- [X] '< Makefile < minishell.c cat > out > out2'
-- [X] env something | grep HOME
-- [X] cd: change OLDPWD and PWD
-- [X] CTRL+\ -> should not clear line
-- [X] 'env something' should give an error
-- [X] exit with argument, that is not numeric should give error
-- [X] exit with any argument prints exit
-- [X] CTRL-D should print exit in terminal
-- [X] cat << EEOF segfault Ctrl-D
-- [X] remove rl_clear_visible_line(). Find another way to clean the line.
-- [] command chain:
-	- [X] cat < input > out
-	- [X] redirections (>, >>, <, <<) as first token
-	- [X] cat < input | grep test
-	- [X] cat < file1 < file2 < file3 -> outputs only the contents of file3
-	- [X] ls > file1 > file2 > file3 -> recreates every file and only outputs to last file (file3)
-	- [x] ls >> file1 >> file2 >> file3 -> does not overwrite file1 and file2, but only appends ls to file3
-- [X] echo < out "something" -> change token order
-- [X] echo -nnnn3n
-- [X] print options for echo
-- [X] remove space when echo -n
-- [X] echo $"PWD"
-- [X] set exit status in cd (permission)
-- [X] check permission for file before executing
-
-
 ## Key concepts
 
 ### Redirections
