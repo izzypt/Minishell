@@ -46,7 +46,6 @@ void	handle_sigquit(int sig)
 			ft_printf("\b \b");
 			ft_printf("\b \b");
 			ft_printf("Quit (core dumped)\n");
-			cmd_exit(ft_itoa(get_data()->exit), 0);
 		}
 	}
 	else
