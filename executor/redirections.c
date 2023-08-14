@@ -141,6 +141,7 @@ void	append_to_fd(t_list *node)
 		close(outfile);
 		cmd_exit(ft_itoa(errno), 0);
 	}
+	waitpid(pid, &status, 0);
 	close(outfile);
 	if (WIFEXITED(status))
 		get_data()->exit = WEXITSTATUS(status);
