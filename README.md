@@ -1,5 +1,5 @@
 # Minishell
-This project is about creating a simple shell. We will learn a lot about processes and file descriptors.
+This project is about creating a simple shell. We will learn a lot about processes and file descriptors, forks and exit codes, etc...
 
 ## Key concepts
 
